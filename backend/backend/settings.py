@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -125,4 +127,18 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
+# Custom user model
 AUTH_USER_MODEL = "api.User"
+
+
+# Email settings
+load_dotenv() 
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "bristollink2024@gmail.com"
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+ALLOWED_HOSTS = []

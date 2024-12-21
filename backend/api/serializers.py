@@ -36,4 +36,4 @@ class UserSerializer(serializers.ModelSerializer):
 class CrushSerializer(serializers.ModelSerializer):
     class Meta:
         model = Crush
-        exclude = ["created_at", "is_match"]
+        exclude = ["created_at"]

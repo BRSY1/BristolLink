@@ -22,6 +22,10 @@ class Crush(models.Model):
         related_name='submitted_crushes', 
         to_field='email'
     )
+    crush_name = models.CharField(
+        max_length=50,
+        help_text="The name of your crush"
+    )
     crush_email = models.EmailField(
         max_length=254,
         help_text="The email of your crush"
@@ -38,7 +42,6 @@ class Crush(models.Model):
         help_text="Optional image for your crush"
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    is_match = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ['submitter', 'crush_email']
