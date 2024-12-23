@@ -9,7 +9,7 @@ class User(AbstractUser):
     verification_code = models.UUIDField(default=uuid.uuid4, editable=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username"]
+    REQUIRED_FIELDS = ["username", "email"]
 
     def __str__(self):
         return self.email
@@ -34,12 +34,6 @@ class Crush(models.Model):
         blank=True,
         null=True,
         help_text="Optional message for your crush"
-    )
-    image = models.ImageField(
-        upload_to="images/",
-        blank=True,
-        null=True,
-        help_text="Optional image for your crush"
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
