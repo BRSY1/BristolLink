@@ -1,7 +1,10 @@
 from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
 from django.conf import settings
+from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.urls import reverse
+from django.utils.html import strip_tags
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
@@ -38,7 +41,8 @@ class RegisterView(APIView):
             try:
                 self.send_verification_email(new_user)
             except Exception as e:
-                return Response({"message": f"Failed to send verification email: {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                new_user.delete()
+                return Response({"message": f"Failed to send verification email. Please register your account again."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
             return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
         
@@ -47,11 +51,20 @@ class RegisterView(APIView):
     def send_verification_email(self, new_user):
         verification_url = self.request.build_absolute_uri(reverse("verify", args=[new_user.verification_code]))
 
+        context = {
+            "recipient_name": new_user.username,
+            "activation_link": verification_url
+        }
+
+        html_message = render_to_string("verification_email.html", context)
+        plain_message = strip_tags(html_message)
+
         send_mail(
             subject="Verify your email for BristolLink",
-            message="Click the link to verify your email: " + verification_url,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[new_user.email]
+            message=plain_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[new_user.email],
+            html_message=html_message
         )
 
 
@@ -87,7 +100,7 @@ class LoginView(APIView):
                 return Response({"message": "Email not verified"}, status=status.HTTP_400_BAD_REQUEST)
             
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key, "message": "Email verified successfully"}, status=status.HTTP_200_OK)
+            return Response({"token": token.key, "message": "Logged in successfully"}, status=status.HTTP_200_OK)
 
         
         except User.DoesNotExist:
@@ -123,7 +136,7 @@ class SubmitCrushView(APIView):
         
         # Create new crush object if the user has not already submitted a crush
         if Crush.objects.filter(submitter=user).exists():
-            return Response({"message": "You have already submitted a crush."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "You have already submitted a crush"}, status=status.HTTP_400_BAD_REQUEST)
         
         serializer = CrushSerializer(data={
             "submitter": user,
@@ -154,7 +167,7 @@ class SubmitCrushView(APIView):
         send_mail(
             subject=f"Someone has a crush on you! (from BristolLink)",
             message=message,
-            from_email=settings.EMAIL_HOST_USER, 
+            from_email=settings.Default_FROM_EMAIL, 
             recipient_list=[crush_email]
         )
     
@@ -164,7 +177,7 @@ class SubmitCrushView(APIView):
         send_mail(
             subject=f"Someone has a crush on you! (from BristolLink)",
             message=message,
-            from_email=settings.EMAIL_HOST_USER, 
+            from_email=settings.DEFAULT_FROM_EMAIL, 
             recipient_list=[crush_email]
         )
     
@@ -182,3 +195,7 @@ class GetCrushView(APIView):
         crush = Crush.objects.filter(submitter=request.user)
         serializer = CrushSerializer(crush, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+def test(request):
+    return render(request, "verification_email.html")

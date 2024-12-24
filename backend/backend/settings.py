@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "api",
     "rest_framework",
     "rest_framework.authtoken",
+    "django_browser_reload"
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware"
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -142,3 +144,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 ALLOWED_HOSTS = []
+DEFAULT_FROM_EMAIL = "BristolLink <bristollink2024@gmail.com>"

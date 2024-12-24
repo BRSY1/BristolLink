@@ -9,10 +9,10 @@ class User(AbstractUser):
     verification_code = models.UUIDField(default=uuid.uuid4, editable=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username", "email"]
+    REQUIRED_FIELDS = ["username"]
 
     def __str__(self):
-        return self.email
+        return self.email 
 
 
 class Crush(models.Model):
