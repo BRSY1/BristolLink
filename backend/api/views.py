@@ -198,4 +198,4 @@ class GetCrushView(APIView):
 
 
 def test(request):
-    return render(request, "verification_email.html")
+    return render(request, "invitation_email.html")
