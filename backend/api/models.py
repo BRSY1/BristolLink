@@ -12,7 +12,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ["username"]
 
     def __str__(self):
-        return self.email
+        return self.email 
 
 
 class Crush(models.Model):
@@ -34,12 +34,6 @@ class Crush(models.Model):
         blank=True,
         null=True,
         help_text="Optional message for your crush"
-    )
-    image = models.ImageField(
-        upload_to="images/",
-        blank=True,
-        null=True,
-        help_text="Optional image for your crush"
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
