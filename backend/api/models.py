@@ -61,3 +61,26 @@ class Match(models.Model):
 
     def __str__(self):
         return f"{self.user1} <-> {self.user2}"
+    
+
+class Notification(models.Model):
+    NOTIFICATION_TYPES = [
+        ('submission', 'Crush Submission'),
+        ('match', 'Match Found'),
+    ]
+
+    submitter = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        to_field='email'
+    )
+    receiver_email = models.EmailField(max_length=254)
+    notification_type = models.CharField(
+        max_length=25,
+        choices=NOTIFICATION_TYPES,
+    )
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.receiver} - {self.notification_type}"

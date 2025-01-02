@@ -10,4 +10,5 @@ urlpatterns = [
     path("crush/submit", views.SubmitCrushView.as_view(), name="submit_crush"),
     path("crush/get", views.GetCrushView.as_view(), name="get_crush"),
     path("test", views.test, name="test"),
+    path("notifications", views.NotificationView.as_view(), name="notifications"),
 ]

@@ -7,93 +7,129 @@
     <title>invitation email</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Arial", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f4f4;
+        background-color: #fff5f8;
         color: #333;
       }
       a {
-        color: #0073e6;
+        color: #ff69b4;
         text-decoration: none;
         font-weight: bold;
       }
       .container {
-        height: 100%;
-        width: 100%;
+        max-width: 600px;
         margin: 20px auto;
         background: #fff;
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
+        border: 2px solid #ffe6f0;
       }
       .header {
         text-align: center;
-        padding: 10px 0;
-        border-radius: 8px 8px 0 0;
+        padding: 20px 0;
+        border-radius: 12px 12px 0 0;
+      }
+      .logo {
+        margin: 0;
       }
       .header h1 {
         margin: 0;
+        color: #000;
+        font-size: 24px;
+        line-height: 1.4;
       }
       .content {
         padding: 20px;
+        line-height: 1.6;
       }
       .footer {
         text-align: center;
         font-size: 12px;
         color: #666;
-        margin-top: 20px;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ffe6f0;
       }
       .button {
         display: inline-block;
-        background-color: #0073e6;
-        color: #fff;
+        background-color: #ff69b4;
+        color: #fff !important;
         text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 4px;
-        margin: 15px 0;
+        padding: 12px 30px;
+        border-radius: 25px;
+        margin: 25px 0;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+      .button:hover {
+        background-color: #ff1493;
+      }
+      .heart-icon {
+        color: #ff69b4;
+        font-size: 16px;
+        display: inline-block;
+        margin: 0 2px;
       }
       .subsection {
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid #ddd;
+        margin-top: 25px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        border: 1px solid #ffe6f0;
       }
       .subsection h2 {
-        margin: 0 0 10px;
+        margin: 0 0 15px;
+        color: #ff69b4;
+        font-size: 20px;
       }
-      .subsection p {
-        margin: 0 0 10px;
+      .signature {
+        margin-top: 20px;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="header">
+        <div class="logo">
+          <img
+            src="{{ logo_url }}"
+            alt="BristolLink Logo"
+            style="max-height: 100px"
+          />
+        </div>
         <h1>Invitation from BristolLink</h1>
       </div>
-
       <div class="content">
-        <p>Hi <b>{{ recipient_name }}</b>,</p>
+        <p>Hi there,</p>
         <p>
           We are thrilled to invite you to join <b>BristolLink</b>, the platform
           that connects you with like-minded individuals and amazing
-          opportunities! <b>{{ crush_count }}</b> person submitted you email address as
-          their crush.
+          opportunities! <b>{{ crush_count }}</b> person submitted your email
+          address as their crush.
         </p>
         <p>
           If you are unsure who we are and can't decide whether to join our
-          platform. Scroll down to see our introduction.
+          platform, scroll down to see our introduction.
         </p>
-        <a href="{{ registration_link }}" class="button">Register an account</a>
+        <center>
+          <a href="{{ registration_link }}" class="button"
+            >Register an account</a
+          >
+        </center>
         <p>
           If you have any questions, feel free to
           <a href="mailto:bristollink2024@gmail.com">contact us</a>.
         </p>
         <p>We can't wait to see you on BristolLink!</p>
-        <p>
-          Best regards,<br />
-          The BristolLink Team
-        </p>
+        <div class="signature">
+          <p>
+            Best regards,<br />
+            The BristolLink Team <span class="heart-icon">♥</span>
+          </p>
+        </div>
 
         <div class="subsection">
           <h2>Who We Are</h2>
@@ -105,8 +141,7 @@
           </p>
           <p>
             Learn more about us
-            <a href="https://www.bristollink.com/about">here</a
-            >.
+            <a href="https://www.bristollink.com/about">here</a>.
           </p>
         </div>
 

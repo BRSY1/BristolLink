@@ -7,71 +7,101 @@
     <title>verification email</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Arial", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f4f4;
+        background-color: #fff5f8;
         color: #333;
       }
       a {
-        color: #0073e6;
+        color: #ff69b4;
         text-decoration: none;
         font-weight: bold;
       }
       .container {
-        height: 100%;
-        width: 100%;
+        max-width: 600px;
         margin: 20px auto;
         background: #fff;
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
+        border: 2px solid #ffe6f0;
       }
       .header {
         text-align: center;
-        padding: 10px 0;
-        border-radius: 8px 8px 0 0;
+        padding: 20px 0;
+        border-radius: 12px 12px 0 0;
+      }
+      .logo {
+        margin: 0;
       }
       .header h1 {
         margin: 0;
+        color: #000;
+        font-size: 24px;
+        line-height: 1.4;
       }
       .content {
         padding: 20px;
+        line-height: 1.6;
       }
       .footer {
         text-align: center;
         font-size: 12px;
         color: #666;
-        margin-top: 20px;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ffe6f0;
       }
       .button {
         display: inline-block;
-        background-color: #0073e6;
-        color: #fff;
+        background-color: #ff69b4;
+        color: #fff !important;
         text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 4px;
-        margin-top: 20px;
+        padding: 12px 30px;
+        border-radius: 25px;
+        margin: 25px 0;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+      .button:hover {
+        background-color: #ff1493;
+      }
+      .heart-icon {
+        color: #ff69b4;
+        font-size: 20px;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <h1>Just 1 click away from getting your account ready.</h1>
+        <div class="logo">
+          <img
+            src="{{ logo_url }}"
+            alt="BristolLink Logo"
+            style="max-width: 100px"
+          >
+        </div>
+        <h1>Just 1 click away from getting your account ready!</h1>
       </div>
       <div class="content">
         <p>Hi <b>{{ recipient_name }}</b>,</p>
         <p>
-          Thank you for joining us! We are excited to have you on board. Click
+          Thank you for joining us! We're excited to have you on board. Click
           the button below to get started:
         </p>
-        <a href="{{ activation_link }}" class="button">Activate Account</a>
-        <p>If you have any questions, feel free to <a href="mailto:bristollink2024@gmail.com">contact our support team</a>.</p>
+        <center>
+          <a href="{{ activation_link }}" class="button">Activate Account</a>
+        </center>
+        <p>
+          If you have any questions, feel free to
+          <a href="mailto:bristollink2024@gmail.com">contact our support team</a
+          >.
         </p>
         <p>
           Best regards,<br />
-          The BristolLink Team
+          The BristolLink Team <span class="heart-icon">♥</span>
         </p>
       </div>
       <div class="footer">&copy; 2025 BristolLink. All rights reserved.</div>
