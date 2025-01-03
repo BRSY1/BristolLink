@@ -3,23 +3,29 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.shortcuts import render
 from django.template.loader import render_to_string
+from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.html import strip_tags
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+import re
+
 from .models import (
     User, 
     Crush,
-    Match
+    Match,
+    Notification
 )
 from .serializers import (
     UserSerializer,
-    CrushSerializer
+    CrushSerializer,
+    NotificationSerializer
 )
 
 
@@ -27,10 +33,17 @@ from .serializers import (
 class RegisterView(APIView):
     def post(self, request):    
         email = request.data.get("email")
+        password = request.data.get("password")
 
         # Check if email is a valid Bristol email
         if not email or not email.endswith("@bristol.ac.uk"):
             return Response({"message": "Invalid email address"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if User.objects.filter(email=email).exists():
+            return Response({"message": "You have already registered an account."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if not self.validate_password(password):
+            return Response({"message": "Invalid password."}, status=status.HTTP_400_BAD_REQUEST)
         
         serializer = UserSerializer(data=request.data)
 
@@ -48,12 +61,23 @@ class RegisterView(APIView):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def validate_password(self, password):
+        return (
+            len(password) >= 8 and
+            re.search(r"[a-z]", password) and
+            re.search(r"[A-Z]", password) and
+            re.search(r"\d", password) and 
+            re.search(r"[!@#$%^&*]", password)
+        )
+
     def send_verification_email(self, new_user):
         verification_url = self.request.build_absolute_uri(reverse("verify", args=[new_user.verification_code]))
+        logo_url = self.request.build_absolute_uri(static("images/logo.png"))
 
         context = {
             "recipient_name": new_user.username,
-            "activation_link": verification_url
+            "activation_link": verification_url,
+            "logo_url": logo_url
         }
 
         html_message = render_to_string("verification_email.html", context)
@@ -96,13 +120,9 @@ class LoginView(APIView):
             if not check_password(password, user.password):
                 return Response({"message": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
             
-            elif not user.is_verified:
-                return Response({"message": "Email not verified"}, status=status.HTTP_400_BAD_REQUEST)
-            
             token, created = Token.objects.get_or_create(user=user)
             return Response({"token": token.key, "message": "Logged in successfully"}, status=status.HTTP_200_OK)
 
-        
         except User.DoesNotExist:
             return Response({"message": "Invalid credentials"}, status=status.HTTP_404_NOT_FOUND)
         
@@ -170,15 +190,26 @@ class SubmitCrushView(APIView):
             from_email=settings.Default_FROM_EMAIL, 
             recipient_list=[crush_email]
         )
-    
+
     def send_invitation_email(self, crush_email, crush_count):
         registration_url = self.request.build_absolute_uri(reverse("register"))
-        message = f"{crush_count} person has a crush on you! Click the link to register and see who it is: {registration_url}"
+        logo_url = self.request.build_absolute_uri(static("images/logo.png"))
+
+        context = {
+            "crush_count": crush_count,
+            "registration_link": registration_url,
+            "logo_url": logo_url
+        }
+
+        html_message = render_to_string("invitation_email.html", context)
+        plain_message = strip_tags(html_message)
+
         send_mail(
-            subject=f"Someone has a crush on you! (from BristolLink)",
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL, 
-            recipient_list=[crush_email]
+            subject="Invitation from BristolLink",
+            message=plain_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[crush_email],
+            html_message=html_message
         )
     
     def check_if_match(self, user, crush_email):
@@ -187,15 +218,32 @@ class SubmitCrushView(APIView):
             Match.objects.create(user1=user, user2=crush)
 
 
-class GetCrushView(APIView):
+class GetCrushView(ListAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    serializer_class = CrushSerializer
+
+    def get_queryset(self):
+        return Crush.objects.filter(submitter=self.request.user)
+    
+
+class NotificationView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        crush = Crush.objects.filter(submitter=request.user)
-        serializer = CrushSerializer(crush, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        notifications = Notification.objects.filter(
+            receiver_email=request.user.email
+        ).order_by("-created_at")
+
+        # Create notification objects
+        serializer = NotificationSerializer(notifications, many=True)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+
+        # Update notifications to read before returning    
+        notifications.update(is_read=True)
+        return response
 
 
 def test(request):
-    return render(request, "verification_email.html")
+    return render(request, "invitation_email.html")

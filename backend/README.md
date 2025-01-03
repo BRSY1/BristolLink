@@ -199,7 +199,19 @@ Authorization: Token <user_token>
 ]
 ```
 
-### **7. Test Endpoint**
+### **7. Notification**
+**Endpoint:** `/notifications`
+
+**Method:** `GET`
+
+Retrieve all notifications of the current user, i.e. submissions by their crush and matches.
+
+#### Headers:
+```
+Authorization: Token <user_token>
+```
+
+### **8. Test Endpoint**
 **Endpoint:** `/test`
 
 **Method:** `GET`
@@ -231,6 +243,12 @@ Renders an HTML page (no JSON response).
 - **user2:** The other user in the match.
 - **matched_at:** Timestamp of when the match was created.
 
+### **Notification**
+- **submitter:** The user who submitted the crush.
+- **receiver_email:** The email of the user who receive the notification.
+- **notification_type:** i.e submission, match.
+- **is_read:** Whether it is a new notification.
+- **created_at:** Timestamp of when the notification was created.
 ---
 
 ## Notes
