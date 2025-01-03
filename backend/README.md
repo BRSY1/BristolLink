@@ -199,7 +199,19 @@ Authorization: Token <user_token>
 ]
 ```
 
-### **7. Test Endpoint**
+### **7. Notification**
+**Endpoint:** `/notifications`
+
+**Method:** `GET`
+
+Retrieve all notifications of the current user, i.e. submissions by their crush and matches.
+
+#### Headers:
+```
+Authorization: Token <user_token>
+```
+
+### **8. Test Endpoint**
 **Endpoint:** `/test`
 
 **Method:** `GET`
