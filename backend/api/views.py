@@ -105,9 +105,6 @@ class LoginView(APIView):
             if not check_password(password, user.password):
                 return Response({"message": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
             
-            elif not user.is_verified:
-                return Response({"message": "Email not verified"}, status=status.HTTP_400_BAD_REQUEST)
-            
             token, created = Token.objects.get_or_create(user=user)
             return Response({"token": token.key, "message": "Logged in successfully"}, status=status.HTTP_200_OK)
 

@@ -4,6 +4,7 @@ import uuid
 
 # Create your models here.
 class User(AbstractUser):
+    username = models.CharField(max_length=150, unique=False, blank=False, null=False)
     email = models.EmailField(max_length=254, primary_key=True)
     is_verified = models.BooleanField(default=False)
     verification_code = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -83,4 +84,4 @@ class Notification(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.receiver} - {self.notification_type}"
+        return f"{self.receiver_email} - {self.notification_type}"

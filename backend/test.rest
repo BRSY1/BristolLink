@@ -1,0 +1,71 @@
+// 1. "cd backend" to enter the outer backend directory
+// 2. Add "EMAIL_HOST_PASSWORD=<xxx>" in a .env file
+// 3. Download REST Client extension in VSCode to run the test
+// 4. Apply the changes in the database by "python manage.py makemigrations" and "python manage.py migrate"
+// 5. Run the django server by "python manage.py runserver"
+
+// 1. Test register
+// An verification email will be sent to the email address
+POST http://127.0.0.1:8000/api/register
+Content-Type: application/json
+
+{ "username": "tom", "password": "tom123", "email": "tom.lam.2024@bristol.ac.uk" }
+
+###
+
+// 2. Test email verification
+// -> Just press the button in the email
+// A token will be returned which is used for the following requests
+GET http://127.0.0.1:8000/api/verify/...
+Content-Type: application/json
+
+###
+
+// 6. Test login
+// -> Don't have to login after finish registering
+// A token will be returned which is used for the following requests
+POST http://127.0.0.1:8000/api/login
+Content-Type: application/json
+
+{ "email": "ye24597@bristol.ac.uk", "password": "tom123" }
+
+###
+
+// 3. Test submit crush
+// Add token to the header
+POST http://127.0.0.1:8000/api/crush/submit
+Content-Type: application/json
+Authorization: token xxx
+
+{ 
+    "crush_name": "tom.lam.2024@bristol.ac.uk", 
+    "crush_email": "tom.lam.2024@bristol.ac.uk",
+    "message": "I love you"
+}
+
+###
+
+// 4. Test get crush
+// Add token to the header
+// The crush will be returned if the crush_name is the same as the email address
+GET http://127.0.0.1:8000/api/crush/get
+Content-Type: application/json
+Authorization: token xxx
+
+###
+
+// 5. Test logout
+// The token will be invalid after logout
+POST http://127.0.0.1:8000/api/logout
+Content-Type: application/json
+Authorization: token xxx
+
+{ "email": "ye24597@bristol.ac.uk", "password": "tom123" }
+
+###
+
+// Test get notifications
+// Notifications are received by the receiver of the crush request
+GET http://127.0.0.1:8000/api/notifications
+Content-Type: application/json
+Authorization: token xxx
