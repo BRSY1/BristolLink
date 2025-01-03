@@ -14,6 +14,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+import re
+
 from .models import (
     User, 
     Crush,
@@ -31,6 +33,7 @@ from .serializers import (
 class RegisterView(APIView):
     def post(self, request):    
         email = request.data.get("email")
+        password = request.data.get("password")
 
         # Check if email is a valid Bristol email
         if not email or not email.endswith("@bristol.ac.uk"):
@@ -38,6 +41,9 @@ class RegisterView(APIView):
         
         if User.objects.filter(email=email).exists():
             return Response({"message": "You have already registered an account."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if not self.validate_password(password):
+            return Response({"message": "Invalid password."}, status=status.HTTP_400_BAD_REQUEST)
         
         serializer = UserSerializer(data=request.data)
 
@@ -54,6 +60,15 @@ class RegisterView(APIView):
             return Response({"message": "User created successfully"}, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def validate_password(self, password):
+        return (
+            len(password) >= 8 and
+            re.search(r"[a-z]", password) and
+            re.search(r"[A-Z]", password) and
+            re.search(r"\d", password) and 
+            re.search(r"[!@#$%^&*]", password)
+        )
 
     def send_verification_email(self, new_user):
         verification_url = self.request.build_absolute_uri(reverse("verify", args=[new_user.verification_code]))
