@@ -13,8 +13,18 @@
 ### Launch frontend
 
 ```bash
+cd frontend
 npm run dev
 ```
+
+If you get any errors related to Vite not being found, then delete the ```package-lock.json``` and the ```node_modules``` directory and run:
+
+```bash
+npm install
+```
+
+You should now be able to ```npm run dev``` without any errors.
+
 
 ## Start backend server
 
