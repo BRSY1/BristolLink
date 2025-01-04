@@ -1,15 +1,27 @@
-import { useState } from 'react'
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import Register from "./pages/Register";
 
 function App() {
-
   return (
-    <>
-      <div className='flex flex-row justify-center'>
-        <h1 className='text-orange-900 text-4xl'>Tailwind has been added</h1>
-      </div>
-
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="flex flex-row justify-center">
+              <h1 className="text-orange-900 text-4xl">
+                Tailwind has been added
+              </h1>
+            </div>
+          }
+        />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<h1>Login</h1>} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

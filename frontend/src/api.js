@@ -21,7 +21,7 @@ api.interceptors.request.use((config) => {
 
 /* 
 e.g.
-const reponse = api.get('/register/', {
+const response = api.get('/register/', {
     username,
     email,
     password,
