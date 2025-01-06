@@ -1,10 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import api from "../utils/api";
 import { validateEmail, validatePassword } from "../utils/validators";
+import InputField from "../components/InputField";
+import CheckboxField from "../components/CheckboxField";
+import SuccessMessage from "../components/SuccessMessage";
+import ErrorMessage from "../components/ErrorMessage";
+import LoadingButton from "../components/LoadingButton";
 
 function RegisterPage() {
-  const handleSubmit = (event) => {
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [successMsg, setSuccessMsg] = useState("");
+
+  const getRequestData = (formData) => {
+    return {
+      username: formData.get("username"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+  };
+
+  const validateFormData = (formData) => {
+    const errors = {};
+
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+
+    const emailError = validateEmail(email);
+    if (emailError) {
+      errors.email = emailError;
+    }
+
+    const passwordError = validatePassword(password);
+    if (passwordError) {
+      errors.password = passwordError;
+    }
+
+    if (password !== confirmPassword) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setErrors({});
+    setSuccessMsg("");
+
+    const formData = new FormData(event.target);
+    const validationErrors = validateFormData(formData);
+    const requestData = getRequestData(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await api.post("/register", requestData);
+      setSuccessMsg(
+        "A validation email has sent to your email address " + requestData.email
+      );
+    } catch (err) {
+      setErrors({
+        submit:
+          err.response?.data?.message ||
+          "An error occurred during registration. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -14,67 +83,58 @@ function RegisterPage() {
       </h1>
 
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <input
+        <InputField
           type="text"
           name="username"
           placeholder="Username"
-          className="w-full px-4 py-3 border border-pink-200 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
           required
         />
 
-        <input
+        <InputField
           type="email"
           name="email"
           placeholder="Email (ends with @bristol.ac.uk)"
-          className="w-full px-4 py-3 border border-pink-200 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+          error={errors.email}
           required
         />
 
-        <input
+        <InputField
           type="password"
           name="password"
           placeholder="Password"
-          className="w-full px-4 py-3 border border-pink-200 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+          error={errors.password}
           required
         />
 
-        <input
+        <InputField
           type="password"
           name="confirmPassword"
           placeholder="Confirm Password"
-          className="w-full px-4 py-3 border border-pink-200 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+          error={errors.confirmPassword}
           required
         />
 
         <div className="flex flex-col gap-3">
-          <label className="flex items-center gap-2 text-gray-700">
-            <input
-              type="checkbox"
-              name="isOver18"
-              className="w-5 h-5 accent-pink-500  rounded focus:ring-pink-500"
-              required
-            />
-            <span className="text-base">I am above the age of 18</span>
-          </label>
+          <CheckboxField
+            name="isOver18"
+            label="I am above the age of 18"
+            required
+          />
 
-          <label className="flex items-center gap-2 text-gray-700">
-            <input
-              type="checkbox"
-              name="agreeToPrivacy"
-              className="w-5 h-5 accent-pink-500 border-pink-300 rounded focus:ring-pink-500"
-              required
-            />
-            <span className="text-base">I agree to the privacy statement</span>
-          </label>
+          <CheckboxField
+            name="agreeToPrivacy"
+            label="I agree to the privacy statement"
+            required
+          />
         </div>
 
-        <button
-          type="submit"
-          className="w-full mt-2 px-4 py-3 bg-pink-500 text-white rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition-colors text-lg font-medium"
-        >
+        <LoadingButton type="submit" loading={loading}>
           Register
-        </button>
+        </LoadingButton>
       </form>
+
+      {successMsg && <SuccessMessage message={successMsg} />}
+      {errors.submit && <ErrorMessage message={errors.submit} />}
     </div>
   );
 }

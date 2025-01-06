@@ -15,7 +15,7 @@ export const validatePassword = (password) => {
     return "Password must contain at least 1 lowercase letter";
   } else if (!/[0-9]/.test(password)) {
     return "Password must contain at least 1 digit";
-  } else if (/[!@#$%^&*]/.test(password)) {
+  } else if (!/[!@#$%^&*]/.test(password)) {
     return "Password must contain at least 1 special character in !@#$%^&*";
   }
 };
