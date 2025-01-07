@@ -6,20 +6,9 @@ import CheckboxField from "../components/CheckboxField";
 import SuccessMessage from "../components/SuccessMessage";
 import ErrorMessage from "../components/ErrorMessage";
 import LoadingButton from "../components/LoadingButton";
+import useFormHandler from "../hooks/useFormHandler";
 
 function RegisterPage() {
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({});
-  const [successMsg, setSuccessMsg] = useState("");
-
-  const getRequestData = (formData) => {
-    return {
-      username: formData.get("username"),
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
-  };
-
   const validateFormData = (formData) => {
     const errors = {};
 
@@ -44,40 +33,23 @@ function RegisterPage() {
     return errors;
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setErrors({});
-    setSuccessMsg("");
-
-    const formData = new FormData(event.target);
-    const validationErrors = validateFormData(formData);
-    const requestData = getRequestData(formData);
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api.post("/register", requestData);
-      setSuccessMsg(
-        "A validation email has sent to your email address " + requestData.email
-      );
-    } catch (err) {
-      setErrors({
-        submit:
-          err.response?.data?.message ||
-          "An error occurred during registration. Please try again.",
-      });
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = async (formData) => {
+    const requestData = {
+      username: formData.get("username"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    await api.post("/register", requestData);
+    setSuccessMsg(
+      "A validation email has sent to your email address " + requestData.email
+    );
   };
 
+  const { loading, errors, successMsg, setSuccessMsg, handleSubmit } =
+    useFormHandler({}, validateFormData, onSubmit);
+
   return (
-    <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md w-full mx-auto">
+    <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
       <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
         Register
       </h1>
