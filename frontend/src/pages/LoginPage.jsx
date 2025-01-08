@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import InputField from "../components/InputField";
 import LoadingButton from "../components/LoadingButton";
 import api from "../utils/api";
@@ -6,8 +6,11 @@ import SuccessMessage from "../components/SuccessMessage";
 import ErrorMessage from "../components/ErrorMessage";
 import { validateEmail, validatePassword } from "../utils/validators";
 import useFormHandler from "../hooks/useFormHandler";
+import { AuthContext } from "../context/AuthContext";
 
 function LoginPage() {
+  const { login } = useContext(AuthContext);
+
   const validateFormData = (formData) => {
     const errors = {};
 
@@ -26,7 +29,7 @@ function LoginPage() {
 
   const onSubmit = async (formData) => {
     const response = await api.post("/login", formData);
-    localStorage.setItem("token", response.data.token);
+    login(response.data.token);
     setSuccessMsg(response.data.message);
   };
 
