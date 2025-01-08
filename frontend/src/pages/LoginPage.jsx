@@ -7,8 +7,10 @@ import ErrorMessage from "../components/ErrorMessage";
 import { validateEmail, validatePassword } from "../utils/validators";
 import useFormHandler from "../hooks/useFormHandler";
 import { AuthContext } from "../context/AuthContext";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function LoginPage() {
+  useDocumentTitle("Login - BristolLink");
   const { login } = useContext(AuthContext);
 
   const validateFormData = (formData) => {

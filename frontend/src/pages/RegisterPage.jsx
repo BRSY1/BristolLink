@@ -7,8 +7,11 @@ import SuccessMessage from "../components/SuccessMessage";
 import ErrorMessage from "../components/ErrorMessage";
 import LoadingButton from "../components/LoadingButton";
 import useFormHandler from "../hooks/useFormHandler";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function RegisterPage() {
+  useDocumentTitle("Register - BristolLink");
+
   const validateFormData = (formData) => {
     const errors = {};
 
