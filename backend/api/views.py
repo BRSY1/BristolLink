@@ -71,7 +71,7 @@ class RegisterView(APIView):
         )
 
     def send_verification_email(self, new_user):
-        verification_url = self.request.build_absolute_uri(reverse("verify", args=[new_user.verification_code]))
+        verification_url = f"{settings.FRONTEND_BASE_URL}/verify/{new_user.verification_code}"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
 
         context = {

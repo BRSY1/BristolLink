@@ -153,3 +153,7 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 ALLOWED_HOSTS = []
 DEFAULT_FROM_EMAIL = "BristolLink <bristollink2024@gmail.com>"
+
+
+# Frontend base URL (e.g., http://localhost:3000 or https://yourapp.com)
+FRONTEND_BASE_URL = "http://localhost:5173"
