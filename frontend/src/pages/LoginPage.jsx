@@ -10,7 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function LoginPage() {
-  useDocumentTitle("Login - BristolLink");
+  useDocumentTitle("Login");
   const { login } = useContext(AuthContext);
 
   const validateFormData = (formData) => {

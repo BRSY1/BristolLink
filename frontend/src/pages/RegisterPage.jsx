@@ -10,7 +10,7 @@ import useFormHandler from "../hooks/useFormHandler";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function RegisterPage() {
-  useDocumentTitle("Register - BristolLink");
+  useDocumentTitle("Register");
 
   const validateFormData = (formData) => {
     const errors = {};

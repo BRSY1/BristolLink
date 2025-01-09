@@ -7,7 +7,7 @@ import SuccessMessage from "../components/SuccessMessage";
 import ErrorMessage from "../components/ErrorMessage";
 
 function EmailVerificationPage() {
-  useDocumentTitle("Email Verification - BristolLink");
+  useDocumentTitle("Email Verification");
   const { code } = useParams();
   const { loading, errorMsg, successMsg } = useEmailVerification(code);
 
