@@ -192,7 +192,7 @@ class SubmitCrushView(APIView):
         )
 
     def send_invitation_email(self, crush_email, crush_count):
-        registration_url = self.request.build_absolute_uri(reverse("register"))
+        registration_url = f"{settings.FRONTEND_BASE_URL}/register"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
 
         context = {
