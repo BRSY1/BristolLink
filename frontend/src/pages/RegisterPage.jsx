@@ -78,6 +78,7 @@ function RegisterPage() {
           name="password"
           placeholder="Password"
           error={errors.password}
+          autoComplete="new-password"
           required
         />
 
@@ -86,6 +87,7 @@ function RegisterPage() {
           name="confirmPassword"
           placeholder="Confirm Password"
           error={errors.confirmPassword}
+          autoComplete="new-password"
           required
         />
 

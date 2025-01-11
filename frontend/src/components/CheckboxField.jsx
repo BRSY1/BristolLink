@@ -2,7 +2,7 @@ import React from "react";
 
 const CheckboxField = ({ name, label, required }) => {
   return (
-    <label className="flex items-center gap-2 text-gray-700">
+    <label className="flex items-center gap-2 text-gray-700 motion-opacity-in-0 motion-preset-slide-right motion-blur-in-md">
       <input
         type="checkbox"
         name={name}

@@ -99,7 +99,7 @@ class EmailVerificationView(APIView):
             user = User.objects.get(verification_code=code)
             user.is_verified = True
             user.save()
-            token = Token.objects.create(user=user)
+            token, created = Token.objects.get_or_create(user=user)
             return Response({"token": token.key, "message": "Email verified successfully"}, status=status.HTTP_200_OK)
         
         except User.DoesNotExist:

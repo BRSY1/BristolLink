@@ -58,6 +58,7 @@ function LoginPage() {
           name="password"
           placeholder="Password"
           error={errors.password}
+          autoComplete="current-password"
           required
         />
 
