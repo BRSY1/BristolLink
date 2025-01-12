@@ -1,14 +1,14 @@
 import React from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
-import SuccessMessage from "../components/SuccessMessage";
-import ErrorMessage from "../components/ErrorMessage";
-import MessageField from "../components/MessageField";
+import SuccessMessage from "../components/messages/SuccessMessage";
+import ErrorMessage from "../components/messages/ErrorMessage";
+import MessageField from "../components/common/MessageField";
 import useFormHandler from "../hooks/useFormHandler";
 import { validateEmail } from "../utils/validators";
 import api from "../utils/api";
-import InputField from "../components/InputField";
-import CheckboxField from "../components/CheckboxField";
-import LoadingButton from "../components/LoadingButton";
+import InputField from "../components/common/InputField";
+import CheckboxField from "../components/common/CheckboxField";
+import LoadingButton from "../components/common/LoadingButton";
 
 function SubmissionPage() {
   useDocumentTitle("Submission");

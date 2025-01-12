@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import InputField from "../components/InputField";
-import LoadingButton from "../components/LoadingButton";
+import InputField from "../components/common/InputField";
+import LoadingButton from "../components/common/LoadingButton";
 import api from "../utils/api";
-import SuccessMessage from "../components/SuccessMessage";
-import ErrorMessage from "../components/ErrorMessage";
+import SuccessMessage from "../components/messages/SuccessMessage";
+import ErrorMessage from "../components/messages/ErrorMessage";
 import { validateEmail, validatePassword } from "../utils/validators";
 import useFormHandler from "../hooks/useFormHandler";
 import { AuthContext } from "../context/AuthContext";

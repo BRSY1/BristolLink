@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import api from "../utils/api";
 import { validateEmail, validatePassword } from "../utils/validators";
-import InputField from "../components/InputField";
-import CheckboxField from "../components/CheckboxField";
-import SuccessMessage from "../components/SuccessMessage";
-import ErrorMessage from "../components/ErrorMessage";
-import LoadingButton from "../components/LoadingButton";
+import InputField from "../components/common/InputField";
+import CheckboxField from "../components/common/CheckboxField";
+import SuccessMessage from "../components/messages/SuccessMessage";
+import ErrorMessage from "../components/messages/ErrorMessage";
+import LoadingButton from "../components/common/LoadingButton";
 import useFormHandler from "../hooks/useFormHandler";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 

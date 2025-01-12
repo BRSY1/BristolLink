@@ -3,8 +3,8 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 import { useParams } from "react-router-dom";
 import useEmailVerification from "../hooks/useEmailVerification";
 import { ClipLoader } from "react-spinners";
-import SuccessMessage from "../components/SuccessMessage";
-import ErrorMessage from "../components/ErrorMessage";
+import SuccessMessage from "../components/messages/SuccessMessage";
+import ErrorMessage from "../components/messages/ErrorMessage";
 
 function EmailVerificationPage() {
   useDocumentTitle("Email Verification");

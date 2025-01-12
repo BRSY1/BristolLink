@@ -5,7 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import EmailVerificationPage from "./pages/EmailVerificationPage";
 import SubmissionPage from "./pages/SubmissionPage";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import NotificationPage from "./pages/NotificationPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/submit" element={<SubmissionPage />} />
+            <Route path="/notifications" element={<NotificationPage />} />
           </Route>
         </Routes>
       </Router>

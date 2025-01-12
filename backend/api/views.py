@@ -187,7 +187,7 @@ class SubmitCrushView(APIView):
         send_mail(
             subject=f"Someone has a crush on you! (from BristolLink)",
             message=message,
-            from_email=settings.Default_FROM_EMAIL, 
+            from_email=settings.DEFAULT_FROM_EMAIL, 
             recipient_list=[crush_email]
         )
 
