@@ -88,6 +88,9 @@ Logs in a user with verified email credentials.
 {
   "token": "1234567890abcdef",
   "message": "Logged in successfully"
+  "user":
+    "username": ...
+    "email": ...
 }
 ```
 **Error:**

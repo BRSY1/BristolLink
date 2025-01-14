@@ -9,7 +9,7 @@
 POST http://127.0.0.1:8000/api/register
 Content-Type: application/json
 
-{ "username": "tom", "password": "tom123", "email": "tom.lam.2024@bristol.ac.uk" }
+{ "username": "tom", "password": "Tom1am!23", "email": "ye24597@bristol.ac.uk" }
 
 ###
 
@@ -27,7 +27,7 @@ Content-Type: application/json
 POST http://127.0.0.1:8000/api/login
 Content-Type: application/json
 
-{ "email": "ye24597@bristol.ac.uk", "password": "tom123" }
+{ "email": "ye24597@bristol.ac.uk", "password": "Tom1am!23" }
 
 ###
 

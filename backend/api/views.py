@@ -121,7 +121,9 @@ class LoginView(APIView):
                 return Response({"message": "Invalid password"}, status=status.HTTP_400_BAD_REQUEST)
             
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key, "message": "Logged in successfully"}, status=status.HTTP_200_OK)
+            user_serializer = UserSerializer(user)
+
+            return Response({"token": token.key, "message": "Logged in successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
 
         except User.DoesNotExist:
             return Response({"message": "Could not find verified user"}, status=status.HTTP_404_NOT_FOUND)
