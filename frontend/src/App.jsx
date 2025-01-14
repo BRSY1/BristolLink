@@ -8,23 +8,19 @@ import SubmissionPage from "./pages/SubmissionPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotificationPage from "./pages/NotificationPage";
 import Header from "./components/header/Header";
+import LandingPage from "./pages/LandingPage";
+import WhatIsLinkPage from "./pages/WhatIsLinkPage";
+
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <Header />
+        {/* Header is moved to it's individual pages, because it will change state based on login */}
+        {/* <Header /> */}
         <Routes>
-          <Route
-            path="/"
-            element={
-              <div className="flex flex-row justify-center">
-                <h1 className="text-orange-900 text-4xl">
-                  Tailwind has been added
-                </h1>
-              </div>
-            }
-          />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/what-is-link" element={<WhatIsLinkPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/verify/:code" element={<EmailVerificationPage />} />
           <Route path="/login" element={<LoginPage />} />

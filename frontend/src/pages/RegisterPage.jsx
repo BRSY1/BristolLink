@@ -53,75 +53,77 @@ function RegisterPage() {
     useFormHandler({}, validateFormData, onSubmit);
 
   return (
-    <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
-      <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
-        Register
-      </h1>
+    <>
+      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
+        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
+          Register
+        </h1>
 
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <InputField
-          type="text"
-          name="username"
-          placeholder="Username"
-          required
-        />
-
-        <InputField
-          type="email"
-          name="email"
-          placeholder="Email (ends with @bristol.ac.uk)"
-          error={errors.email}
-          required
-        />
-
-        <InputField
-          type="password"
-          name="password"
-          placeholder="Password"
-          error={errors.password}
-          autoComplete="new-password"
-          required
-        />
-
-        <InputField
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          error={errors.confirmPassword}
-          autoComplete="new-password"
-          required
-        />
-
-        <div className="flex flex-col gap-3">
-          <CheckboxField
-            name="isOver18"
-            label="I am above the age of 18"
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+          <InputField
+            type="text"
+            name="username"
+            placeholder="Username"
             required
           />
 
-          <CheckboxField
-            name="agreeToPrivacy"
-            label="I agree to the privacy statement"
+          <InputField
+            type="email"
+            name="email"
+            placeholder="Email (ends with @bristol.ac.uk)"
+            error={errors.email}
             required
           />
+
+          <InputField
+            type="password"
+            name="password"
+            placeholder="Password"
+            error={errors.password}
+            autoComplete="new-password"
+            required
+          />
+
+          <InputField
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            error={errors.confirmPassword}
+            autoComplete="new-password"
+            required
+          />
+
+          <div className="flex flex-col gap-3">
+            <CheckboxField
+              name="isOver18"
+              label="I am above the age of 18"
+              required
+            />
+
+            <CheckboxField
+              name="agreeToPrivacy"
+              label="I agree to the privacy statement"
+              required
+            />
+          </div>
+
+          <LoadingButton type="submit" loading={loading}>
+            Register
+          </LoadingButton>
+        </form>
+
+        <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
+          Already have an account?
+          <Link to="/login" className="font-medium text-pink-500 hover:text-pink-600">
+            {" "}
+            Login
+          </Link>
         </div>
 
-        <LoadingButton type="submit" loading={loading}>
-          Register
-        </LoadingButton>
-      </form>
-
-      <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
-        Already have an account?
-        <Link to="/login" className="font-medium text-pink-500 hover:text-pink-600">
-          {" "}
-          Login
-        </Link>
+        {successMsg && <SuccessMessage message={successMsg} />}
+        {errors.submit && <ErrorMessage message={errors.submit} />}
       </div>
-
-      {successMsg && <SuccessMessage message={successMsg} />}
-      {errors.submit && <ErrorMessage message={errors.submit} />}
-    </div>
+    </>
   );
 }
 

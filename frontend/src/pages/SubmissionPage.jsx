@@ -9,6 +9,7 @@ import api from "../utils/api";
 import InputField from "../components/common/InputField";
 import CheckboxField from "../components/common/CheckboxField";
 import LoadingButton from "../components/common/LoadingButton";
+import Header from "../components/header/Header";
 
 function SubmissionPage() {
   useDocumentTitle("Submission");
@@ -33,49 +34,52 @@ function SubmissionPage() {
     useFormHandler({}, validateFormData, onSubmit);
 
   return (
-    <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
-      <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
-        Submit your crush
-      </h1>
+    <>
+      <Header />
+      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
+        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
+          Submit your crush
+        </h1>
 
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <InputField
-          type="text"
-          name="crush_name"
-          placeholder="Nickname of your crush"
-          required
-        />
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+          <InputField
+            type="text"
+            name="crush_name"
+            placeholder="Nickname of your crush"
+            required
+          />
 
-        <InputField
-          type="email"
-          name="crush_email"
-          placeholder="Email (ends with @bristol.ac.uk)"
-          error={errors.email}
-          required
-        />
+          <InputField
+            type="email"
+            name="crush_email"
+            placeholder="Email (ends with @bristol.ac.uk)"
+            error={errors.email}
+            required
+          />
 
-        <MessageField
-          name="message"
-          placeholder="Type your message here..."
-          required
-          maxLength={500}
-          loading={loading}
-        />
+          <MessageField
+            name="message"
+            placeholder="Type your message here..."
+            required
+            maxLength={500}
+            loading={loading}
+          />
 
-        <CheckboxField
-          name="confirm"
-          label="I confirm that this message does not consist of offensive information"
-          required
-        />
+          <CheckboxField
+            name="confirm"
+            label="I confirm that this message does not consist of offensive information"
+            required
+          />
 
-        <LoadingButton type="submit" loading={loading}>
-          Submit
-        </LoadingButton>
-      </form>
+          <LoadingButton type="submit" loading={loading}>
+            Submit
+          </LoadingButton>
+        </form>
 
-      {successMsg && <SuccessMessage message={successMsg} />}
-      {errors.submit && <ErrorMessage message={errors.submit} />}
-    </div>
+        {successMsg && <SuccessMessage message={successMsg} />}
+        {errors.submit && <ErrorMessage message={errors.submit} />}
+      </div>
+    </>
   );
 }
 

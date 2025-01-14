@@ -5,6 +5,7 @@ import useEmailVerification from "../hooks/useEmailVerification";
 import { ClipLoader } from "react-spinners";
 import SuccessMessage from "../components/messages/SuccessMessage";
 import ErrorMessage from "../components/messages/ErrorMessage";
+import Header from "../components/header/Header";
 
 function EmailVerificationPage() {
   useDocumentTitle("Email Verification");
@@ -12,16 +13,19 @@ function EmailVerificationPage() {
   const { loading, errorMsg, successMsg } = useEmailVerification(code);
 
   return (
-    <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
-      <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
-        Email Verification
-      </h1>
+    <>
+      <Header />
+      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
+        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
+          Email Verification
+        </h1>
 
-      {loading && <ClipLoader color="#ec4899" size={32} className="mx-auto"/>}
+        {loading && <ClipLoader color="#ec4899" size={32} className="mx-auto" />}
 
-      {successMsg && <SuccessMessage message={successMsg} />}
-      {errorMsg && <ErrorMessage message={errorMsg} />}
-    </div>
+        {successMsg && <SuccessMessage message={successMsg} />}
+        {errorMsg && <ErrorMessage message={errorMsg} />}
+      </div>
+    </>
   );
 }
 

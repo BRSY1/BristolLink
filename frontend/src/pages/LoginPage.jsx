@@ -40,45 +40,49 @@ function LoginPage() {
     useFormHandler({}, validateFormData, onSubmit);
 
   return (
-    <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
-      <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
-        Login
-      </h1>
-
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-        <InputField
-          type="email"
-          name="email"
-          placeholder="Email (ends with @bristol.ac.uk)"
-          error={errors.email}
-          required
-        />
-
-        <InputField
-          type="password"
-          name="password"
-          placeholder="Password"
-          error={errors.password}
-          autoComplete="current-password"
-          required
-        />
-
-        <LoadingButton type="submit" loading={loading}>
+    // <Header />
+    <>
+      {/* <Header /> */}
+      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
+        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
           Login
-        </LoadingButton>
-      </form>
+        </h1>
 
-      <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
-        Don't have an account?
-        <Link to="/register" className="font-medium text-pink-500 hover:text-pink-600">
-          {" "}
-          Sign up
-        </Link>
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+          <InputField
+            type="email"
+            name="email"
+            placeholder="Email (ends with @bristol.ac.uk)"
+            error={errors.email}
+            required
+          />
+
+          <InputField
+            type="password"
+            name="password"
+            placeholder="Password"
+            error={errors.password}
+            autoComplete="current-password"
+            required
+          />
+
+          <LoadingButton type="submit" loading={loading}>
+            Login
+          </LoadingButton>
+        </form>
+
+        <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
+          Don't have an account?
+          <Link to="/register" className="font-medium text-pink-500 hover:text-pink-600">
+            {" "}
+            Sign up
+          </Link>
+        </div>
+
+        {successMsg && <SuccessMessage message={successMsg} />}
+        {errors.submit && <ErrorMessage message={errors.submit} />}
       </div>
-
-      {successMsg && <SuccessMessage message={successMsg} />}
-      {errors.submit && <ErrorMessage message={errors.submit} />}
-    </div>
+    </>
   );
 }
 
