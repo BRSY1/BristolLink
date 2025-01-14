@@ -1,8 +1,3 @@
-
 export default function FAQsPage() {
-    return (
-        <>
-            Accordion - MF DOOM
-        </>
-    )
+  return <>Accordion - MF DOOM</>;
 }

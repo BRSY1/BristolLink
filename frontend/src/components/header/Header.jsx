@@ -5,6 +5,15 @@ import MobileNavItem from "./MobileNavItem";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
 
+const pages = [
+  { title: "Register", path: "/register" },
+  { title: "Login", path: "/login" },
+  { title: "What is Link!?", path: "/what-is-link" },
+  { title: "Privacy Statement", path: "/privacy-statement" },
+  { title: "FAQs", path: "/faq" },
+  { title: "Contact Us", path: "/contact-us" },
+];
+
 const Header = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -28,29 +37,32 @@ const Header = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden ml-4 text-gray-700 hover:text-pink-600 focus:outline-none"
             >
-              {isOpen ? <MdClose className="h-6 w-6" /> : <MdMenu className="h-6 w-6" />}
+              {isOpen ? (
+                <MdClose className="h-6 w-6" />
+              ) : (
+                <MdMenu className="h-6 w-6" />
+              )}
             </button>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-7">
-            <DesktopNavItem title="Register" path="/register" />
-            <DesktopNavItem title="Login" path="/login" />
-            <DesktopNavItem title="What is Link!?" path="/what-is-link" />
-            <DesktopNavItem title="Privacy Statement" path="/privacy-statement" />
-            <DesktopNavItem title="FAQs" path="/faq" />
-            <DesktopNavItem title="Contact Us" path="/contact-us" />
+            {pages.map((page, index) => (
+              <DesktopNavItem key={index} title={page.title} path={page.path} />
+            ))}
           </div>
 
           {/* Mobile Menu Items */}
           {isOpen && (
             <div className="flex flex-col mb-4 md:hidden motion-preset-blur-down-lg">
-              <MobileNavItem title="Register" path="/register" onClick={() => setIsOpen(!isOpen)} />
-              <MobileNavItem title="Login" path="/login" onClick={() => setIsOpen(!isOpen)} />
-              <MobileNavItem title="What is Link!?" path="/what-is-link" />
-              <MobileNavItem title="Privacy Statement" path="/privacy-statement" />
-              <MobileNavItem title="FAQs" path="/faq" />
-              <MobileNavItem title="Contact Us" path="/contact-us" />
+              {pages.map((page, index) => (
+                <MobileNavItem
+                  key={index}
+                  title={page.title}
+                  path={page.path}
+                  onClick={() => setIsOpen(!isOpen)}
+                />
+              ))}
             </div>
           )}
         </div>
