@@ -36,6 +36,7 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-7">
             <DesktopNavItem title="Register" path="/register" />
             <DesktopNavItem title="Login" path="/login" />
+            <DesktopNavItem title="What is Link!?" path="/what-is-link" />
             <DesktopNavItem title="Privacy Statement" path="/privacy-statement" />
             <DesktopNavItem title="FAQs" path="/faq" />
             <DesktopNavItem title="Contact Us" path="/contact-us" />
@@ -46,6 +47,7 @@ const Header = () => {
             <div className="flex flex-col mb-4 md:hidden motion-preset-blur-down-lg">
               <MobileNavItem title="Register" path="/register" onClick={() => setIsOpen(!isOpen)} />
               <MobileNavItem title="Login" path="/login" onClick={() => setIsOpen(!isOpen)} />
+              <MobileNavItem title="What is Link!?" path="/what-is-link" />
               <MobileNavItem title="Privacy Statement" path="/privacy-statement" />
               <MobileNavItem title="FAQs" path="/faq" />
               <MobileNavItem title="Contact Us" path="/contact-us" />

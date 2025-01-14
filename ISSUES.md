@@ -23,3 +23,7 @@
 - We don't need the username (or do we? can we use it to address people on the email). So if someone's username is Rishi, our email says 'Someone has a crush on Rishi'.
 
 - Make the checkboxes smaller
+
+- How does Navbar change once you're logged in
+
+- How do we rigourosly test this and know whether everything is working or not
