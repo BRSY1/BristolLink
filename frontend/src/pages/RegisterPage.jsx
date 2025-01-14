@@ -54,12 +54,12 @@ function RegisterPage() {
 
   return (
     <>
-      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
-        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
+      <div className="w-full min-h-screen p-5 lg:pt-20 font-poppins bg-white flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
+        <h1 className="text-3xl font-semibold text-black mb-5 text-center">
           Register
         </h1>
 
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-5 lg:gap-3" onSubmit={handleSubmit}>
           <InputField
             type="text"
             name="username"
@@ -114,9 +114,9 @@ function RegisterPage() {
 
         <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
           Already have an account?
-          <Link to="/login" className="font-medium text-pink-500 hover:text-pink-600">
+          <Link to="/login" className="font-medium text-pink-500 hover:text-pink-600 hover:underline">
             {" "}
-            Login
+            Login Now!
           </Link>
         </div>
 

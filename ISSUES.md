@@ -15,3 +15,11 @@
 - How does hosting work
 
 - How much will hosting cost
+
+- Don't tell the user they need to follow a password policy on the language page
+
+- In case of invalid credentials in login, tell the user that either password or email is wrong
+
+- We don't need the username (or do we? can we use it to address people on the email). So if someone's username is Rishi, our email says 'Someone has a crush on Rishi'.
+
+- Make the checkboxes smaller

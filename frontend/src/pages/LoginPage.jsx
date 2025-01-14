@@ -40,15 +40,13 @@ function LoginPage() {
     useFormHandler({}, validateFormData, onSubmit);
 
   return (
-    // <Header />
     <>
-      {/* <Header /> */}
-      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
-        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
+      <div className="w-full h-screen font-poppins p-5 bg-white flex flex-col justify-center max-w-md mx-auto">
+        <h1 className="text-3xl font-semibold text-black mb-5 lg:mb-5 text-center">
           Login
         </h1>
-
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        {errors.submit && <ErrorMessage message={errors.submit} />}
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           <InputField
             type="email"
             name="email"
@@ -73,14 +71,14 @@ function LoginPage() {
 
         <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
           Don't have an account?
-          <Link to="/register" className="font-medium text-pink-500 hover:text-pink-600">
+          <Link to="/register" className="font-medium text-pink-500 hover:text-pink-600 hover:underline">
             {" "}
-            Sign up
+            Register Today!
           </Link>
         </div>
 
         {successMsg && <SuccessMessage message={successMsg} />}
-        {errors.submit && <ErrorMessage message={errors.submit} />}
+        {/* {errors.submit && <ErrorMessage message={errors.submit} />} */}
       </div>
     </>
   );
