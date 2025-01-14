@@ -1,0 +1,2 @@
+Site takes a long time to load, how to make it faster?
+Navbar can't be placed on it's own in the pages and it just doesn't show up. It does work if it's placed in the App.jsx but I don't want the navbar on the main page? Or can we? 

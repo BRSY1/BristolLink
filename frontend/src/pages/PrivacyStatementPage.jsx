@@ -1,10 +1,10 @@
 import Header from "../components/header/Header";
 
-export default function WhatIsLinkPage() {
+export default function PrivacyStatementPage() {
     return (
         <>
             {/* <Header /> */}
-            idk what it is, do you know?
+            Privacy is a myth.
         </>
     )
 }
