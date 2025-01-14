@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import api from "../utils/api";
 import { validateEmail, validatePassword } from "../utils/validators";
 import InputField from "../components/common/InputField";
@@ -8,6 +8,7 @@ import ErrorMessage from "../components/messages/ErrorMessage";
 import LoadingButton from "../components/common/LoadingButton";
 import useFormHandler from "../hooks/useFormHandler";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
   useDocumentTitle("Register");
@@ -109,6 +110,14 @@ function RegisterPage() {
           Register
         </LoadingButton>
       </form>
+
+      <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
+        Already have an account?
+        <Link to="/login" className="font-medium text-pink-500 hover:text-pink-600">
+          {" "}
+          Login
+        </Link>
+      </div>
 
       {successMsg && <SuccessMessage message={successMsg} />}
       {errors.submit && <ErrorMessage message={errors.submit} />}

@@ -7,11 +7,13 @@ import EmailVerificationPage from "./pages/EmailVerificationPage";
 import SubmissionPage from "./pages/SubmissionPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotificationPage from "./pages/NotificationPage";
+import Header from "./components/header/Header";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
+        <Header />
         <Routes>
           <Route
             path="/"
