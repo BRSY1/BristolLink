@@ -1,18 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
-import { useSpring, animated } from "react-spring";
-
 
 export default function LandingPage() {
-    const fadeIn = useSpring({
-        from: { opacity: 0 },
-        to: { opacity: 1 },
-        config: { duration: 700 }
-    });
-
     return (
         <>
-            <animated.div style={fadeIn} className="w-full h-screen flex items-center justify-center bg-white lg:mt-12">
+            <div className="w-full min-h-screen flex items-center justify-center bg-white motion-opacity-in-0 motion-duration-[3s] lg:pt-20 lg:overflow-hidden">
                 <div className="flex flex-col items-center max-w-md -mt-14 lg:-mt-20">
                     <img src="../../public/favicon.png" alt="" className="w-80 lg:w-96 lg:-mt-20" />
                     <div className="flex flex-col -mt-14 lg:-mt-24 gap-3">
@@ -25,7 +17,7 @@ export default function LandingPage() {
                         <Link to={"/contact-us"} className="text-center">Contact Us</Link>
                     </div>
                 </div>
-            </animated.div>
+            </div>
         </>
     )
 }
