@@ -41,8 +41,8 @@ function LoginPage() {
 
   return (
     <>
-      <div className="w-full h-screen font-poppins p-5 bg-white flex flex-col justify-center max-w-md mx-auto">
-        <h1 className="text-3xl font-semibold text-black mb-5 lg:mb-5 text-center">
+      <div className="w-full h-screen p-5 bg-white flex flex-col justify-center max-w-md mx-auto">
+        <h1 className="text-3xl font-semibold text-pink-800 mb-5 lg:mb-5 text-center">
           Login
         </h1>
         {errors.submit && <ErrorMessage message={errors.submit} />}
@@ -71,14 +71,17 @@ function LoginPage() {
 
         <div className="text-center text-sm text-gray-500 mt-5 motion-blur-in-lg motion-duration-[1s] motion-delay-500">
           Don't have an account?
-          <Link to="/register" className="font-medium text-pink-500 hover:text-pink-600 hover:underline">
+          <Link
+            to="/register"
+            className="font-medium text-pink-500 hover:text-pink-600 hover:underline"
+          >
             {" "}
             Register Today!
           </Link>
         </div>
 
         {successMsg && <SuccessMessage message={successMsg} />}
-        {/* {errors.submit && <ErrorMessage message={errors.submit} />} */}
+        {errors.submit && <ErrorMessage message={errors.submit} />}
       </div>
     </>
   );
