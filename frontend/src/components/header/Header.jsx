@@ -46,7 +46,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-7">
+          <div className="hidden md:flex items-center space-x-4">
             {pages.map((page, index) => (
               <DesktopNavItem key={index} title={page.title} path={page.path} />
             ))}
@@ -54,7 +54,7 @@ const Header = () => {
 
           {/* Mobile Menu Items */}
           {isOpen && (
-            <div className="flex flex-col mb-4 md:hidden motion-preset-blur-down-lg">
+            <div className="flex flex-col mb-4 w-full md:hidden motion-preset-blur-down-lg">
               {pages.map((page, index) => (
                 <MobileNavItem
                   key={index}
