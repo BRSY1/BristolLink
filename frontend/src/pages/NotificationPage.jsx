@@ -17,7 +17,7 @@ function NotificationPage() {
 
   return (
     <>
-      <div className="w-full max-w-3xl mx-auto p-8">
+      <div className="mt-20 min-h-screen w-full max-w-3xl mx-auto p-8">
         <div className="mb-8">
           <h1 className="text-3xl font-semibold text-pink-800">Notifications</h1>
           <p className="text-sm text-gray-600 mt-1">
