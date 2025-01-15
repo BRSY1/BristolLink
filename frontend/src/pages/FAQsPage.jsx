@@ -55,9 +55,9 @@ export default function FAQsPage() {
                         <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
                             <span> How do I cancel my subscription?</span>
                             <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shape-rendering="geometricPrecision"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <svg fill="none" height="24" shapeRendering="geometricPrecision"
+                                        stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                                        strokeWidth="1.5" viewBox="0 0 24 24" width="24">
                                         <path d="M6 9l6 6 6-6"></path>
                                     </svg>
                                 </span>
@@ -73,9 +73,9 @@ export default function FAQsPage() {
                         <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
                             <span> Is there a free trial?</span>
                             <span className="transition group-open:rotate-180">
-                                    <svg fill="none" height="24" shape-rendering="geometricPrecision"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                    <svg fill="none" height="24" shapeRendering="geometricPrecision"
+                                        stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                                        strokeWidth="1.5" viewBox="0 0 24 24" width="24">
                                         <path d="M6 9l6 6 6-6"></path>
                                     </svg>
                                 </span>
