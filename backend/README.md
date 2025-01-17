@@ -57,7 +57,10 @@ Verifies a user's email using the provided verification code.
 ```json
 {
   "token": "1234567890abcdef",
-  "message": "Email verified successfully"
+  "message": "Email verified successfully",
+  "user":
+    "username": ...
+    "email": ...
 }
 ```
 **Error:**
@@ -87,7 +90,7 @@ Logs in a user with verified email credentials.
 ```json
 {
   "token": "1234567890abcdef",
-  "message": "Logged in successfully"
+  "message": "Logged in successfully",
   "user":
     "username": ...
     "email": ...

@@ -99,8 +99,11 @@ class EmailVerificationView(APIView):
             user = User.objects.get(verification_code=code)
             user.is_verified = True
             user.save()
+            
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key, "message": "Email verified successfully"}, status=status.HTTP_200_OK)
+            user_serializer = UserSerializer(user)
+
+            return Response({"token": token.key, "message": "Email verified successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
         
         except User.DoesNotExist:
             return Response({"message": "Invalid verification code"}, status=status.HTTP_404_NOT_FOUND)
