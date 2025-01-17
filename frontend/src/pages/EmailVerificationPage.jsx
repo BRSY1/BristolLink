@@ -5,7 +5,6 @@ import useEmailVerification from "../hooks/useEmailVerification";
 import { ClipLoader } from "react-spinners";
 import SuccessMessage from "../components/messages/SuccessMessage";
 import ErrorMessage from "../components/messages/ErrorMessage";
-import Header from "../components/header/Header";
 
 function EmailVerificationPage() {
   useDocumentTitle("Email Verification");

@@ -32,7 +32,7 @@ function LoginPage() {
 
   const onSubmit = async (formData) => {
     const response = await api.post("/login", formData);
-    login(response.data.token);
+    login(response.data.token, response.data.user.username);
     setSuccessMsg(response.data.message);
   };
 

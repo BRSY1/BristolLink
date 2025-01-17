@@ -15,7 +15,7 @@ const pages = [
 ];
 
 const Header = () => {
-  const { isLoggedIn, logout } = useContext(AuthContext);
+  const { authState, logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
