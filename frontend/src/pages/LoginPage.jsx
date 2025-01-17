@@ -8,11 +8,12 @@ import { validateEmail, validatePassword } from "../utils/validators";
 import useFormHandler from "../hooks/useFormHandler";
 import { AuthContext } from "../context/AuthContext";
 import useDocumentTitle from "../hooks/useDocumentTitle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
   useDocumentTitle("Login");
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const validateFormData = (formData) => {
     const errors = {};
@@ -33,7 +34,7 @@ function LoginPage() {
   const onSubmit = async (formData) => {
     const response = await api.post("/login", formData);
     login(response.data.token, response.data.user.username);
-    setSuccessMsg(response.data.message);
+    navigate("/dashboard");
   };
 
   const { loading, errors, successMsg, setSuccessMsg, handleSubmit } =

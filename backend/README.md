@@ -217,7 +217,33 @@ Retrieve all notifications of the current user, i.e. submissions by their crush 
 Authorization: Token <user_token>
 ```
 
-### **8. Test Endpoint**
+### **8. Match**
+**Endpoint:** `/match`
+
+**Method:** `GET`
+
+Retrieve the match of the current user, i.e. mutual submissions by the user and their crush.
+
+#### Headers:
+```
+Authorization: Token <user_token>
+```
+
+#### Response:
+**Success:**
+```json
+[
+  {
+    "submitter": "john.doe@bristol.ac.uk",
+    "crush_name": "Jane Smith",
+    "crush_email": "jane.smith@bristol.ac.uk",
+    "message": "I think you're amazing!",
+    "created_at": "2024-12-23T12:34:56Z"
+  }
+]
+```
+
+### **9. Test Endpoint**
 **Endpoint:** `/test`
 
 **Method:** `GET`

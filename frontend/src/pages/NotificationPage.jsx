@@ -7,7 +7,6 @@ import useNotifications, {
 } from "../hooks/useNotifications";
 import ErrorMessage from "../components/messages/ErrorMessage";
 import { ClipLoader } from "react-spinners";
-import Header from "../components/header/Header";
 
 function NotificationPage() {
   useDocumentTitle("Notifications");

@@ -7,7 +7,7 @@ export default function FAQsPage() {
                 <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
                     FAQs
                 </h1>
-                <div className="mt-5 border-t border-black">
+                <div className="mx-5 mt-5 border-t border-gray-300">
                     <Accordion
                         title="How do I get my crush's email address?"
                         answer="Go to outlook and search your crush's full name, their bristol email will show up and you can use it for the app"

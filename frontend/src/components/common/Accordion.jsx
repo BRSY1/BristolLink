@@ -4,7 +4,7 @@ const Accordion = ({ title, answer }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <div className="border-b border-black">
+    <div className="border-b border-gray-300">
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex justify-between w-full py-2"
@@ -41,7 +41,7 @@ const Accordion = ({ title, answer }) => {
           : "grid-rows-[0fr] opacity-0"
           }`}
       >
-        <div className="overflow-hidden mb-2 px-3">{answer}</div>
+        <div className="overflow-hidden mb-2 px-2">{answer}</div>
       </div>
     </div>
   );

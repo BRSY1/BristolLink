@@ -29,7 +29,6 @@ const useNotifications = () => {
 
       try {
         const response = await api.get("/notifications");
-        console.log(response.data);
         setNotifications(response.data);
       } catch (err) {
         setErrorMsg("Failed to fetch notifications from database");

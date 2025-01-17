@@ -15,6 +15,7 @@ import PrivacyStatementPage from "./pages/PrivacyStatementPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import FAQsPage from "./pages/FAQsPage";
 import ObserverProvider from "./context/ObserverProvider";
+import DashBoardPage from "./pages/DashBoardPage";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/verify/:code" element={<EmailVerificationPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<DashBoardPage />}/>
               <Route path="/submit" element={<SubmissionPage />} />
               <Route path="/notifications" element={<NotificationPage />} />
             </Route>

@@ -4,6 +4,7 @@ import DesktopNavItem from "./DesktopNavItem";
 import MobileNavItem from "./MobileNavItem";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { TbHome } from "react-icons/tb";
 
 const pages = [
   { title: "Register", path: "/register" },
@@ -32,17 +33,26 @@ const Header = () => {
               />
             </Link>
 
-            {/* Menu icon for mobile */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden ml-4 text-gray-700 hover:text-pink-600 focus:outline-none"
-            >
-              {isOpen ? (
-                <MdClose className="h-6 w-6" />
-              ) : (
-                <MdMenu className="h-6 w-6" />
+            <div className="md:hidden flex items-end gap-4">
+              {/* Home icon for mobile */}
+              {authState.isLoggedIn && (
+                <Link to="/dashboard">
+                  <TbHome className="text-gray-700 h-6 w-6 hover:text-pink-600 focus:outline-none" />
+                </Link>
               )}
-            </button>
+
+              {/* Menu icon for mobile */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="ml-4 text-gray-700 hover:text-pink-600 focus:outline-none"
+              >
+                {isOpen ? (
+                  <MdClose className="h-6 w-6" />
+                ) : (
+                  <MdMenu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Desktop Navigation */}

@@ -11,4 +11,5 @@ urlpatterns = [
     path("crush/get", views.GetCrushView.as_view(), name="get_crush"),
     path("test", views.test, name="test"),
     path("notifications", views.NotificationView.as_view(), name="notifications"),
+    path("match", views.GetMatchView.as_view(), name="match"),
 ]

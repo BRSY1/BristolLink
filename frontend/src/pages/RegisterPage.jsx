@@ -100,11 +100,18 @@ function RegisterPage() {
               required
             />
 
-            <CheckboxField
-              name="agreeToPrivacy"
-              label="I agree to the privacy statement"
-              required
-            />
+              <CheckboxField
+                name="agreeToPrivacy"
+                label={
+                  <>
+                    I agree to the{" "}
+                    <Link to="/privacy-statement" className="font-semibold text-pink-500">
+                      privacy statement
+                    </Link>
+                  </>
+                }
+                required
+              />
           </div>
 
           <LoadingButton type="submit" loading={loading}>
