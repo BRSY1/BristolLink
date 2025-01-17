@@ -27,3 +27,15 @@
 - How does Navbar change once you're logged in
 
 - How do we rigourosly test this and know whether everything is working or not
+
+- Change pics to .webp
+
+- get valid names from blackboard
+
+- ask IT/SU
+
+- virtual private server (obs)
+
+- university legal team
+
+- red  bristol
