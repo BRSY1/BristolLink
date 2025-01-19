@@ -4,31 +4,42 @@ import { getDateString } from "../../utils/getDateString";
 
 const SubmissionSection = ({ submission }) => {
   return (
-    <div className="bg-gray-100 p-6 rounded-xl shadow-xl mb-8">
-      <h2 className="text-xl font-semibold text-pink-700 mb-4">
-        Your Crush Submission
+    <div className="bg-gradient-to-br from-white to-pink-50 p-8 rounded-2xl shadow-2xl">
+      <h2 className="text-2xl font-bold text-pink-600 mb-6 flex items-center gap-2">
+        <span>💌</span> Your Crush Submission
       </h2>
 
       {submission ? (
-        // Display submission details if submission exists
-        <div className="space-y-2">
-          <p className="text-pink-700">
-            <span className="font-semibold">Crush's Email:</span>{" "}
-            {submission.submitter}
-          </p>
-          <p className="text-pink-700">
-            <span className="font-semibold">Message:</span> {submission.message}
-          </p>
-          <p className="text-pink-700">
-            <span className="font-semibold">Submitted at:</span>{" "}
-            {getDateString(submission.created_at)}
-          </p>
+        <div className="space-y-4">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-pink-100">
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm text-gray-500">Crush's Email</p>
+                <a
+                  href={`mailto:${submission.crush_email}`}
+                  className="text-lg text-pink-600"
+                >
+                  {submission.crush_email}
+                </a>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Your Message</p>
+                <p className="text-gray-700">{submission.message}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Submitted</p>
+                <p className="text-gray-600">
+                  {getDateString(submission.created_at)}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         // Display a message and button if no submission exists
         <div className="text-start">
-          <p className="text-gray-400 mb-4">
-            You haven't submitted your crush yet. Let's get started!
+          <p className="text-gray-500 mb-4">
+            Ready to share your feelings? Take the first step!
           </p>
           <Link
             to="/submit" // Replace with your submission route

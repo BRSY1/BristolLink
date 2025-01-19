@@ -37,7 +37,10 @@ const Header = () => {
               {/* Home icon for mobile */}
               {authState.isLoggedIn && (
                 <Link to="/dashboard">
-                  <TbHome className="text-gray-700 h-6 w-6 hover:text-pink-600 focus:outline-none" />
+                  <TbHome
+                    className="text-gray-700 h-6 w-6 hover:text-pink-600 focus:outline-none"
+                    onClick={() => setIsOpen(false)}
+                  />
                 </Link>
               )}
 
@@ -57,6 +60,14 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
+            {authState.isLoggedIn && (
+                <Link to="/dashboard">
+                  <TbHome
+                    className="mx-3 text-gray-700 h-5 w-5 hover:text-pink-700 focus:outline-none"
+                    onClick={() => setIsOpen(false)}
+                  />
+                </Link>
+              )}
             {pages.map((page, index) => (
               <DesktopNavItem key={index} title={page.title} path={page.path} />
             ))}
