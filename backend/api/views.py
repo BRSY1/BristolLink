@@ -239,6 +239,8 @@ class NotificationView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        marked_as_read = request.query_params.get("markedAsRead", "false") == "true"
+
         notifications = Notification.objects.filter(
             receiver_email=request.user.email
         ).order_by("-created_at")
@@ -247,8 +249,10 @@ class NotificationView(APIView):
         serializer = NotificationSerializer(notifications, many=True)
         response = Response(serializer.data, status=status.HTTP_200_OK)
 
-        # Update notifications to read before returning    
-        notifications.update(is_read=True)
+        # Update notifications to read before returning
+        if marked_as_read:   
+            notifications.update(is_read=True)
+
         return response
     
 

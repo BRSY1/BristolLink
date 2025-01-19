@@ -11,12 +11,12 @@ import { ClipLoader } from "react-spinners";
 function NotificationPage() {
   useDocumentTitle("Notifications");
 
-  const { loading, notifications, errorMsg } = useNotifications();
+  const { loading, notifications, errorMsg } = useNotifications(true);
   const unreadCount = notifications.filter((n) => !n.is_read).length;
 
   return (
     <>
-      <div className="mt-20 min-h-screen w-full max-w-3xl mx-auto p-8">
+      <div className="mt-28 min-h-screen w-full max-w-3xl mx-auto p-8">
         <div className="mb-8">
           <h1 className="text-3xl font-semibold text-pink-800">Notifications</h1>
           <p className="text-sm text-gray-600 mt-1">

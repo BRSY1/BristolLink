@@ -7,6 +7,7 @@ import { MdLogout, MdNotificationsNone } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import useCrushSubmission from "../hooks/useCrushSubmission";
 import useMatchData from "../hooks/useMatchData";
+import useNotifications from "../hooks/useNotifications";
 
 function DashboardPage() {
   useDocumentTitle("Profile");
@@ -15,6 +16,9 @@ function DashboardPage() {
   const { submissionloading, submission, submissionErrorMsg } =
     useCrushSubmission();
   const { matchloading, match, matchErrorMsg } = useMatchData();
+  const { loading, notifications, errorMsg } = useNotifications();
+
+  const unreadCount = notifications.filter((n) => !n.is_read).length;
 
   const handleLogout = () => {
     logout();
@@ -40,7 +44,9 @@ function DashboardPage() {
               onClick={() => navigate("/notifications")}
             />
             {/* Red dot for unread notifications */}
-            <span className="absolute top-0 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            {unreadCount > 0 && (
+              <span className="absolute top-0 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            )}
           </div>
 
           {/* logout icon */}

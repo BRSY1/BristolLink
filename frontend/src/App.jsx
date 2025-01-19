@@ -40,7 +40,7 @@ function App() {
               <Route path="/notifications" element={<NotificationPage />} />
             </Route>
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       </ObserverProvider>
     </AuthProvider >
