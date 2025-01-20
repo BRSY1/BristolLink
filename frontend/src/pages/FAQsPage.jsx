@@ -3,7 +3,7 @@ import Accordion from "../components/common/Accordion";
 export default function FAQsPage() {
     return (
         <>
-            <div className="w-full min-h-screen mt-24 font-poppins bg-white flex flex-col pt-10 max-w-4xl mx-auto">
+            <div className="w-full min-h-screen mt-24 font-poppins bg-white flex flex-col pt-10 mr-36 lg:max-w-4xl lg:mx-auto">
                 <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
                     FAQs
                 </h1>
