@@ -15,6 +15,8 @@ import PrivacyStatementPage from "./pages/PrivacyStatementPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import FAQsPage from "./pages/FAQsPage";
 import ObserverProvider from "./context/ObserverProvider";
+import DashBoardPage from "./pages/DashBoardPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
           {/* Header is moved to it's individual pages, because it will change state based on login */}
           <Header />
           <Routes>
+            <Route path='*' element={<NotFoundPage />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="/what-is-link" element={<WhatIsLinkPage />} />
             <Route path="/privacy-statement" element={<PrivacyStatementPage />} />
@@ -34,6 +37,7 @@ function App() {
             <Route path="/verify/:code" element={<EmailVerificationPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<DashBoardPage />} />
               <Route path="/submit" element={<SubmissionPage />} />
               <Route path="/notifications" element={<NotificationPage />} />
             </Route>

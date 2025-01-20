@@ -17,7 +17,7 @@ export const getNotificationDetails = (type) => {
   return details[type];
 };
 
-const useNotifications = () => {
+const useNotifications = (markedAsRead) => {
   const [loading, setLoading] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
@@ -28,8 +28,11 @@ const useNotifications = () => {
       setErrorMsg("");
 
       try {
-        const response = await api.get("/notifications");
-        console.log(response.data);
+        const params = {};
+        if (markedAsRead !== undefined) {
+          params.markedAsRead = markedAsRead;
+        }
+        const response = await api.get("/notifications", { params });
         setNotifications(response.data);
       } catch (err) {
         setErrorMsg("Failed to fetch notifications from database");

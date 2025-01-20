@@ -17,7 +17,7 @@ const useEmailVerification = (code) => {
 
       try {
         const response = await api.get(`/verify/${code}`);
-        login(response.data.token);
+        login(response.data.token, response.data.user.username);
         setSuccessMsg(response.data.message);
       } catch (err) {
         setErrorMsg(

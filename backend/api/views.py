@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db.models import Q
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.templatetags.static import static
@@ -13,6 +14,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 
 import re
 
@@ -237,6 +239,8 @@ class NotificationView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        marked_as_read = request.query_params.get("markedAsRead", "false") == "true"
+
         notifications = Notification.objects.filter(
             receiver_email=request.user.email
         ).order_by("-created_at")
@@ -245,9 +249,29 @@ class NotificationView(APIView):
         serializer = NotificationSerializer(notifications, many=True)
         response = Response(serializer.data, status=status.HTTP_200_OK)
 
-        # Update notifications to read before returning    
-        notifications.update(is_read=True)
+        # Update notifications to read before returning
+        if marked_as_read:   
+            notifications.update(is_read=True)
+
         return response
+    
+
+class GetMatchView(ListAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    serializer_class = CrushSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        match = Match.objects.filter(Q(user1=user) | Q(user2=user)).first()
+        
+        if not match:
+            return Crush.objects.none()
+        
+        other_user = match.user1 if user == match.user2 else match.user2
+        crush = Crush.objects.filter(submitter=other_user, crush_email=user.email)
+
+        return crush
 
 
 def test(request):

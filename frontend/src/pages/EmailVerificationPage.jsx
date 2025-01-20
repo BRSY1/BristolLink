@@ -1,15 +1,15 @@
 import React from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useEmailVerification from "../hooks/useEmailVerification";
 import { ClipLoader } from "react-spinners";
 import SuccessMessage from "../components/messages/SuccessMessage";
 import ErrorMessage from "../components/messages/ErrorMessage";
-import Header from "../components/header/Header";
 
 function EmailVerificationPage() {
   useDocumentTitle("Email Verification");
   const { code } = useParams();
+  const navigate = useNavigate();
   const { loading, errorMsg, successMsg } = useEmailVerification(code);
 
   return (
@@ -19,10 +19,16 @@ function EmailVerificationPage() {
           Email Verification
         </h1>
 
-        {loading && <ClipLoader color="#ec4899" size={32} className="mx-auto" />}
+        {loading && (
+          <ClipLoader color="#ec4899" size={32} className="mx-auto" />
+        )}
 
         {successMsg && <SuccessMessage message={successMsg} />}
         {errorMsg && <ErrorMessage message={errorMsg} />}
+
+        <div className="" onClick={() => navigate("/dashboard")}>
+            → Head to submission page
+        </div>
       </div>
     </>
   );

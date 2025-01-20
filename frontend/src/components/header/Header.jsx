@@ -4,6 +4,7 @@ import DesktopNavItem from "./DesktopNavItem";
 import MobileNavItem from "./MobileNavItem";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { TbHome } from "react-icons/tb";
 
 const pages = [
   { title: "Register", path: "/register" },
@@ -15,7 +16,7 @@ const pages = [
 ];
 
 const Header = () => {
-  const { isLoggedIn, logout } = useContext(AuthContext);
+  const { authState, logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -32,21 +33,41 @@ const Header = () => {
               />
             </Link>
 
-            {/* Menu icon for mobile */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden ml-4 text-gray-700 hover:text-pink-600 focus:outline-none"
-            >
-              {isOpen ? (
-                <MdClose className="h-6 w-6" />
-              ) : (
-                <MdMenu className="h-6 w-6" />
+            <div className="md:hidden flex items-end gap-4">
+              {/* Home icon for mobile */}
+              {authState.isLoggedIn && (
+                <Link to="/dashboard">
+                  <TbHome
+                    className="text-gray-700 h-6 w-6 hover:text-pink-600 focus:outline-none"
+                    onClick={() => setIsOpen(false)}
+                  />
+                </Link>
               )}
-            </button>
+
+              {/* Menu icon for mobile */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="ml-4 text-gray-700 hover:text-pink-600 focus:outline-none"
+              >
+                {isOpen ? (
+                  <MdClose className="h-6 w-6" />
+                ) : (
+                  <MdMenu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
+            {authState.isLoggedIn && (
+                <Link to="/dashboard">
+                  <TbHome
+                    className="mx-3 text-gray-700 h-5 w-5 hover:text-pink-700 focus:outline-none"
+                    onClick={() => setIsOpen(false)}
+                  />
+                </Link>
+              )}
             {pages.map((page, index) => (
               <DesktopNavItem key={index} title={page.title} path={page.path} />
             ))}
