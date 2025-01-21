@@ -5,7 +5,7 @@ export default function FAQsPage() {
         {
             title: "How do I get my crush's email address?",
             answer:
-                "Go to outlook and search your crush's full name, their bristol email will show up and you can use it for the app",
+                "Go to Microsoft Outlook and search your crush's full name, their Bristol email will show up and you can use it on Bristol Link",
         },
         {
             title: "How safe is my data?",
@@ -23,9 +23,9 @@ export default function FAQsPage() {
                 "Yes, you'll get an infinite number of tries until you find a match.",
         },
         {
-            title: "Another probably important FAQ?",
+            title: "Can someone enter my email in more than once?",
             answer:
-                "It will go down on 24th February, 2025. All data will be deleted on that date. Based on popularity, the website maybe up for a bit longer.",
+                "No, you can only enter a specific email one time. If someone has been notified that their crush is unavailable, they don't have the ability to resend a message to that person.",
         },
     ];
 
