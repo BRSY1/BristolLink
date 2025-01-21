@@ -10,12 +10,12 @@ import NotificationPage from "./pages/NotificationPage";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import LandingPage from "./pages/LandingPage";
-import WhatIsLinkPage from "./pages/WhatIsLinkPage";
+import WhatIsLinkPage from "./pages/WhatIslinkPage";
 import PrivacyStatementPage from "./pages/PrivacyStatementPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import FAQsPage from "./pages/FAQsPage";
 import ObserverProvider from "./context/ObserverProvider";
-import DashBoardPage from "./pages/DashBoardPage";
+import DashBoardPage from "./pages/DashboardPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 
