@@ -9,7 +9,7 @@ export default function PrivacyStatementPage() {
         <div className="flex flex-col justify-center text-center mx-5 lg:mx-28">
           <p>
             Bristol Link is committed to maintaining complete data privacy and anonymity to people who submit their crushes.
-            We comply with the Data Protection Act and our site have been stress tested by the Cybersecurity Research
+            We comply with the Data Protection Act and our site has been stress tested by the Cybersecurity Research
             team in bristol.
             As far as our knowledge goes, your data is completely safe and we are committed to address any data security breaches
             as fast as possible. Include other fancy things to inspire confidence.
