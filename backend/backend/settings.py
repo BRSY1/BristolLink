@@ -64,7 +64,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173"
+    os.getenv("FRONTEND_BASE_URL")
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -160,7 +160,6 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-ALLOWED_HOSTS = []
 DEFAULT_FROM_EMAIL = "BristolLink <bristollink2024@gmail.com>"
 
 
