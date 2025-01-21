@@ -9,19 +9,19 @@ export default function LandingPage() {
           <img src="/logo.webp" alt="" className="w-80 lg:w-96 lg:-mt-20" />
           <div className="flex flex-col -mt-14 lg:-mt-24 gap-3">
             <Button
-              text="Login"
+              text="DEV"
               backgroundColor="bg-pink-400"
               textColor="text-white"
               path="/login"
             />
             <Button
-              text="Register"
+              text="DEV"
               backgroundColor="bg-white"
               textColor="text-black"
               path="/register"
             />
             <Button
-              text="What is Link"
+              text="DEV"
               backgroundColor="bg-white"
               textColor="text-black"
               path="/what-is-link"
