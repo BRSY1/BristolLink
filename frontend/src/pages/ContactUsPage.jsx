@@ -11,7 +11,7 @@ export default function ContactUsPage() {
             We'd love to hear your feedback, questions, concerns and anything that would make Bristol Link better.</p>
           <p>Shoot us an email at <a href="mailto:emkayhrushikesh@gmail.com" className="text-pink-500 hover:underline hover:cursor-pointer">link@email.com</a> and we'll get back to you as soon we can.</p>
 
-          <p className="mt-10">Enjoyed using Link? Recommend it to your friend! What can we do here?</p>
+          <p className="mt-10">Enjoyed using Link? Recommend it to your friend! What can we do to make your experience better?</p>
         </div>
       </div>
     </>
