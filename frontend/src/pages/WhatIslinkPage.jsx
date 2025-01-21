@@ -3,8 +3,8 @@ import Button from "../components/common/Button";
 export default function WhatIsLinkPage() {
   return (
     <>
-      <div className="mx-10 mt-5 motion-opacity-in-0 motion-duration-[3s]">
-        <h1 className="text-3xl mt-40 lg:mt-24 lg:text-4xl ml-12 text-left font-poppins text-black">
+      <div className="mx-10 mt-5 motion-opacity-in-0 motion-duration-[2s]">
+        <h1 className="text-3xl mt-40 lg:mt-24 lg:text-4xl ml-12 text-left font-poppins text-black motion-preset-typewriter-[6]">
           What Is
           {/* <div className="border border-black mx-auto" /> */}
         </h1>

@@ -12,7 +12,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from dotenv import load_dotenv
+import django_heroku
+import dj_database_url
+from decouple import config
 from pathlib import Path
+
+
+load_dotenv() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,6 +62,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -90,8 +97,12 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"), 
+        "PORT": os.getenv("DB_PORT"),      
     }
 }
 
@@ -132,6 +143,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -143,8 +156,6 @@ AUTH_USER_MODEL = "api.User"
 
 
 # Email settings
-load_dotenv() 
-
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "bristollink2024@gmail.com"
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
@@ -156,4 +167,7 @@ DEFAULT_FROM_EMAIL = "BristolLink <bristollink2024@gmail.com>"
 
 
 # Frontend base URL (e.g., http://localhost:3000 or https://yourapp.com)
-FRONTEND_BASE_URL = "http://localhost:5173"
+FRONTEND_BASE_URL = os.getenv("FRONTEND_BASE_URL")
+
+
+django_heroku.settings(locals())
