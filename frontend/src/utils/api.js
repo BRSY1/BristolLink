@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an axios instance with a default config for api requests
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: process.env.API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
