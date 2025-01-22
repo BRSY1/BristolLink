@@ -7,10 +7,10 @@ const MatchSection = ({ match }) => {
     <div
       className={`${
         match
-          ? "from-pink-500 to-purple-200 animate-delayed-overflow-hidden motion-preset-confetti motion-duration-750"
-          : "from-white to-pink-50"
+          ? "from-pink-500 to-purple-200 shadow-purple-200 animate-delayed-overflow-hidden motion-preset-confetti motion-duration-750"
+          : "from-white to-pink-50 shadow-red-200"
       } 
-      bg-gradient-to-br p-8 rounded-2xl shadow-2xl text-white relative`}
+      bg-gradient-to-br p-8 rounded-2xl shadow-lg text-white relative`}
     >
       <div className="absolute top-0 right-0 p-4 text-6xl">💘</div>
       <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
