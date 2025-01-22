@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an axios instance with a default config for api requests
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: "https://bristollink-e1a5719dffba.herokuapp.com/api/",
   headers: {
     "Content-Type": "application/json",
   },

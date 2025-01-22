@@ -59,7 +59,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173"
+    "https://bristol-link.netlify.app",
+    "https://develop--bristol-link.netlify.app/"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
