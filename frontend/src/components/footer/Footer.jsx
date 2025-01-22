@@ -26,13 +26,13 @@ function Footer() {
               <MdOutlineEmail size={24} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/bris_link?igsh=MTJneXBlanpuYTZicw=="
               className="hover:text-pink-400 transition-colors intersect:motion-opacity-in-0 intersect:motion-translate-y-in-100 intersect:motion-rotate-in-180"
             >
               <FaInstagram size={24} />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/BRSY1"
               className="hover:text-pink-400 transition-colors intersect:motion-opacity-in-0 intersect:motion-translate-y-in-100 intersect:motion-rotate-in-180  "
             >
               <FiGithub size={24} />
