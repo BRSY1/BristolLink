@@ -20,7 +20,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-4 left-4 right-4 font-poppins rounded-2xl shadow-2xl z-50 bg-white/50 backdrop-blur-md md:motion-preset-oscillate-sm motion-duration-2000 hover:motion-paused motion-opacity-in-0">
+    <nav className="fixed top-4 left-4 right-4 rounded-2xl shadow-2xl z-50 bg-white/50 backdrop-blur-md md:motion-preset-oscillate-sm motion-duration-2000 hover:motion-paused motion-opacity-in-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center transition-all duration-300 ease-in-out">
           {/* Logo and Menu Button */}

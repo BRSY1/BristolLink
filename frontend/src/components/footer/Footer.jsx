@@ -33,7 +33,7 @@ function Footer() {
             </a>
             <a
               href="https://github.com/BRSY1"
-              className="hover:text-pink-400 transition-colors intersect:motion-opacity-in-0 intersect:motion-translate-y-in-100 intersect:motion-rotate-in-180  "
+              className="hover:text-pink-400 transition-colors intersect:motion-opacity-in-0 intersect:motion-translate-y-in-100 intersect:motion-rotate-in-180"
             >
               <FiGithub size={24} />
             </a>

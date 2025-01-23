@@ -8,6 +8,7 @@ import ErrorMessage from "../components/messages/ErrorMessage";
 
 function EmailVerificationPage() {
   useDocumentTitle("Email Verification");
+
   const { code } = useParams();
   const navigate = useNavigate();
   const { loading, errorMsg, successMsg } = useEmailVerification(code);
@@ -19,15 +20,22 @@ function EmailVerificationPage() {
           Email Verification
         </h1>
 
-        {loading && (
-          <ClipLoader color="#ec4899" size={32} className="mx-auto" />
-        )}
+        <div className="space-y-6 flex flex-col items-center">
+          {loading && (
+            <ClipLoader color="#ec4899" size={32} className="mx-auto" />
+          )}
 
-        {successMsg && <SuccessMessage message={successMsg} />}
-        {errorMsg && <ErrorMessage message={errorMsg} />}
+          {successMsg && <SuccessMessage message={successMsg} />}
+          {errorMsg && <ErrorMessage message={errorMsg} />}
 
-        <div className="" onClick={() => navigate("/dashboard")}>
+          <div
+            className="mt-6 mx-auto px-6 py-3 bg-pink-500 text-white font-medium rounded-lg 
+              text-center cursor-pointer hover:bg-pink-600 transition-colors duration-300 
+              max-w-xs"
+            onClick={() => navigate("/dashboard")}
+          >
             → Head to submission page
+          </div>
         </div>
       </div>
     </>

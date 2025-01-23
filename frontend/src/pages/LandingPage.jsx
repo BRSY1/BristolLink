@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function LandingPage() {
+  useDocumentTitle("Home");
+  
   return (
     <>
       <div className="w-full min-h-screen flex items-center justify-center bg-white motion-opacity-in-0 motion-duration-[3s] lg:pt-20 lg:overflow-hidden">
@@ -27,7 +30,7 @@ export default function LandingPage() {
               path="/what-is-link"
             />
           </div>
-          <div className="flex flex-col items-center justify-center h-full text-gray-400 underline text-md lg:text-sm lg:gap-1 mt-4 font-poppins">
+          <div className="flex flex-col items-center justify-center h-full text-gray-400 underline text-md lg:text-sm lg:gap-1 mt-4">
             <Link to={"/privacy-statement"} className="text-center hover:text-pink-500">
               Privacy Statement
             </Link>
