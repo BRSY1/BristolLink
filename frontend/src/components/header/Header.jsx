@@ -23,6 +23,7 @@ const Header = () => {
     if (authState.isLoggedIn) {
       return page.title !== "Register" && page.title !== "Login";
     }
+    return true;
   });
 
   return (
