@@ -14,7 +14,7 @@ function Footer() {
             <h3 className="text-2xl text-pink-800 font-semibold mb-1 group-hover:scale-90 group-hover:text-gray-400 duration-700">
               BristolLink
             </h3>
-            <p className="text-gray-400 text-sm group-hover:scale-110 group-hover:text-pink-800 duration-700">Link everyone ...</p>
+            <p className="text-gray-400 text-xs group-hover:scale-110 group-hover:text-pink-800 duration-700">Anonymous Crushes, One Click Away</p>
           </div>
 
           {/* Social links */}

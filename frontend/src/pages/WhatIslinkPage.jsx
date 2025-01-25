@@ -56,7 +56,7 @@ export default function WhatIsLinkPage() {
 
   return (
     <>
-      <div className="mx-10 mt-5 motion-opacity-in-0 motion-duration-[2s]">
+      <div className="mx-5 mt-5 motion-opacity-in-0 motion-duration-[2s]">
         <h1 className="text-3xl mt-40 lg:text-4xl ml-12 text-left text-black motion-preset-typewriter-[7]">
           What Is
           {/* <div className="border border-black mx-auto" /> */}
@@ -109,8 +109,7 @@ export default function WhatIsLinkPage() {
                           bg-gradient-to-r from-neutral-50 to-pink-50 
                           hover:from-neutral-100 hover:to-pink-100 
                           transition-all duration-300 transform hover:scale-102 
-                          shadow-pink-100 shadow-md hover:shadow-lg hover:shadow-pink-200
-                          intersect:motion-preset-blur-left-lg intersect:motion-duration-1000 intersect-once"
+                          shadow-pink-100 shadow-md hover:shadow-lg hover:shadow-pink-200"
               >
                 <div className="flex-shrink-0 p-4 bg-pink-100 rounded-full shadow-inner">
                   {step.icon}
@@ -126,7 +125,7 @@ export default function WhatIsLinkPage() {
               </div>
             ))}
           </div>
-          <div className="flex flex-row justify-center md:justify-start items-left mx-10 lg:ml-7 mt-8 text-left intersect:motion-preset-blur-up-lg intersect:motion-duration-1000">
+          <div className="flex flex-row justify-center md:justify-start items-left mx-10 lg:ml-7 mt-8 text-left">
             <Button
               text="Register now!"
               backgroundColor="bg-pink-400"
@@ -150,8 +149,7 @@ export default function WhatIsLinkPage() {
                 className="group relative overflow-hidden flex flex-col items-center p-6 rounded-xl 
                           bg-gradient-to-br from-white to-pink-100 
                           transition-all duration-300 hover:shadow-red-100  
-                          hover:shadow-xl hover:to-pink-200
-                          intersect:motion-preset-fade intersect:motion-duration-2000 motion-delay-200"
+                          hover:shadow-xl hover:to-pink-200"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-400 to-pink-600 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
                 

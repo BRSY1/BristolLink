@@ -16,8 +16,14 @@ const pages = [
 ];
 
 const Header = () => {
-  const { authState, logout } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+
+  const filteredPages = pages.filter((page) => {
+    if (authState.isLoggedIn) {
+      return page.title !== "Register" && page.title !== "Login";
+    }
+  });
 
   return (
     <nav className="fixed top-4 left-4 right-4 rounded-2xl shadow-2xl z-50 bg-white/50 backdrop-blur-md md:motion-preset-oscillate-sm motion-duration-2000 hover:motion-paused motion-opacity-in-0">
@@ -61,14 +67,14 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             {authState.isLoggedIn && (
-                <Link to="/dashboard">
-                  <TbHome
-                    className="mx-3 text-gray-700 h-5 w-5 hover:text-pink-700 focus:outline-none"
-                    onClick={() => setIsOpen(false)}
-                  />
-                </Link>
-              )}
-            {pages.map((page, index) => (
+              <Link to="/dashboard">
+                <TbHome
+                  className="mx-3 text-gray-700 h-5 w-5 hover:text-pink-700 focus:outline-none"
+                  onClick={() => setIsOpen(false)}
+                />
+              </Link>
+            )}
+            {filteredPages.map((page, index) => (
               <DesktopNavItem key={index} title={page.title} path={page.path} />
             ))}
           </div>
@@ -76,7 +82,7 @@ const Header = () => {
           {/* Mobile Menu Items */}
           {isOpen && (
             <div className="flex flex-col mb-4 w-full md:hidden motion-preset-blur-down-lg">
-              {pages.map((page, index) => (
+              {filteredPages.map((page, index) => (
                 <MobileNavItem
                   key={index}
                   title={page.title}

@@ -18,7 +18,6 @@ import ObserverProvider from "./context/ObserverProvider";
 import DashBoardPage from "./pages/DashboardPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
-
 function App() {
   return (
     <AuthProvider>
