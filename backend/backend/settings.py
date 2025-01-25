@@ -135,6 +135,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
@@ -161,4 +163,4 @@ DEFAULT_FROM_EMAIL = "BristolLink <bristollink2024@gmail.com>"
 FRONTEND_BASE_URL = os.getenv("FRONTEND_BASE_URL")
 
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), logging=not DEBUG, databases=not DEBUG)
