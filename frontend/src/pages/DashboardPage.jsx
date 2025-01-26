@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import { AuthContext } from "../context/AuthContext";
 import SubmissionSection from "../components/dashboard/SubmissionSection";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import useCrushSubmission from "../hooks/useCrushSubmission";
 import useMatchData from "../hooks/useMatchData";
 import useNotifications from "../hooks/useNotifications";
+import MatchPopup from "../components/dashboard/MatchPopup";
 
 function DashboardPage() {
   useDocumentTitle("Profile");
@@ -17,6 +18,7 @@ function DashboardPage() {
     useCrushSubmission();
   const { matchloading, match, matchErrorMsg } = useMatchData();
   const { loading, notifications, errorMsg } = useNotifications();
+  const [showMatchPopup, setShowMatchPopup] = useState(false);
 
   const unreadCount = notifications.filter((n) => !n.is_read).length;
 
@@ -58,12 +60,23 @@ function DashboardPage() {
 
         <div className="flex flex-col md:flex-row w-full gap-6">
           <div className="flex-1">
-            <MatchSection match={match} />
+            <MatchSection
+              match={match}
+              onClickViewDetails={() => setShowMatchPopup(true)}
+            />
           </div>
           <div className="flex-1">
             <SubmissionSection submission={submission} />
           </div>
         </div>
+
+        {showMatchPopup && (
+          <MatchPopup 
+            receivedMsg={match} 
+            sentMsg={submission}
+            onClose={() => setShowMatchPopup(false)} 
+          />
+        )}
       </div>
     </div>
   );

@@ -7,13 +7,22 @@ export default {
         poppins: ["Poppins", "sans-serif"],
       },
       animation: {
-        "delayed-overflow-hidden": "delayed-overflow-hidden 0.75s forwards",
+        "delayed-overflow-hidden": "delayed-overflow-hidden 1s forwards",
+        gradient: "gradient 10s ease infinite",
       },
       keyframes: {
         "delayed-overflow-hidden": {
           "0%": { overflow: "visible" },
           "99%": { overflow: "visible" },
           "100%": { overflow: "hidden" },
+        },
+        gradient: {
+          "0%, 100%": {
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-position": "100% 50%",
+          },
         },
       },
     },
