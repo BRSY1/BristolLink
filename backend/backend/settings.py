@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "django_browser_reload",
-    'corsheaders'
+    "corsheaders",
+    "pgcrypto",
 ]
 
 MIDDLEWARE = [

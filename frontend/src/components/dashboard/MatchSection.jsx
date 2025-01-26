@@ -4,7 +4,7 @@ import { getDateString } from "../../utils/getDateString";
 
 const MatchSection = ({ match, onClickViewDetails }) => {
   return (
-    <div class="animate-delayed-overflow-hidden motion-preset-confetti motion-duration-1000">
+    <div className={`animate-delayed-overflow-hidden ${match && "motion-preset-confetti motion-duration-1000"}`}>
       <div
         className={`${
           match
@@ -49,7 +49,14 @@ const MatchSection = ({ match, onClickViewDetails }) => {
               >
                 View details
               </button>
-              <button className="w-full py-3 px-4 font-semibold bg-pink-700/40 hover:bg-pink-700/50 border border-white/20 rounded-lg transition-colors">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://www.instagram.com/bris_link?igsh=MTJneXBlanpuYTZicw=="
+                  )
+                }
+                className="w-full py-3 px-4 font-semibold bg-pink-700/40 hover:bg-pink-700/50 border border-white/20 rounded-lg transition-colors"
+              >
                 Like our Instagram
               </button>
             </div>

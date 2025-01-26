@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
 from django.conf import settings
-from django.db.models import Q
+from django.db.models import Q, F
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.templatetags.static import static
@@ -102,7 +102,7 @@ class EmailVerificationView(APIView):
             user.is_verified = True
             user.save()
             
-            token, created = Token.objects.get_or_create(user=user)
+            token = Token.objects.create(user=user)
             user_serializer = UserSerializer(user)
 
             return Response({"token": token.key, "message": "Email verified successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
@@ -125,7 +125,7 @@ class LoginView(APIView):
             if not check_password(password, user.password):
                 return Response({"message": "Invalid password"}, status=status.HTTP_400_BAD_REQUEST)
             
-            token, created = Token.objects.get_or_create(user=user)
+            token, created = Token.objects.get_or_create(user__email=user.email)
             user_serializer = UserSerializer(user)
 
             return Response({"token": token.key, "message": "Logged in successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
@@ -162,11 +162,11 @@ class SubmitCrushView(APIView):
             return Response({"message": "Invalid email"}, status=status.HTTP_400_BAD_REQUEST)
         
         # Create new crush object if the user has not already submitted a crush
-        if Crush.objects.filter(submitter=user).exists():
+        if Crush.objects.filter(submitter__email=user.email).exists():
             return Response({"message": "You have already submitted a crush"}, status=status.HTTP_400_BAD_REQUEST)
-        
+
         serializer = CrushSerializer(data={
-            "submitter": user,
+            "submitter": user.email,
             "crush_name": request.data.get("crush_name"),
             "crush_email": crush_email,
             "message": request.data.get("message")
@@ -186,7 +186,7 @@ class SubmitCrushView(APIView):
                 self.send_invitation_email(crush_email, crush_count)
 
             return Response({"message": "Crush submitted successfully"}, status=status.HTTP_201_CREATED)
-
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def send_notification_email(self, crush_email, crush_count):
@@ -220,7 +220,7 @@ class SubmitCrushView(APIView):
         )
     
     def check_if_match(self, user, crush_email):
-        if Crush.objects.filter(submitter=crush_email, crush_email=user.email).exists():
+        if Crush.objects.filter(submitter__email=crush_email, crush_email=user.email).exists():
             crush = User.objects.get(email=crush_email)
             Match.objects.create(user1=user, user2=crush)
 
@@ -231,7 +231,7 @@ class GetCrushView(ListAPIView):
     serializer_class = CrushSerializer
 
     def get_queryset(self):
-        return Crush.objects.filter(submitter=self.request.user)
+        return Crush.objects.filter(submitter__email=self.request.user.email)
     
 
 class NotificationView(APIView):
@@ -243,7 +243,7 @@ class NotificationView(APIView):
 
         notifications = Notification.objects.filter(
             receiver_email=request.user.email
-        ).order_by("-created_at")
+        ).order_by(F("created_at").desc())
 
         # Create notification objects
         serializer = NotificationSerializer(notifications, many=True)
@@ -263,13 +263,13 @@ class GetMatchView(ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        match = Match.objects.filter(Q(user1=user) | Q(user2=user)).first()
+        match = Match.objects.filter(Q(user1__email=user.email) | Q(user2__email=user.email)).first()
         
         if not match:
             return Crush.objects.none()
         
         other_user = match.user1 if user == match.user2 else match.user2
-        crush = Crush.objects.filter(submitter=other_user, crush_email=user.email)
+        crush = Crush.objects.filter(submitter__email=other_user.email, crush_email=user.email)
 
         return crush
 
