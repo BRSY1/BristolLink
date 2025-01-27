@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 export default function LandingPage() {
@@ -14,7 +14,7 @@ export default function LandingPage() {
     if (authState.isLoggedIn == true) {
       navigate("/dashboard")
     }
-  }, [isLoggedIn, navigate]);
+  }, [authState.isLoggedIn, navigate]);
 
   return (
     <>
