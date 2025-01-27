@@ -61,8 +61,8 @@ export default function WhatIsLinkPage() {
 
   return (
     <>
-      <div className="mx-3 mt-5 motion-opacity-in-0 motion-duration-[2s]">
-        <h1 className="text-3xl mt-40 lg:text-4xl ml-12 text-left text-black motion-preset-typewriter-[7]">
+      <div className="mx-3 mt-5 font-poppins motion-opacity-in-0 motion-duration-[2s]">
+        <h1 className="text-3xl mt-24 lg:text-4xl ml-12 text-left text-black">
           What Is
           {/* <div className="border border-black mx-auto" /> */}
         </h1>
@@ -75,40 +75,14 @@ export default function WhatIsLinkPage() {
           Developed by UOB students, it lets you shoot your shot in less than 5
           minutes, blah blah blah.
         </p>
-        {/*
-        <div className="ml-7">
-          <h2 className="text-3xl mt-10 lg text-left text-black">
-            How does it work?
-          </h2>
-          <p className="text-lg lg:text-base mt-5 mr-10 lg:mr-16">
-            Let’s say you have a special someone in mind. Find their UOB email
-            by typing it into Outlook, and put it into Bristol Link. They’ll
-            receive an email from us, telling them that somebody (ahem) wants a
-            date, but they aren’t told your name or information.
-            <br />
-            <br />
-            Supposing they are interested, your crush will have to log into Link
-            themselves, and enter an email of their own.
-            <br />
-            <br />
-            If the emails (which are encrypted) are a match, you both receive
-            confirmation, and it’s the beginning of your love story.
-            <br />
-            <br />
-            Sometimes, it just isn’t meant to be, and if they enter another
-            email instead, you will be notified, and can have another shot at
-            someone new.
-          </p>
-        </div>
-         */}
 
         {/* How it Works Section */}
-        <div className="mt-16 p-8 mb-20">
+        <div className="p-8 mb-20">
           <h2 className="text-3xl text-black mb-8 pb-4 border-b border-pink-200">
             How does it work?
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-x-8 flex flex-row">
             {steps.map((step, index) => (
               <Step key={index} {...step} />
             ))}
@@ -124,30 +98,6 @@ export default function WhatIsLinkPage() {
         </div>
 
         {/* Team Section */}
-        <div className="mt-16 p-8 bg-white mb-20">
-          <h2 className="text-3xl text-black mb-8 pb-4 border-b border-pink-200">
-            Who are we?
-          </h2>
-
-          {/* Core Developers Section */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {coreDevelopers.map((dev, index) => (
-              <TeamMember key={index} {...dev} />
-            ))}
-          </div>
-
-          {/* Additional Team Members Section */}
-          <div>
-            <h3 className="text-2xl text-black mb-6 text-center">
-              Special Thanks To
-            </h3>
-            <div className="flex justify-center gap-4 mx-auto">
-              {additionalTeamMembers.map((member, index) => (
-                <OtherMember key={index} {...member} />
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </>
   );

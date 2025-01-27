@@ -6,7 +6,7 @@ export default function NotFoundPage() {
 
   return (
     <>
-      <div className="w-full min-h-screen p-5 lg:pt-20 bg-white flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
+      <div className="w-full min-h-screen font-poppins p-5 lg:pt-20 bg-white flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           404: Page Not Found
         </h1>

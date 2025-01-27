@@ -3,7 +3,7 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function FAQsPage() {
     useDocumentTitle("FAQs");
-    
+
     const faqs = [
         {
             title: "How do I get my crush's email address?",
@@ -35,10 +35,10 @@ export default function FAQsPage() {
     return (
         <>
             <div className="w-full min-h-screen mt-24 bg-white flex flex-col pt-10 max-w-4xl mx-auto">
-                <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center motion-opacity-in-0 motion-duration-[2s]">
+                <h1 className="text-3xl font-poppins font-semibold text-pink-500 mb-5 text-center motion-opacity-in-0 motion-duration-[2s]">
                     FAQs
                 </h1>
-                <div className="mx-5 mt-5 border-t border-gray-300">
+                <div className="mx-5 mt-5 border-t border-black">
                     {faqs.map((faq, index) => (
                         <Accordion
                             key={index}

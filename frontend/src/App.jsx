@@ -35,13 +35,16 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/verify/:code" element={<EmailVerificationPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={<DashBoardPage />} />
+            <Route path="/submit" element={<SubmissionPage />} />
+            <Route path="/notifications" element={<NotificationPage />} />
             <Route element={<ProtectedRoute />}>
-              <Route path="/dashboard" element={<DashBoardPage />} />
-              <Route path="/submit" element={<SubmissionPage />} />
-              <Route path="/notifications" element={<NotificationPage />} />
+              {/* <Route path="/dashboard" element={<DashBoardPage />} /> */}
+              {/* <Route path="/submit" element={<SubmissionPage />} />
+              <Route path="/notifications" element={<NotificationPage />} /> */}
             </Route>
           </Routes>
-          <Footer /> 
+          {/* <Footer />  */}
         </Router>
       </ObserverProvider>
     </AuthProvider >
