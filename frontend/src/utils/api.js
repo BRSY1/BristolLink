@@ -11,7 +11,7 @@ const api = axios.create({
 
 // Add a request interceptor to add the token to the headers before making the request
 api.interceptors.request.use((config) => {
-  console.log("Request URL:", config.baseURL + config.url);
+  //console.log("Request URL:", config.baseURL + config.url);
   // Try to retrieve the token from localStorage in the browser
   const token = localStorage.getItem("token");
   // If token exists, add it to the headers
@@ -20,14 +20,5 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
-
-/* 
-e.g.
-const response = api.get('/register/', {
-    username,
-    email,
-    password,
-});
-*/
 
 export default api;

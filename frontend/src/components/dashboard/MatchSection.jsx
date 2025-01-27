@@ -4,24 +4,28 @@ import { getDateString } from "../../utils/getDateString";
 
 const MatchSection = ({ match, onClickViewDetails }) => {
   return (
-    <div className={`animate-delayed-overflow-hidden ${match && "motion-preset-confetti motion-duration-1000"}`}>
+    <div
+      className={`${
+        match
+          ? "from-pink-500 to-purple-200 shadow-purple-200 bg-[length:200%_200%] animate-gradient"
+          : "from-white to-pink-50 shadow-red-200"
+      } 
+    bg-gradient-to-br p-6 rounded-2xl shadow-lg text-white relative w-full h-full`}
+    >
       <div
-        className={`${
-          match
-            ? "from-pink-500 to-purple-200 shadow-purple-200 bg-[length:200%_200%] animate-gradient"
-            : "from-white to-pink-50 shadow-red-200"
-        } 
-        bg-gradient-to-br p-8 rounded-2xl shadow-lg text-white relative w-full h-full`}
+        className={`animate-delayed-overflow-hidden ${
+          match && "motion-preset-confetti motion-duration-1000"
+        }`}
       >
-        <div className="absolute top-0 right-0 p-4 text-6xl">💘</div>
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold mb-6 flex items-center justify-between">
           {match ? (
             <>
-              <span>🎉</span> It's a Match!
+              <span>🎉 It's a Match!</span> 
             </>
           ) : (
             <p className="text-pink-600">Your Match</p>
           )}
+          <span className="text-6xl">💘</span>
         </h2>
 
         {match ? (

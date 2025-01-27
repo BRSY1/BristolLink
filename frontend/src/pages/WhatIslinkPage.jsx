@@ -2,6 +2,9 @@ import Button from "../components/common/Button";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoLockClosedOutline, IoMailOutline } from "react-icons/io5";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import TeamMember from "../components/about/TeamMember";
+import OtherMember from "../components/about/OtherMember";
+import Step from "../components/about/Step";
 
 export default function WhatIsLinkPage() {
   useDocumentTitle("What is Link");
@@ -32,18 +35,21 @@ export default function WhatIsLinkPage() {
       name: "Hrushikesh Emkey",
       role: "Project Lead",
       email: "hrushikesh@bristollink.com",
+      github: "https://github.com/T0mLam",
       image: "/favicon.png",
     },
     {
       name: "Tom Lam",
       role: "Lead Developer",
       email: "ye24597@bristol.ac.uk",
+      github: "https://github.com/T0mLam",
       image: "",
     },
     {
       name: "Harish Rajkumar",
       role: "Marketing Lead",
       email: "ye24597@bristol.ac.uk",
+      github: "https://github.com/T0mLam",
       image: "",
     },
   ];
@@ -53,10 +59,9 @@ export default function WhatIsLinkPage() {
     { name: "Somebody else", role: "Marketing" },
   ];
 
-
   return (
     <>
-      <div className="mx-5 mt-5 motion-opacity-in-0 motion-duration-[2s]">
+      <div className="mx-3 mt-5 motion-opacity-in-0 motion-duration-[2s]">
         <h1 className="text-3xl mt-40 lg:text-4xl ml-12 text-left text-black motion-preset-typewriter-[7]">
           What Is
           {/* <div className="border border-black mx-auto" /> */}
@@ -70,6 +75,7 @@ export default function WhatIsLinkPage() {
           Developed by UOB students, it lets you shoot your shot in less than 5
           minutes, blah blah blah.
         </p>
+        {/*
         <div className="ml-7">
           <h2 className="text-3xl mt-10 lg text-left text-black">
             How does it work?
@@ -94,6 +100,7 @@ export default function WhatIsLinkPage() {
             someone new.
           </p>
         </div>
+         */}
 
         {/* How it Works Section */}
         <div className="mt-16 p-8 mb-20">
@@ -103,29 +110,10 @@ export default function WhatIsLinkPage() {
 
           <div className="space-y-8">
             {steps.map((step, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row md:items-start gap-6 p-6 rounded-xl 
-                          bg-gradient-to-r from-neutral-50 to-pink-50 
-                          hover:from-neutral-100 hover:to-pink-100 
-                          transition-all duration-300 transform hover:scale-102 
-                          shadow-pink-100 shadow-md hover:shadow-lg hover:shadow-pink-200"
-              >
-                <div className="flex-shrink-0 p-4 bg-pink-100 rounded-full shadow-inner">
-                  {step.icon}
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-medium mb-3 text-neutral-900">
-                    {step.title}
-                  </h3>
-                  <p className="text-neutral-700 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
+              <Step key={index} {...step} />
             ))}
           </div>
-          <div className="flex flex-row justify-center md:justify-start items-left mx-10 lg:ml-7 mt-8 text-left">
+          <div className="flex flex-row justify-center md:justify-start items-left mx-10 lg:ml-7 mt-8 text-left whitespace-nowrap">
             <Button
               text="Register now!"
               backgroundColor="bg-pink-400"
@@ -144,66 +132,18 @@ export default function WhatIsLinkPage() {
           {/* Core Developers Section */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {coreDevelopers.map((dev, index) => (
-              <div 
-                key={index}
-                className="group relative overflow-hidden flex flex-col items-center p-6 rounded-xl 
-                          bg-gradient-to-br from-white to-pink-100 
-                          transition-all duration-300 hover:shadow-red-100  
-                          hover:shadow-xl hover:to-pink-200"
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-400 to-pink-600 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
-                
-                <div className="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-pink-200 
-                                group-hover:border-pink-300 transition-all 
-                                relative z-10">
-                  <img 
-                    src={dev.image} 
-                    alt={dev.name} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                <h3 className="text-xl font-medium text-neutral-900 mb-2 relative z-10">
-                  {dev.name}
-                </h3>
-                <p className="text-neutral-700 text-center mb-2 relative z-10">
-                  {dev.role}
-                </p>
-                <a 
-                  href={`mailto:${dev.email}`}
-                  className="mt-2 text-pink-600 hover:text-pink-800 text-sm relative z-10 
-                            hover:underline transition-colors duration-300"
-                >
-                  {dev.email}
-                </a>
-              </div>
+              <TeamMember key={index} {...dev} />
             ))}
           </div>
 
           {/* Additional Team Members Section */}
           <div>
             <h3 className="text-2xl text-black mb-6 text-center">
-              Extended Team
+              Special Thanks To
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+            <div className="flex justify-center gap-4 mx-auto">
               {additionalTeamMembers.map((member, index) => (
-                <div 
-                  key={index}
-                  className="group relative overflow-hidden bg-gray-100
-                            p-4 rounded-lg text-center 
-                            transition-all duration-300 
-                            transform hover:-translate-y-1 
-                            hover:shadow-md"
-                >
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-400 to-pink-600 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
-                  
-                  <p className="font-medium text-neutral-900 relative z-10">
-                    {member.name}
-                  </p>
-                  <p className="text-sm text-neutral-600 relative z-10">
-                    {member.role}
-                  </p>
-                </div>
+                <OtherMember key={index} {...member} />
               ))}
             </div>
           </div>
