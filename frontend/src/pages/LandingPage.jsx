@@ -3,15 +3,18 @@ import Button from "../components/common/Button";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export default function LandingPage() {
   useDocumentTitle("Home");
+  const { authState } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn == true) {
-      Navigate("/dashboard")
+    if (authState.isLoggedIn == true) {
+      navigate("/dashboard")
     }
-  }, [isLoggedIn, Navigate]);
+  }, [isLoggedIn, navigate]);
 
   return (
     <>
