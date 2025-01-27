@@ -32,6 +32,15 @@ const Header = () => {
         <div className="flex flex-col md:flex-row justify-between items-center transition-all duration-300 ease-in-out">
           {/* Logo and Menu Button */}
           <div className="flex items-center justify-between w-full">
+            {authState.isLoggedIn && (
+              <Link to="/dashboard" className="flex items-center">
+                <img
+                  src="/favicon.png"
+                  alt="Logo"
+                  className="h-14 w-14 rounded-full hover:saturate-0 duration-700"
+                />
+              </Link>
+            )}
             <Link to="/" className="flex items-center">
               <img
                 src="/favicon.png"
