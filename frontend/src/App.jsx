@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
@@ -19,6 +19,7 @@ import DashBoardPage from "./pages/DashboardPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
+
   return (
     <AuthProvider>
       <ObserverProvider>

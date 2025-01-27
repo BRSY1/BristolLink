@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function LandingPage() {
   useDocumentTitle("Home");
+
+  useEffect(() => {
+    if (isLoggedIn == true) {
+      Navigate("/dashboard")
+    }
+  }, [isLoggedIn, Navigate]);
 
   return (
     <>
