@@ -62,7 +62,7 @@ export default function WhatIsLinkPage() {
   return (
     <>
       <div className="mx-3 mt-5 motion-opacity-in-0 motion-duration-[2s]">
-        <h1 className="text-3xl mt-40 lg:text-4xl ml-12 text-left text-black motion-preset-typewriter-[7]">
+        <h1 className="text-3xl mt-40 lg:text-4xl ml-12 text-left text-black font-semibold font-poppins">
           What Is
           {/* <div className="border border-black mx-auto" /> */}
         </h1>
