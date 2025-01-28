@@ -1,4 +1,4 @@
-# BristolLink
+<a href="https://github.com/BRSY1/BristolLink"><img src="https://raw.githubusercontent.com/BRSY1/BristolLink/refs/heads/main/frontend/public/link_banner.png"></img></a>
 
 ## Start frontend server
 
