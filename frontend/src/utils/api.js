@@ -3,7 +3,7 @@ import axios from "axios";
 // Create an axios instance with a default config for api requests
 const api = axios.create({
   //baseURL: import.meta.env.VITE_REACT_APP_API_URL,
-  baseURL: "https://bristol-link-e9adb36fa085.herokuapp.com/api/",
+  baseURL: "https://bristollink-e1a5719dffba.herokuapp.com/api/",
   headers: {
     "Content-Type": "application/json",
   },
