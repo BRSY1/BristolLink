@@ -183,14 +183,19 @@ class SubmitCrushView(APIView):
                 # Check if there is a match
                 self.check_if_match(user, crush_email)
             else:
-                self.send_invitation_email(crush_email, crush_count)
+                ### RISHI'S CODE BELOW
+                self.send_notification_email(crush_email, crush_count)
+
+                ### TOM'S CODE BELOW
+                #self.send_invitation_email(crush_email, crush_count)
 
             return Response({"message": "Crush submitted successfully"}, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def send_notification_email(self, crush_email, crush_count):
-        message = f"You just received a request. {crush_count} person has a crush on you!"
+        ### RISHI'S CODE BELOW
+        message = f"You just received a request. {crush_count} person has a crush on you! Create an account on bristol Link now!"
         send_mail(
             subject=f"Someone has a crush on you! (from BristolLink)",
             message=message,
