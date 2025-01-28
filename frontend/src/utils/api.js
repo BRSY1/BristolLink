@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: "https://bristollink-e1a5719dffba.herokuapp.com/api/",
   headers: {
     "Content-Type": "application/json",
-  },
+  },  
 });
 
 // Add a request interceptor to add the token to the headers before making the request

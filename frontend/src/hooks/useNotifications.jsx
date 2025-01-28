@@ -6,7 +6,7 @@ export const getNotificationDetails = (type) => {
     match: {
       title: "Congratulations! You matched with you crush.",
       message: "Check the link below to see who is your match.",
-      link: "",
+      link: "/dashboard",
     },
     submission: {
       title: "Someone just submitted your email as their crush.",
