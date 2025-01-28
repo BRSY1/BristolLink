@@ -54,7 +54,7 @@ function RegisterPage() {
 
   return (
     <>
-      <div className="w-full  font-poppins min-h-screen p-5 lg:pt-20 bg-white flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
+      <div className="w-full min-h-screen p-5 lg:pt-20 bg-white flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           Register
         </h1>
@@ -100,18 +100,18 @@ function RegisterPage() {
               required
             />
 
-            <CheckboxField
-              name="agreeToPrivacy"
-              label={
-                <>
-                  I agree to the{" "}
-                  <Link to="/privacy-statement" className="font-semibold text-pink-500">
-                    privacy statement
-                  </Link>
-                </>
-              }
-              required
-            />
+              <CheckboxField
+                name="agreeToPrivacy"
+                label={
+                  <>
+                    I agree to the{" "}
+                    <Link to="/privacy-statement" className="font-semibold text-pink-500">
+                      privacy statement
+                    </Link>
+                  </>
+                }
+                required
+              />
           </div>
 
           <LoadingButton type="submit" loading={loading}>

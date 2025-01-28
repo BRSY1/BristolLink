@@ -18,7 +18,7 @@ export default function LandingPage() {
 
   return (
     <>
-      <div className="w-full  font-poppins min-h-screen flex items-center justify-center bg-white motion-opacity-in-0 motion-duration-[3s] lg:pt-20 lg:overflow-hidden">
+      <div className="w-full min-h-screen flex items-center justify-center bg-white motion-opacity-in-0 motion-duration-[3s] lg:pt-20 lg:overflow-hidden">
         <div className="flex flex-col items-center max-w-md -mt-14 lg:-mt-20">
           <img src="/logo.webp" alt="" className="w-80 lg:w-96 lg:-mt-20" />
           <div className="flex flex-col -mt-14 lg:-mt-24 gap-3">
