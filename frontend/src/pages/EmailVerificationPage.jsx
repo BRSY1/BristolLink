@@ -15,7 +15,7 @@ function EmailVerificationPage() {
 
   return (
     <>
-      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
+      <div className="font-poppins w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
         <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
           Email Verification
         </h1>
