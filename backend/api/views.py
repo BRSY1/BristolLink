@@ -195,7 +195,7 @@ class SubmitCrushView(APIView):
     
     def send_notification_email(self, crush_email, crush_count):
         ### RISHI'S CODE BELOW
-        message = f"You just received a request. {crush_count} person has a crush on you! Create an account on bristol Link now!"
+        message = f"It works You just received a request. {crush_count} person has a crush on you! Create an account on bristol Link now!"
         send_mail(
             subject=f"Someone has a crush on you! (from BristolLink)",
             message=message,
