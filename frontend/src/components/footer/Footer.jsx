@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-white py-8">
+    <footer className="bg-white py-8 font-poppins">
       <div className="w-full mx-auto px-8">
         <div className="group flex flex-col md:flex-row justify-between items-center">
           {/* Info */}

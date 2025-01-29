@@ -27,14 +27,14 @@ const Header = () => {
   });
 
   return (
-    <nav className="fixed top-4 font-poppins left-4 right-4 rounded-2xl shadow-2xl shadow-pink-200 z-10 bg-white/50 backdrop-blur-md">
+    <nav className="fixed top-4 font-poppins left-4 right-4 rounded-2xl shadow-2xl z-10 bg-white/50 backdrop-blur-md">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center transition-all duration-300 ease-in-out">
           {/* Logo and Menu Button */}
           <div className="flex items-center justify-between w-full hover:">
             <Link to="/" className="flex items-center">
               <img
-                src="/favicon.png"
+                src="/logo.webp"
                 alt="Logo"
                 className="h-14 w-14 rounded-full hover:saturate-0 duration-700"
               />
