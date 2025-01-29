@@ -1,5 +1,9 @@
 <a href="https://github.com/BRSY1/BristolLink"><img src="https://raw.githubusercontent.com/BRSY1/BristolLink/refs/heads/main/frontend/public/link_banner.png"></img></a>
 
+# BristolLink
+
+A student-developed platform for University of Bristol students to anonymously connect with their crushes during Valentine's day 2025. Submit UoB emails, wait for mutual interest, and get notified if it’s a match. Built by students, for students. ❤️📧
+
 ## Start frontend server
 
 ### Install Node.js
