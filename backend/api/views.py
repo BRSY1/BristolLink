@@ -184,6 +184,7 @@ class SubmitCrushView(APIView):
                 self.check_if_match(user, crush_email)
             else:
                 ### RISHI'S CODE BELOW
+                print("I am here!!!")
                 self.send_notification_email(crush_email, crush_count)
 
                 ### TOM'S CODE BELOW
@@ -195,6 +196,7 @@ class SubmitCrushView(APIView):
     
     def send_notification_email(self, crush_email, crush_count):
         ### RISHI'S CODE BELOW
+        print("The code is updated")
         message = f"It works You just received a request. {crush_count} person has a crush on you! Create an account on bristol Link now!"
         send_mail(
             subject=f"Someone has a crush on you! (from BristolLink)",
