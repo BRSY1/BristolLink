@@ -1,5 +1,4 @@
 name: Deploy Django to Heroku
-
 on:
   push:
     branches:
@@ -29,14 +28,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Deploy to Heroku
-        working-directory: backend
+      - name: Configure Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
         run: |
-          git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
-          git push --force heroku develop:main 
+          heroku git:remote -a $HEROKU_APP_NAME
+
+      - name: Deploy backend subdirectory to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+        run: |
+          git subtree push --prefix backend heroku develop:main || git push heroku `git subtree split --prefix backend develop`:main --force
 
       - name: Run migrations on Heroku
         env:
