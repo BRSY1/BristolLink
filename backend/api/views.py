@@ -154,6 +154,7 @@ class SubmitCrushView(APIView):
     def post(self, request):
         user = request.user
         crush_email = request.data.get("crush_email")
+        crush_name = request.data.get("crush_name")
 
         # Check if email is a valid Bristol email
         if (not crush_email or 
@@ -167,7 +168,7 @@ class SubmitCrushView(APIView):
 
         serializer = CrushSerializer(data={
             "submitter": user.email,
-            "crush_name": request.data.get("crush_name"),
+            "crush_name": crush_name,
             "crush_email": crush_email,
             "message": request.data.get("message")
         })
@@ -180,20 +181,20 @@ class SubmitCrushView(APIView):
             # Send invitation email to crush if they are not registered
             if User.objects.filter(email=crush_email).exists():
                 self.send_notification_email(
-                    crush_email, crush_count, "Someone has a crush on you!", "crush_email.html"
+                    crush_name, crush_email, crush_count, "Someone has a crush on you!", "crush_email.html"
                 )
                 # Check if there is a match
                 self.check_if_match(user, crush_email)
             else:
                 self.send_notification_email(
-                    crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html"
+                    crush_name, crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html"
                 )
 
             return Response({"message": "Crush submitted successfully"}, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def send_notification_email(self, crush_email, crush_count, mail_title, mail_template):
+    def send_notification_email(self, crush_name, crush_email, crush_count, mail_title, mail_template):
         registration_url = f"{settings.FRONTEND_BASE_URL}/register"
         home_url = f"{settings.FRONTEND_BASE_URL}/dashboard"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
@@ -202,7 +203,8 @@ class SubmitCrushView(APIView):
             "crush_count": crush_count,
             "registration_link": registration_url,
             "logo_url": logo_url,
-            "home_url": home_url
+            "home_url": home_url,
+            "crush_name": crush_name
         }
 
         html_message = render_to_string(mail_template, context)
