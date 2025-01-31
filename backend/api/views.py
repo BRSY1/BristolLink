@@ -179,47 +179,37 @@ class SubmitCrushView(APIView):
 
             # Send invitation email to crush if they are not registered
             if User.objects.filter(email=crush_email).exists():
-                self.send_notification_email(crush_email, crush_count)
+                self.send_notification_email(
+                    crush_email, crush_count, "Someone has a crush on you!", "crush_email.html"
+                )
                 # Check if there is a match
                 self.check_if_match(user, crush_email)
             else:
-                ### RISHI'S CODE BELOW
-                print("I am here!!!")
-                self.send_notification_email(crush_email, crush_count)
-
-                ### TOM'S CODE BELOW
-                #self.send_invitation_email(crush_email, crush_count)
+                self.send_notification_email(
+                    crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html"
+                )
 
             return Response({"message": "Crush submitted successfully"}, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def send_notification_email(self, crush_email, crush_count):
-        ### RISHI'S CODE BELOW
-        print("The code is updated")
-        message = f"It works You just received a request. {crush_count} person has a crush on you! Create an account on bristol Link now!"
-        send_mail(
-            subject=f"Someone has a crush on you! (from BristolLink)",
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL, 
-            recipient_list=[crush_email]
-        )
-
-    def send_invitation_email(self, crush_email, crush_count):
+    def send_notification_email(self, crush_email, crush_count, mail_title, mail_template):
         registration_url = f"{settings.FRONTEND_BASE_URL}/register"
+        home_url = f"{settings.FRONTEND_BASE_URL}/dashboard"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
 
         context = {
             "crush_count": crush_count,
             "registration_link": registration_url,
-            "logo_url": logo_url
+            "logo_url": logo_url,
+            "home_url": home_url
         }
 
-        html_message = render_to_string("invitation_email.html", context)
+        html_message = render_to_string(mail_template, context)
         plain_message = strip_tags(html_message)
 
         send_mail(
-            subject="Invitation from BristolLink",
+            subject=mail_title,
             message=plain_message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[crush_email],
@@ -282,4 +272,4 @@ class GetMatchView(ListAPIView):
 
 
 def test(request):
-    return render(request, "match_email.html")
+    return render(request, "invitation_email.html")
