@@ -154,7 +154,6 @@ class SubmitCrushView(APIView):
     def post(self, request):
         user = request.user
         crush_email = request.data.get("crush_email")
-        crush_name = request.data.get("crush_name")
 
         # Check if email is a valid Bristol email
         if (not crush_email or 
@@ -168,7 +167,7 @@ class SubmitCrushView(APIView):
 
         serializer = CrushSerializer(data={
             "submitter": user.email,
-            "crush_name": crush_name,
+            "crush_name": request.data.get("crush_name"),
             "crush_email": crush_email,
             "message": request.data.get("message")
         })
@@ -180,6 +179,8 @@ class SubmitCrushView(APIView):
 
             # Send invitation email to crush if they are not registered
             if User.objects.filter(email=crush_email).exists():
+                crush_name = User.objects.get(email=crush_email).username
+
                 self.send_notification_email(
                     crush_name, crush_email, crush_count, "Someone has a crush on you!", "crush_email.html"
                 )
