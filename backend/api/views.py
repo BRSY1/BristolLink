@@ -188,7 +188,7 @@ class SubmitCrushView(APIView):
                 self.check_if_match(user, crush_email)
             else:
                 self.send_notification_email(
-                    crush_name, crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html"
+                    "", crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html"
                 )
 
             return Response({"message": "Crush submitted successfully"}, status=status.HTTP_201_CREATED)
