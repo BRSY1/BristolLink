@@ -250,7 +250,7 @@ class NotificationView(APIView):
 
         notifications = Notification.objects.filter(
             receiver_email=request.user.email
-        ).order_by(F("created_at").desc())
+        ).order_by('-id')
 
         # Create notification objects
         serializer = NotificationSerializer(notifications, many=True)

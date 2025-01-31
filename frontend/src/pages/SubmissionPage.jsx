@@ -9,10 +9,11 @@ import api from "../utils/api";
 import InputField from "../components/common/InputField";
 import CheckboxField from "../components/common/CheckboxField";
 import LoadingButton from "../components/common/LoadingButton";
-import Header from "../components/header/Header";
+import { useNavigate } from "react-router-dom";
 
 function SubmissionPage() {
   useDocumentTitle("Submission");
+  const navigate = useNavigate();
 
   const validateFormData = (formData) => {
     const errors = {};
@@ -28,6 +29,9 @@ function SubmissionPage() {
   const onSubmit = async (formData) => {
     const response = await api.post("/crush/submit", formData);
     setSuccessMsg(response.data.message);
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 2000);
   };
 
   const { loading, errors, successMsg, setSuccessMsg, handleSubmit } =

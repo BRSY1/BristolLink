@@ -78,7 +78,7 @@ const NotificationItem = ({ notification, index }) => {
           {notification.link && (
             <a
               href={notification.link}
-              className="inline-block mt-2 text-pink-600 hover:text-pink-700 transition-colors"
+              className="font-semibold inline-block mt-2 text-pink-600 hover:text-pink-700 transition-colors"
             >
               View Details →
             </a>

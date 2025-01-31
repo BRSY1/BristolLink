@@ -53,6 +53,7 @@ function LoginPage() {
             name="email"
             placeholder="Email (ends with @bristol.ac.uk)"
             error={errors.email}
+            autoComplete="email"
             required
           />
 

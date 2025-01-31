@@ -22,7 +22,6 @@ class Crush(models.Model):
         User, 
         on_delete=models.CASCADE, 
         related_name='submitted_crushes', 
-        #to_field='email'
     )
     crush_name = pgcrypto.EncryptedCharField(
         max_length=50,
@@ -51,13 +50,11 @@ class Match(models.Model):
         User, 
         on_delete=models.CASCADE, 
         related_name='matches_as_first_user', 
-        #to_field='email'
     )
     user2 = models.ForeignKey(
         User, 
         on_delete=models.CASCADE, 
         related_name='matches_as_second_user', 
-        #to_field='email'
     )
     matched_at = pgcrypto.EncryptedDateTimeField(auto_now_add=True)
 
@@ -74,7 +71,6 @@ class Notification(models.Model):
     submitter = models.ForeignKey(
         User, 
         on_delete=models.CASCADE, 
-        #to_field='email'
     )
     receiver_email = pgcrypto.EncryptedEmailField(max_length=254)
     notification_type = pgcrypto.EncryptedCharField(
