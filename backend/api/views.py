@@ -282,4 +282,4 @@ class GetMatchView(ListAPIView):
 
 
 def test(request):
-    return render(request, "invitation_email.html")
+    return render(request, "match_email.html")
