@@ -27,8 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-%im^bb!@dq7(9-+dld5*^@5gxc^f2z9r1t(@nb00a7dqav9!_#"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
+                
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
@@ -151,13 +152,13 @@ AUTH_USER_MODEL = "api.User"
 
 
 # Email settings
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "bristollink2024@gmail.com"
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-DEFAULT_FROM_EMAIL = "BristolLink <bristollink2024@gmail.com>"
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
 
 
 # Frontend base URL (e.g., http://localhost:3000 or https://yourapp.com)

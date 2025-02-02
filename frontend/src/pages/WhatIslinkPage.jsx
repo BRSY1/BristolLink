@@ -55,7 +55,7 @@ export default function WhatIsLinkPage() {
   ];
 
   const additionalTeamMembers = [
-    { name: "Someone", role: "Marketing" },
+    { name: "Josh Jenkins", role: "Logo Designer" },
     { name: "Somebody else", role: "Marketing" },
   ];
 
@@ -128,6 +128,42 @@ export default function WhatIsLinkPage() {
           <h2 className="text-3xl text-black mb-8 pb-4 border-b border-pink-200">
             Who are we?
           </h2>
+
+          {/* Self-intro */}
+          <div className="flex flex-col md:flex-row items-center gap-12 mb-20">
+            <div className="md:w-1/4 flex justify-center items-center min-h-full">
+              <a
+                href="https://github.com/BRSY1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/brsy1.png"
+                  alt="Bristol Link Team"
+                  className="w-40 h-40 rounded-xl shadow-xl object-cover transition-all duration-1000 hover:shadow-2xl hover:shadow-pink-400 hover:scale-110"
+                />
+              </a>
+            </div>
+            <div className="w-full md:w-3/4 space-y-6">
+              <p className="leading-relaxed">
+                We are a passionate team of University of Bristol students who
+                believe in making connections easier and more accessible for
+                everyone on campus.
+              </p>
+              <p className="leading-relaxed">
+                Our journey began when we noticed how challenging it can be to
+                express interest in someone you admire from afar. We wanted to
+                create a safe, respectful, and anonymous way for students to
+                connect with their potential matches.
+              </p>
+              <p className="leading-relaxed">
+                Built with love and understanding of the student experience,
+                Bristol Link is more than just a matching service - it's a
+                platform that encourages genuine connections while respecting
+                privacy and personal boundaries.
+              </p>
+            </div>
+          </div>
 
           {/* Core Developers Section */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">

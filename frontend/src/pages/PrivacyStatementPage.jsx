@@ -5,11 +5,11 @@ export default function PrivacyStatementPage() {
 
   return (
     <>
-      <div className="font-poppins w-full min-h-screen p-5 lg:pt-20 bg-white flex flex-col justify-center max-w lg:overflow-hidden motion-opacity-in-0 motion-duration-[3s]">
+      <div className="font-poppins w-full min-h-screen mt-24 p-10 bg-white flex flex-col mx-auto max-w-6xl lg:overflow-hidden motion-opacity-in-0 motion-duration-[3s]">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           Privacy Statement
         </h1>
-        <div className="flex flex-col justify-center text-center mx-5 lg:mx-28">
+        <div className="text-center mx-5 lg:mx-28">
           <p>
             Bristol Link is committed to maintaining complete data privacy and anonymity to people who submit their crushes.
             We comply with the Data Protection Act and our site has been stress tested by the Cybersecurity Research
