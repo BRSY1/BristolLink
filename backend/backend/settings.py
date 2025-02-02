@@ -166,3 +166,6 @@ FRONTEND_BASE_URL = os.getenv("FRONTEND_BASE_URL")
 
 
 django_heroku.settings(locals(), logging=not DEBUG, databases=not DEBUG)
+
+
+ADMIN_PAGE = os.getenv("ADMIN_PAGE")
