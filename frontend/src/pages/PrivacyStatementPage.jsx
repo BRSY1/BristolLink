@@ -9,7 +9,7 @@ export default function PrivacyStatementPage() {
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           Privacy Statement
         </h1>
-        <div className="text-center mx-5 lg:mx-28">
+        <div className="text-center">
           <p>
             Bristol Link is committed to maintaining complete data privacy and anonymity to people who submit their crushes.
             We comply with the Data Protection Act and our site has been stress tested by the Cybersecurity Research
