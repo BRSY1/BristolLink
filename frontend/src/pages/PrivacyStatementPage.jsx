@@ -11,11 +11,35 @@ export default function PrivacyStatementPage() {
         </h1>
         <div className="text-center">
           <p>
-            Bristol Link is committed to maintaining complete data privacy and anonymity to people who submit their crushes.
-            We comply with the Data Protection Act and our site has been stress tested by the Cybersecurity Research
-            team in bristol.
-            As far as our knowledge goes, your data is completely safe and we are committed to address any data security breaches
-            as fast as possible. Include other fancy things to inspire confidence.
+            Bristol Link is committed to ensuring your data privacy. We comply
+            with the Data Protection Act and have partnered with the
+            Cybersecurity Research team at Bristol University to test our
+            platform's security. Your data is safe with us, and we will act
+            swiftly in case of any security issues.
+          </p>
+
+          <h2 className="text-xl font-semibold text-pink-400 mt-6 mb-3">
+            User Guidelines
+          </h2>
+          <ul className="list-inside list-disc text-center mx-auto max-w-prose">
+            <li>
+              <strong>Respect privacy</strong> - keep crushes anonymous until a
+              match is made.
+            </li>
+            <li>
+              <strong>Be respectful</strong> - harassment will result in
+              suspension.
+            </li>
+            <li>
+              <strong>Report issues</strong> - contact us if you encounter
+              problems.
+            </li>
+          </ul>
+
+          <p className="mt-6">
+            By using Bristol Link, you agree to follow these rules and our data
+            privacy practices. Thank you for helping us create a safe and
+            enjoyable platform!
           </p>
         </div>
       </div>

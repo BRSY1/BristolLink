@@ -45,18 +45,14 @@ export default function WhatIsLinkPage() {
       github: "https://github.com/T0mLam",
       image: "",
     },
-    {
-      name: "Harish Rajkumar",
-      role: "Marketing Lead",
-      email: "ye24597@bristol.ac.uk",
-      github: "https://github.com/T0mLam",
-      image: "",
-    },
   ];
 
   const additionalTeamMembers = [
+    { name: "Harish Rajkumar", role: "Marketing Coordinator" },
+    { name: "Joseph Hallett", role: "Data Security Adviser" },
     { name: "Josh Jenkins", role: "Logo Designer" },
-    { name: "Somebody else", role: "Marketing" },
+    { name: "Matthew Edwards", role: "Data Security Adviser" },
+    { name: "Shubham Kulkarni", role: "Marketing Coordinator" },
   ];
 
   return (
@@ -70,10 +66,15 @@ export default function WhatIsLinkPage() {
         <img src="/logo.webp" alt="" className="w-80 -mt-20" />
         <div className="border border-neutral-500 ml-7 -mt-20 mr-10 md:mr-72" />
         <p className=" text-lg lg:text-base ml-7 mr-10 mt-5 lg:mr-16">
-          Bristol Link is a project which aims to connect University of Bristol
-          students with their crush, in an easy, anonymous way. <br />
-          Developed by UOB students, it lets you shoot your shot in less than 5
-          minutes, blah blah blah.
+          <b>
+            BristolL<span className="text-pink-500">i</span>nk
+          </b>{" "}
+          is a fun and easy way for University of Bristol students to connect
+          with their crushes, all while staying anonymous. Developed by UOB
+          students for UOB students, it allows you to shoot your shot in less
+          than 5 minutes. Simply sign up with your university email, drop the
+          name of your crush, and see if there's a match — no awkwardness, just
+          a chance to connect!
         </p>
         {/*
         <div className="ml-7">
@@ -146,30 +147,36 @@ export default function WhatIsLinkPage() {
             </div>
             <div className="w-full md:w-3/4 space-y-6">
               <p className="leading-relaxed">
-                We are a passionate team of University of Bristol students who
-                believe in making connections easier and more accessible for
-                everyone on campus.
+                We're a passionate group of first-year computer science students
+                at the University of Bristol who just want to make meeting
+                people on campus easier.
               </p>
               <p className="leading-relaxed">
-                Our journey began when we noticed how challenging it can be to
-                express interest in someone you admire from afar. We wanted to
-                create a safe, respectful, and anonymous way for students to
-                connect with their potential matches.
+                It all started when we realized how awkward it can be to show
+                interest in someone from a distance. So, we built{" "}
+                <b>BristolLink</b>, a matchmaking platform launching on
+                Valentine's Day 2025. It's a safe, anonymous, and fun way for
+                students to connect with potential matches.
               </p>
               <p className="leading-relaxed">
-                Built with love and understanding of the student experience,
-                Bristol Link is more than just a matching service - it's a
-                platform that encourages genuine connections while respecting
-                privacy and personal boundaries.
+                BristolLink isn't just another dating app—it's designed with
+                students in mind, making it easier to form real connections
+                while keeping things respectful and private. We had a blast
+                building it, and we hope you all love the app!
               </p>
             </div>
           </div>
 
           {/* Core Developers Section */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {coreDevelopers.map((dev, index) => (
-              <TeamMember key={index} {...dev} />
-            ))}
+          <div className="mb-16">
+            <h2 className="text-3xl text-black mb-8 text-center">
+              Core Developers
+            </h2>
+            <div className="flex flex-col md:flex-row items-center justify-center flex-wrap gap-6 ">
+              {coreDevelopers.map((dev, index) => (
+                <TeamMember key={index} {...dev} />
+              ))}
+            </div>
           </div>
 
           {/* Additional Team Members Section */}
@@ -177,7 +184,7 @@ export default function WhatIsLinkPage() {
             <h3 className="text-2xl text-black mb-6 text-center">
               Special Thanks To
             </h3>
-            <div className="flex justify-center gap-4 mx-auto">
+            <div className="flex flex-row flex-wrap justify-center items-center gap-3">
               {additionalTeamMembers.map((member, index) => (
                 <OtherMember key={index} {...member} />
               ))}
