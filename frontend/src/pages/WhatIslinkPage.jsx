@@ -34,8 +34,8 @@ export default function WhatIsLinkPage() {
     {
       name: "Hrushikesh Emkey",
       role: "Project Lead",
-      email: "hrushikesh@bristollink.com",
-      github: "https://github.com/T0mLam",
+      email: "fw24131@bristol.ac.uk",
+      github: "https://github.com/rsh-e",
       image: "/favicon.png",
     },
     {
@@ -43,15 +43,15 @@ export default function WhatIsLinkPage() {
       role: "Lead Developer",
       email: "ye24597@bristol.ac.uk",
       github: "https://github.com/T0mLam",
-      image: "",
+      image: "/favicon.png",  
     },
   ];
 
   const additionalTeamMembers = [
     { name: "Harish Rajkumar", role: "Marketing Coordinator" },
-    { name: "Joseph Hallett", role: "Data Security Adviser" },
+    { name: "Joseph Hallett", role: "Data Security Adviser", website: "https://www.bristol.ac.uk/people/person/Joseph-Hallett-35db48d2-7197-42eb-a402-814e11cc524e/" },
     { name: "Josh Jenkins", role: "Logo Designer" },
-    { name: "Matthew Edwards", role: "Data Security Adviser" },
+    { name: "Matthew Edwards", role: "Data Security Adviser", website: "https://www.bristol.ac.uk/people/person/Matthew-Edwards-3f509a5b-bc70-486c-b09b-e0f00da4dcc4/" },
     { name: "Shubham Kulkarni", role: "Marketing Coordinator" },
   ];
 
@@ -76,32 +76,6 @@ export default function WhatIsLinkPage() {
           name of your crush, and see if there's a match — no awkwardness, just
           a chance to connect!
         </p>
-        {/*
-        <div className="ml-7">
-          <h2 className="text-3xl mt-10 lg text-left text-black">
-            How does it work?
-          </h2>
-          <p className="text-lg lg:text-base mt-5 mr-10 lg:mr-16">
-            Let’s say you have a special someone in mind. Find their UOB email
-            by typing it into Outlook, and put it into Bristol Link. They’ll
-            receive an email from us, telling them that somebody (ahem) wants a
-            date, but they aren’t told your name or information.
-            <br />
-            <br />
-            Supposing they are interested, your crush will have to log into Link
-            themselves, and enter an email of their own.
-            <br />
-            <br />
-            If the emails (which are encrypted) are a match, you both receive
-            confirmation, and it’s the beginning of your love story.
-            <br />
-            <br />
-            Sometimes, it just isn’t meant to be, and if they enter another
-            email instead, you will be notified, and can have another shot at
-            someone new.
-          </p>
-        </div>
-         */}
 
         {/* How it Works Section */}
         <div className="mt-16 p-8 mb-20">
