@@ -41,8 +41,11 @@ class RegisterView(APIView):
         if not email or not email.endswith("@bristol.ac.uk"):
             return Response({"message": "Invalid email address"}, status=status.HTTP_400_BAD_REQUEST)
         
-        if User.objects.filter(email=email).exists():
-            return Response({"message": "You have already registered an account."}, status=status.HTTP_400_BAD_REQUEST)
+        user = User.objects.filter(email=email).first()
+        if user:
+            if user.is_verified:
+                return Response({"message": "You have already registered an account."}, status=status.HTTP_400_BAD_REQUEST)
+            user.delete()
         
         if not self.validate_password(password):
             return Response({"message": "Invalid password."}, status=status.HTTP_400_BAD_REQUEST)
@@ -99,10 +102,14 @@ class EmailVerificationView(APIView):
         try:
             # Verify user and create token
             user = User.objects.get(verification_code=code)
-            user.is_verified = True
-            user.save()
             
-            token = Token.objects.create(user=user)
+            if user.is_verified:
+                token = Token.objects.get(user__email=user.email)
+            else:
+                user.is_verified = True
+                user.save()
+                token = Token.objects.create(user=user)
+
             user_serializer = UserSerializer(user)
 
             return Response({"token": token.key, "message": "Email verified successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
@@ -125,7 +132,7 @@ class LoginView(APIView):
             if not check_password(password, user.password):
                 return Response({"message": "Invalid password"}, status=status.HTTP_400_BAD_REQUEST)
             
-            token, created = Token.objects.get_or_create(user__email=user.email)
+            token = Token.objects.get(user__email=user.email)
             user_serializer = UserSerializer(user)
 
             return Response({"token": token.key, "message": "Logged in successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
