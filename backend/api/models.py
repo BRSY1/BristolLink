@@ -66,12 +66,10 @@ class Notification(models.Model):
     NOTIFICATION_TYPES = [
         ('submission', 'Crush Submission'),
         ('match', 'Match Found'),
+        ("rejection", "Crush Rejection"),
     ]
 
-    submitter = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE, 
-    )
+    submitter_email = pgcrypto.EncryptedEmailField(max_length=254, blank=True, null=True)
     receiver_email = pgcrypto.EncryptedEmailField(max_length=254)
     notification_type = pgcrypto.EncryptedCharField(
         max_length=25,
@@ -81,7 +79,7 @@ class Notification(models.Model):
     created_at = pgcrypto.EncryptedDateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.receiver_email} - {self.notification_type}"
+        return f"{self.receiver_email} - {self.notification_type} - {self.created_at}"
 
 
 # The staff email blacklist

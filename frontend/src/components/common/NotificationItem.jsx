@@ -1,11 +1,13 @@
 import React from "react";
 import { PiConfetti, PiBell } from "react-icons/pi";
 import { LuSendHorizontal } from "react-icons/lu";
+import { FaRegSadTear } from "react-icons/fa";
 
 const getNotificationIcon = (type) => {
   const icons = {
     match: PiConfetti,
     submission: LuSendHorizontal,
+    rejection: FaRegSadTear,
     default: PiBell,
   };
   const IconComponent = icons[type] || icons.default;
@@ -80,7 +82,7 @@ const NotificationItem = ({ notification, index }) => {
               href={notification.link}
               className="font-semibold inline-block mt-2 text-pink-600 hover:text-pink-700 transition-colors"
             >
-              View Details →
+              {notification.notification_type === "match" ? "View Details →" : "Try Again →"}
             </a>
           )}
         </div>

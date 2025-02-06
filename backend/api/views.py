@@ -22,7 +22,8 @@ from .models import (
     User, 
     Crush,
     Match,
-    Notification
+    Notification,
+    Blacklist
 )
 from .serializers import (
     UserSerializer,
@@ -38,7 +39,9 @@ class RegisterView(APIView):
         password = request.data.get("password")
 
         # Check if email is a valid Bristol email
-        if not email or not email.endswith("@bristol.ac.uk"):
+        if (not email or 
+            not email.endswith("@bristol.ac.uk") or
+            Blacklist.objects.filter(email=email).exists()):
             return Response({"message": "Invalid email address"}, status=status.HTTP_400_BAD_REQUEST)
         
         user = User.objects.filter(email=email).first()
@@ -165,13 +168,22 @@ class SubmitCrushView(APIView):
         # Check if email is a valid Bristol email
         if (not crush_email or 
             not crush_email.endswith("@bristol.ac.uk") or
-            crush_email == user.email):
+            crush_email == user.email or 
+            Blacklist.objects.filter(email=crush_email).exists()):
             return Response({"message": "Invalid email"}, status=status.HTTP_400_BAD_REQUEST)
         
         # Create new crush object if the user has not already submitted a crush
         if Crush.objects.filter(submitter__email=user.email).exists():
             return Response({"message": "You have already submitted a crush"}, status=status.HTTP_400_BAD_REQUEST)
 
+        # Send rejection email to user immediately if their crush already has a match
+        if Match.objects.filter(Q(user1__email=crush_email) | Q(user2__email=crush_email)).exists():
+            Notification.objects.create(
+                receiver_email=user.email,
+                notification_type='rejection',
+            )
+            return Response({"message": "Crush submitted"}, status=status.HTTP_200_OK)
+        
         serializer = CrushSerializer(data={
             "submitter": user.email,
             "crush_name": request.data.get("crush_name"),
@@ -231,7 +243,20 @@ class SubmitCrushView(APIView):
             crush = User.objects.get(email=crush_email)
             Match.objects.create(user1=user, user2=crush)
 
+            # Remove all other submissions to the matched user
+            self.reject_other_submissions(user, crush)
+            self.reject_other_submissions(crush, user)
 
+    def reject_other_submissions(self, user, crush):
+        for other in Crush.objects.filter(crush_email=user.email):
+            if other.submitter.email != crush.email:
+                Notification.objects.create(
+                    receiver_email=other.submitter.email,
+                    notification_type='rejection',
+                )
+                other.delete()
+
+            
 class GetCrushView(ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]

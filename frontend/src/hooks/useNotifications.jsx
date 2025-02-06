@@ -13,6 +13,12 @@ export const getNotificationDetails = (type) => {
       message:
         "Someone just submitted your email as their crush. Their identity and messages will stay anonymous.",
     },
+    rejection: {
+      title: "No Match This Time.",
+      message:
+        "Unfortunately, your crush has submitted another person. Keep your spirits up! We will offer you another chance.",
+      link: "/submit",
+    },
   };
   return details[type];
 };

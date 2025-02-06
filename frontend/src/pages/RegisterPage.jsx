@@ -45,7 +45,7 @@ function RegisterPage() {
     };
     await api.post("/register", requestData);
     setSuccessMsg(
-      "A validation email has sent to your email address " + requestData.email
+      "A verification email has sent to your email address " + requestData.email
     );
   };
 

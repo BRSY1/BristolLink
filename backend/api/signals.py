@@ -35,7 +35,7 @@ def send_match_email(user, crush):
 def notify_crush_submission(sender, instance, created, **kwargs):
     if created:
         Notification.objects.create(
-            submitter=instance.submitter,
+            submitter_email=instance.submitter.email,
             receiver_email=instance.crush_email,
             notification_type='submission',
             created_at=instance.created_at
@@ -47,14 +47,14 @@ def notify_match(sender, instance, created, **kwargs):
     if created:
         # Notify user1
         Notification.objects.create(
-            submitter=instance.user2,
+            submitter_email=instance.user2.email,
             receiver_email=instance.user1.email,
             notification_type='match',
             created_at=instance.matched_at
         )
         # Notify user2
         Notification.objects.create(
-            submitter=instance.user1,
+            submitter_email=instance.user1.email,
             receiver_email=instance.user2.email,
             notification_type='match',
             created_at=instance.matched_at

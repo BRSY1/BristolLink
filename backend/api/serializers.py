@@ -42,4 +42,4 @@ class CrushSerializer(serializers.ModelSerializer):
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
-        exclude = ["submitter"]
+        exclude = ["submitter_email"]
