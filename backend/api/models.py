@@ -82,3 +82,11 @@ class Notification(models.Model):
 
     def __str__(self):
         return f"{self.receiver_email} - {self.notification_type}"
+
+
+# The staff email blacklist
+class Blacklist(models.Model):
+    email = pgcrypto.EncryptedEmailField(max_length=254)
+
+    def __str__(self):
+        return f"{self.email}"
