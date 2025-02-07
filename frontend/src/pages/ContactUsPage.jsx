@@ -41,7 +41,7 @@ export default function ContactUsPage() {
                 href="mailto:bristollink2024@gmail.com"
                 className="text-pink-500 hover:underline hover:cursor-pointer font-medium"
               >
-                bristollink2024@gmail.com
+                admin@bristollink.uk
               </a>
             </div>
 
