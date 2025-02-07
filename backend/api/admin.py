@@ -4,7 +4,8 @@ from .models import (
     User,
     Crush, 
     Match,
-    Notification
+    Notification,
+    Blacklist
 )
 
 # Register your models here.
@@ -12,3 +13,4 @@ admin.site.register(User)
 admin.site.register(Crush)
 admin.site.register(Match)
 admin.site.register(Notification)
+admin.site.register(Blacklist)
