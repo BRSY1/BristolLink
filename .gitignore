@@ -87,6 +87,5 @@ local_settings.py
 
 .env
 db.sqlite3
-blacklist.json
 staff_email.csv
 scripts/
