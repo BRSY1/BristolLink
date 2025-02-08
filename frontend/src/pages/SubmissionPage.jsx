@@ -31,7 +31,7 @@ function SubmissionPage() {
     setSuccessMsg(response.data.message);
     setTimeout(() => {
       navigate("/dashboard");
-    }, 2000);
+    }, 1000);
   };
 
   const { loading, errors, successMsg, setSuccessMsg, handleSubmit } =
