@@ -7,7 +7,7 @@ export default function ContactUsPage() {
 
   return (
     <>
-      <div className="w-full font-poppins min-h-screen mt-24 bg-white flex flex-col pt-10 px-5 max-w-2xl mx-auto">
+      <div className="w-full font-poppins min-h-screen mt-24 flex flex-col pt-10 px-5 max-w-2xl mx-auto">
         <div className="text-center mb-8 motion-opacity-in-0 motion-duration-[3s]">
           <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">Contact Us</h1>
 

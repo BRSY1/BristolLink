@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-white py-8 font-poppins">
+    <footer className="py-8 font-poppins">
       <div className="w-full mx-auto px-8">
         <div className="group flex flex-col md:flex-row justify-between items-center">
           {/* Info */}
@@ -41,7 +41,7 @@ function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-6 pt-6 text-sm border-t border-pink-100 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-6 pt-6 text-sm border-t border-pink-800/40 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <nav className="flex space-x-4 intersect:motion-preset-blur-right-md intersect-once">
               <Link

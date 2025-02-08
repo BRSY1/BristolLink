@@ -99,7 +99,7 @@ export default function WhatIsLinkPage() {
         </div>
 
         {/* Team Section */}
-        <div className="mt-16 p-8 bg-white mb-20">
+        <div className="mt-16 p-8 mb-20">
           <h2 className="text-3xl text-black mb-8 pb-4 border-b border-pink-200">
             Who are we?
           </h2>

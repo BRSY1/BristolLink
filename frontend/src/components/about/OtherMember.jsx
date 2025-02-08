@@ -30,7 +30,7 @@ const OtherMember = ({
 
   return (
     <div
-      className="group relative overflow-hidden bg-white 
+      className="group relative overflow-hidden bg-white/50 
       p-5 rounded-xl text-center border border-pink-100
       transition-all duration-300 transform hover:-translate-y-2
       hover:shadow-xl hover:shadow-pink-200/50 w-64"

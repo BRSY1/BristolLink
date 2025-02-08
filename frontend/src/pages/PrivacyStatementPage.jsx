@@ -5,7 +5,7 @@ export default function PrivacyStatementPage() {
 
   return (
     <>
-      <div className="font-poppins w-full min-h-screen mt-24 p-10 bg-white flex flex-col mx-auto max-w-6xl lg:overflow-hidden motion-opacity-in-0 motion-duration-[3s]">
+      <div className="font-poppins w-full min-h-screen mt-24 p-10 flex flex-col mx-auto max-w-6xl lg:overflow-hidden motion-opacity-in-0 motion-duration-[3s]">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           Privacy Statement
         </h1>

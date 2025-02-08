@@ -3,8 +3,11 @@ import { AuthContext } from "../../context/AuthContext";
 import DesktopNavItem from "./DesktopNavItem";
 import MobileNavItem from "./MobileNavItem";
 import { MdClose, MdMenu } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbHome } from "react-icons/tb";
+import { MdNotificationsNone } from "react-icons/md";
+import useNotifications from "../../hooks/useNotifications";
+import NotificationIcon from "./NotificationIcon";
 
 const pages = [
   { title: "Register", path: "/register" },
@@ -18,6 +21,8 @@ const pages = [
 const Header = () => {
   const { authState } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const filteredPages = pages.filter((page) => {
     if (authState.isLoggedIn) {
@@ -41,16 +46,9 @@ const Header = () => {
             </Link>
 
             <div className="md:hidden flex items-end gap-4">
-              {/* Home icon for mobile */}
-              {/* We don't need  */}
-              {/* {authState.isLoggedIn && (
-                <Link to="/dashboard">
-                  <TbHome
-                    className="text-gray-700 h-6 w-6 hover:text-pink-600 focus:outline-none"
-                    onClick={() => setIsOpen(false)}
-                  />
-                </Link>
-              )} */}
+              {authState.isLoggedIn && (
+                <NotificationIcon />
+              )}
 
               {/* Menu icon for mobile */}
               <button
@@ -68,14 +66,12 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* {authState.isLoggedIn && (
-              <Link to="/dashboard">
-                <TbHome
-                  className="mx-3 text-gray-700 h-5 w-5 hover:text-pink-700 focus:outline-none"
-                  onClick={() => setIsOpen(false)}
-                />
-              </Link>
-            )} */}
+            {authState.isLoggedIn && (
+              <DesktopNavItem
+                title={<NotificationIcon />}
+                path="/notifications"
+              />
+            )}
             {filteredPages.map((page, index) => (
               <DesktopNavItem key={index} title={page.title} path={page.path} />
             ))}

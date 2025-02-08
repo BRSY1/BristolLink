@@ -9,6 +9,7 @@ export default {
       animation: {
         "delayed-overflow-hidden": "delayed-overflow-hidden 1s forwards",
         gradient: "gradient 10s ease infinite",
+        float: "float 8s ease-in-out infinite",
       },
       keyframes: {
         "delayed-overflow-hidden": {
@@ -22,6 +23,18 @@ export default {
           },
           "50%": {
             "background-position": "100% 50%",
+          },
+        },
+        float: {
+          "0%, 100%": {
+            transform: "translateY(0) rotate(0deg)",
+            opacity: 0.25,
+            filter: "hue-rotate(0deg)"
+          },
+          "50%": {
+            transform: "translateY(-80px) rotate(30deg)",
+            opacity: 0.5,
+            filter: "hue-rotate(10deg)"
           },
         },
       },

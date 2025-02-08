@@ -32,9 +32,9 @@ const TeamMember = ({
   return (
     <div
       className="group relative overflow-hidden flex flex-col items-center p-6 rounded-2xl 
-      bg-gradient-to-br from-white to-pink-50 shadow-lg
+      bg-gradient-to-br from-white/80 to-pink-50/80 shadow-lg
       transition-all duration-300 hover:shadow-2xl hover:shadow-pink-200 
-      hover:to-pink-100 max-w-lg w-full mx-auto"
+      hover:to-pink-100/90 max-w-lg w-full mx-auto"
     >
       <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-pink-400 to-pink-600 
         transform scale-x-0 group-hover:scale-x-100 origin-left 

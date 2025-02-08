@@ -54,7 +54,7 @@ function RegisterPage() {
 
   return (
     <>
-      <div className="font-poppins w-full min-h-screen p-5 lg:pt-20 bg-white flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
+      <div className="font-poppins w-full min-h-screen p-5 lg:pt-20 flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           Register
         </h1>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../utils/api";
+import { useLocation } from "react-router-dom";
 
 export const getNotificationDetails = (type) => {
   const details = {
@@ -27,30 +28,31 @@ const useNotifications = (markedAsRead) => {
   const [loading, setLoading] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
+  const location = useLocation();
+
+  const fetchNotifications = async () => {
+    setLoading(true);
+    setErrorMsg("");
+
+    try {
+      const params = {};
+      if (markedAsRead !== undefined) {
+        params.markedAsRead = markedAsRead;
+      }
+      const response = await api.get("/notifications", { params });
+      setNotifications(response.data);
+    } catch (err) {
+      setErrorMsg("Failed to fetch notifications from database");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchNotifications = async () => {
-      setLoading(true);
-      setErrorMsg("");
-
-      try {
-        const params = {};
-        if (markedAsRead !== undefined) {
-          params.markedAsRead = markedAsRead;
-        }
-        const response = await api.get("/notifications", { params });
-        setNotifications(response.data);
-      } catch (err) {
-        setErrorMsg("Failed to fetch notifications from database");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchNotifications();
-  }, []);
+  }, [location.pathname]);
 
-  return { loading, notifications, errorMsg };
+  return { loading, notifications, fetchNotifications, errorMsg };
 };
 
 export default useNotifications;

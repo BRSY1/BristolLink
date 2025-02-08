@@ -3,7 +3,7 @@ import React from "react";
 const Step = ({ icon, title, description }) => (
   <div
     className="flex flex-col md:flex-row md:items-start gap-6 p-6 rounded-xl 
-                  bg-gradient-to-r from-neutral-50 to-pink-50 
+                  bg-gradient-to-r from-neutral-50/70 to-pink-50/70 
                   hover:from-neutral-100 hover:to-pink-100 
                   transition-all duration-300 transform hover:scale-102 
                   shadow-pink-100 shadow-md hover:shadow-lg hover:shadow-pink-200"

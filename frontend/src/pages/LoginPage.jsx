@@ -42,7 +42,7 @@ function LoginPage() {
 
   return (
     <>
-      <div className="font-poppins w-full h-screen p-5 bg-white flex flex-col justify-center max-w-md mx-auto">
+      <div className="font-poppins w-full h-screen p-5 flex flex-col justify-center max-w-md mx-auto">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 lg:mb-5 text-center">
           Login
         </h1>
