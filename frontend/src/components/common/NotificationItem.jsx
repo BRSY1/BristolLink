@@ -53,7 +53,7 @@ const NotificationItem = ({ notification, index }) => {
     <div
       className={`
         group w-full p-4 mb-4 rounded-lg shadow-sm
-        ${notification.is_read ? "bg-white" : "bg-pink-50"}
+        ${notification.is_read ? "bg-white/60" : "bg-pink-50/60"}
         border-l-4 border-l-pink-500
         hover: shadow-md transition-all duration-300
         motion-preset-blur-up-md motion-duration-[1s] 

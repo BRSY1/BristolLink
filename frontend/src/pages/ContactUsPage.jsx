@@ -28,7 +28,7 @@ export default function ContactUsPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg shadow-pink-300 p-8 motion-opacity-in-0 motion-duration-[3s]">
+        <div className="bg-white/50 rounded-lg shadow-lg shadow-pink-300 p-8 motion-opacity-in-0 motion-duration-[3s]">
           <div className="flex flex-col gap-6 text-center text-gray-700">
             <p className="text-lg">
               We'd love to hear your feedback, questions, concerns and anything

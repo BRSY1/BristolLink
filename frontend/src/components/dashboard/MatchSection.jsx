@@ -8,7 +8,7 @@ const MatchSection = ({ match, onClickViewDetails }) => {
       className={`${
         match
           ? "from-pink-500 to-purple-200 shadow-purple-200 bg-[length:200%_200%] animate-gradient"
-          : "from-white to-pink-50 shadow-red-200"
+          : "from-white/70 to-pink-50/70 shadow-red-200"
       } 
     bg-gradient-to-br p-6 rounded-2xl shadow-lg text-white relative w-full h-full`}
     >

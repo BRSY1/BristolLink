@@ -28,12 +28,12 @@ export default {
         float: {
           "0%, 100%": {
             transform: "translateY(0) rotate(0deg)",
-            opacity: 0.25,
+            opacity: 0.15,
             filter: "hue-rotate(0deg)"
           },
           "50%": {
-            transform: "translateY(-80px) rotate(30deg)",
-            opacity: 0.5,
+            transform: "translateY(-50px) rotate(20deg)",
+            opacity: 0.25,
             filter: "hue-rotate(10deg)"
           },
         },
