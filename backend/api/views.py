@@ -271,7 +271,7 @@ class SubmitCrushView(APIView):
                     mail_template="rejection_email.html", 
                     crush_email=other.submitter.email,
                     crush_name=other.submitter.username,
-                    user_name=crush.name
+                    user_name=user.username
                 )
                 Notification.objects.create(
                     receiver_email=other.submitter.email,
