@@ -43,15 +43,25 @@ export default function WhatIsLinkPage() {
       role: "Lead Developer",
       email: "ye24597@bristol.ac.uk",
       github: "https://github.com/T0mLam",
-      image: "/favicon.png",  
+      image: "/favicon.png",
     },
   ];
 
   const additionalTeamMembers = [
     { name: "Harish Rajkumar", role: "Marketing Coordinator" },
-    { name: "Joseph Hallett", role: "Data Security Adviser", website: "https://www.bristol.ac.uk/people/person/Joseph-Hallett-35db48d2-7197-42eb-a402-814e11cc524e/" },
+    {
+      name: "Joseph Hallett",
+      role: "Data Security Adviser",
+      website:
+        "https://www.bristol.ac.uk/people/person/Joseph-Hallett-35db48d2-7197-42eb-a402-814e11cc524e/",
+    },
     { name: "Josh Jenkins", role: "Logo Designer" },
-    { name: "Matthew Edwards", role: "Data Security Adviser", website: "https://www.bristol.ac.uk/people/person/Matthew-Edwards-3f509a5b-bc70-486c-b09b-e0f00da4dcc4/" },
+    {
+      name: "Matthew Edwards",
+      role: "Data Security Adviser",
+      website:
+        "https://www.bristol.ac.uk/people/person/Matthew-Edwards-3f509a5b-bc70-486c-b09b-e0f00da4dcc4/",
+    },
     { name: "Shubham Kulkarni", role: "Marketing Coordinator" },
   ];
 
@@ -122,14 +132,21 @@ export default function WhatIsLinkPage() {
             <div className="w-full md:w-3/4 space-y-6">
               <p className="leading-relaxed">
                 We're a passionate group of first-year computer science students
-                at the University of Bristol who just want to make meeting
-                people on campus easier.
+                at the University of Bristol.
               </p>
               <p className="leading-relaxed">
                 It all started when we realized how awkward it can be to show
-                interest in someone from a distance. So, we built{" "}
-                <b>BristolLink</b>, a matchmaking platform launching on
-                Valentine's Day 2025. It's a safe, anonymous, and fun way for
+                interest in someone from a distance. Inspire by{" "}
+                <a
+                  href="https://stanforddaily.com/2020/08/07/new-stanford-link-website-connects-students-with-mutual-crushes/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-400 font-bold"
+                >
+                  Link
+                </a>
+                , we built <b>BristolLink</b>, a matchmaking platform launching
+                on Valentine's Day 2025. It's a safe, anonymous, and fun way for
                 students to connect with potential matches.
               </p>
               <p className="leading-relaxed">

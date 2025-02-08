@@ -29,7 +29,7 @@ function NotificationPage() {
 
         <div className="space-y-5">
           {notifications.length === 0 ? (
-            <div className="text-center py-12 bg-gray-50/50 shadow-md rounded-2xl">
+            <div className="text-center py-12 bg-gray-50/50 shadow-sm rounded-2xl">
               <PiBell className="w-12 h-12 text-gray-300 mx-auto mb-3" />
               <p className="text-gray-500">No notifications to display</p>
             </div>

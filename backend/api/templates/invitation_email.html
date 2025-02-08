@@ -145,7 +145,7 @@
         </div>
 
         <div class="message-box">
-          <p>Hi there,</p>
+          <p>Hi there 👋,</p>
           <p>
             Exciting news! Someone on BristolLink has expressed interest in you.
             You have received <b>{{ crush_count }}</b> crush request(s) in
@@ -155,7 +155,9 @@
         </div>
 
         <center>
-          <a href="{{ registration_link }}" class="button">Register an account</a>
+          <a href="{{ registration_link }}" class="button"
+            >Register an account</a
+          >
         </center>
 
         <div class="about-section">
@@ -172,11 +174,6 @@
               between.
             </li>
             <li>
-              <b>User-Centric:</b> Your experience is at the heart of everything
-              we do. We continuously improve our platform based on your feedback
-              and needs.
-            </li>
-            <li>
               <b>Safe and Inclusive:</b> We prioritize creating a safe,
               welcoming space for everyone, free from judgment or
               discrimination.
@@ -188,8 +185,9 @@
           </ul>
           <p>
             We're thrilled to be part of your journey and can't wait to see the
-            connections you make!
+            connections you make! 
           </p>
+          <a href={{ about_url }}>Know more about us</a>
         </div>
 
         <div class="data-section">
@@ -206,13 +204,13 @@
             </li>
             <li>
               <b>Transparency:</b> We only collect data necessary to provide you
-              with the best experience on BristolLink. You can review and update
-              your information anytime in your account settings.
+              with the best experience on BristolLink.
             </li>
             <li>
-              <b>Control:</b> You have full control over your data. If you ever
-              decide to delete your account, all your information will be
-              permanently removed from our systems.
+              <b>Control:</b> If you ever decide to delete your account, all
+              your information will be permanently removed from our systems.
+              Your data will be automatically deleted in March after Valentine's
+              day 2025.
             </li>
             <li>
               <b>No Third-Party Sharing:</b> We do not sell or share your data
@@ -228,10 +226,8 @@
         <p>
           Remember: BristolLink is all about creating meaningful connections.
           Take your time to explore and respond authentically. If you have any
-          questions or concerns, our support team is here to help at
-          <a href="mailto:bristollink2024@gmail.com"
-            >bristollink2024@gmail.com</a
-          >.
+          questions or concerns, our
+          <a href="{{ support_email }}">support team</a> is here to help.
         </p>
 
         <div class="signature">

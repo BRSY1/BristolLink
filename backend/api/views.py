@@ -85,7 +85,8 @@ class RegisterView(APIView):
         context = {
             "recipient_name": new_user.username,
             "activation_link": verification_url,
-            "logo_url": logo_url
+            "logo_url": logo_url,
+            "support_email": f"mailto:{settings.EMAIL_HOST_USER}"
         }
 
         html_message = render_to_string("verification_email.html", context)
@@ -182,6 +183,13 @@ class SubmitCrushView(APIView):
                 receiver_email=user.email,
                 notification_type='rejection',
             )
+            self.send_notification_email(
+                mail_title="You just received an update on your submission", 
+                mail_template="rejection_email.html", 
+                crush_email=user.email,
+                crush_name=user.username,
+                user_name=request.data.get("crush_name")
+            )
             return Response({"message": "Crush submitted"}, status=status.HTTP_200_OK)
         
         serializer = CrushSerializer(data={
@@ -214,9 +222,12 @@ class SubmitCrushView(APIView):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def send_notification_email(self, crush_name, crush_email, crush_count, mail_title, mail_template):
+    def send_notification_email(self, crush_name="", crush_email="", crush_count=0, mail_title="", mail_template="", user_name=""):
         registration_url = f"{settings.FRONTEND_BASE_URL}/register"
         home_url = f"{settings.FRONTEND_BASE_URL}/dashboard"
+        about_url = f"{settings.FRONTEND_BASE_URL}/what-is-link"
+        privacy_policy_url = f"{settings.FRONTEND_BASE_URL}/privacy-statement"
+        resubmit_url = f"{settings.FRONTEND_BASE_URL}/submit"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
 
         context = {
@@ -224,7 +235,12 @@ class SubmitCrushView(APIView):
             "registration_link": registration_url,
             "logo_url": logo_url,
             "home_url": home_url,
-            "crush_name": crush_name
+            "about_url": about_url,
+            "privacy_policy_url":privacy_policy_url,
+            "resubmit_url": resubmit_url,
+            "user_name": user_name,
+            "crush_name": crush_name,
+            "support_email": f"mailto:{settings.EMAIL_HOST_USER}"
         }
 
         html_message = render_to_string(mail_template, context)
@@ -250,6 +266,13 @@ class SubmitCrushView(APIView):
     def reject_other_submissions(self, user, crush):
         for other in Crush.objects.filter(crush_email=user.email):
             if other.submitter.email != crush.email:
+                self.send_notification_email(
+                    mail_title="You just received an update on your submission", 
+                    mail_template="rejection_email.html", 
+                    crush_email=other.submitter.email,
+                    crush_name=other.submitter.username,
+                    user_name=crush.name
+                )
                 Notification.objects.create(
                     receiver_email=other.submitter.email,
                     notification_type='rejection',

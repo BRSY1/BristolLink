@@ -32,7 +32,7 @@ export default {
             filter: "hue-rotate(0deg)"
           },
           "50%": {
-            transform: "translateY(-50px) rotate(20deg)",
+            transform: "translateY(-70px) rotate(40deg)",
             opacity: 0.25,
             filter: "hue-rotate(10deg)"
           },

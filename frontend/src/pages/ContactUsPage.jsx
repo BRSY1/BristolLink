@@ -38,7 +38,7 @@ export default function ContactUsPage() {
             <div className="flex items-center justify-center gap-2 text-lg">
               <MdOutlineEmail className="text-pink-500" size={20} />
               <a
-                href="mailto:bristollink2024@gmail.com"
+                href="mailto:admin@bristollink.uk"
                 className="text-pink-500 hover:underline hover:cursor-pointer font-medium"
               >
                 admin@bristollink.uk

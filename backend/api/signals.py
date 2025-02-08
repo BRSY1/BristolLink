@@ -17,6 +17,7 @@ def send_match_email(user, crush):
         "logo_url": logo_url,
         "user_name": user.username,
         "matched_user": crush.username,
+        "support_email": f"mailto:{settings.EMAIL_HOST_USER}"
     }
 
     html_message = render_to_string("match_email.html", context)

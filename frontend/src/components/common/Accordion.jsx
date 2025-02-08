@@ -5,7 +5,7 @@ const Accordion = ({ index, title, answer }) => {
 
   return (
     <div
-      className={`border-b border-gray-300 motion-preset-blur-down-md motion-duration-[1s] ${accordionOpen && "bg-gradient-to-br from-white/30 to-pink-100"
+      className={`border-b  border-gray-400 motion-preset-blur-down-md motion-duration-[1s] ${accordionOpen && "bg-gradient-to-br from-white/30 to-pink-100"
         }`}
       style={{ animationDelay: `${index * 200}ms` }}
     >
