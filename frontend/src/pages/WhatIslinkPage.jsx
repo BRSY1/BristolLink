@@ -36,14 +36,14 @@ export default function WhatIsLinkPage() {
       role: "Project Lead",
       email: "fw24131@bristol.ac.uk",
       github: "https://github.com/rsh-e",
-      image: "/favicon.png",
+      image: "/rishi_profile.jpg",
     },
     {
       name: "Tom Lam",
       role: "Lead Developer",
       email: "ye24597@bristol.ac.uk",
       github: "https://github.com/T0mLam",
-      image: "/favicon.png",
+      image: "/tom_profile.png",
     },
   ];
 

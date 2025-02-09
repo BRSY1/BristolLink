@@ -118,6 +118,35 @@
         color: #e83e8c;
         margin-top: 0;
       }
+      .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 15px 0;
+      }
+      .social-button {
+        display: inline-flex;
+        align-items: center;
+        background-color: #fff;
+        color: #ff69b4;
+        border: 2px solid #ff69b4;
+        padding: 8px 20px;
+        margin: 0 3px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .social-button:hover {
+        background-color: #ff69b4;
+        color: #fff;
+      }
+      .social-button img {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+      }
     </style>
   </head>
   <body>
@@ -131,6 +160,16 @@
           />
         </div>
         <h1>Invitation from BristolLink<span class="heart-icon">♥</span></h1>
+        <div class="social-buttons">
+          <a href="https://bristollink.uk" class="social-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/840px-Globe_icon.svg.png" alt="Website" />
+            Website
+          </a>
+          <a href="https://www.instagram.com/bris_link?igsh=MTJneXBlanpuYTZicw==" class="social-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+            Instagram
+          </a>
+        </div>
       </div>
       <div class="content">
         <div class="crush-celebration">
@@ -147,7 +186,7 @@
         <div class="message-box">
           <p>Hi there 👋,</p>
           <p>
-            Exciting news! Someone on BristolLink has expressed interest in you.
+            Exciting news! <b>{{ hidden_name }}</b> on BristolLink has expressed interest in you.
             You have received <b>{{ crush_count }}</b> crush request(s) in
             total. Could this be the start of something special? There's only
             one way to find out!
@@ -161,26 +200,22 @@
         </center>
 
         <div class="about-section">
-          <h3>Who We Are</h3>
+          <h3>About BristolLink</h3>
           <p>
-            At BristolLink, we're more than just a platform—we're a community
-            dedicated to fostering genuine connections. Here's what makes us
-            unique:
+            We're a group of first-year computer science students at the University of Bristol who created this platform after realizing how awkward it can be to show interest in someone from a distance. Launching on Valentine's Day 2025, BristolLink is designed specifically for Bristol students to make meaningful connections in a safe and anonymous way.
+          </p>
+          <p>
+            What makes us different:
           </p>
           <ul>
             <li>
-              <b>Mission-Driven:</b> Our goal is to help you find meaningful
-              relationships, whether it's friendship, romance, or something in
-              between.
+              <b>Student-Focused:</b> Created by Bristol students, for Bristol students
             </li>
             <li>
-              <b>Safe and Inclusive:</b> We prioritize creating a safe,
-              welcoming space for everyone, free from judgment or
-              discrimination.
+              <b>Completely Anonymous:</b> Your crush won't know it's you unless there's a mutual match
             </li>
             <li>
-              <b>Authenticity First:</b> We encourage users to be their true
-              selves, because real connections start with authenticity.
+              <b>Unlimited Tries:</b> You can keep trying until you find your match
             </li>
           </ul>
           <p>
@@ -199,8 +234,7 @@
           <ul>
             <li>
               <b>Data Protection:</b> Your personal information is encrypted and
-              stored securely. We use industry-standard measures to protect your
-              data from unauthorized access.
+              stored securely.
             </li>
             <li>
               <b>Transparency:</b> We only collect data necessary to provide you
@@ -208,7 +242,7 @@
             </li>
             <li>
               <b>Control:</b> If you ever decide to delete your account, all
-              your information will be permanently removed from our systems.
+              your information will be permanently removed from our database.
               Your data will be automatically deleted in March after Valentine's
               day 2025.
             </li>

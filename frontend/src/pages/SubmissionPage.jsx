@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import SuccessMessage from "../components/messages/SuccessMessage";
 import ErrorMessage from "../components/messages/ErrorMessage";
@@ -10,10 +10,12 @@ import InputField from "../components/common/InputField";
 import CheckboxField from "../components/common/CheckboxField";
 import LoadingButton from "../components/common/LoadingButton";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function SubmissionPage() {
   useDocumentTitle("Submission");
   const navigate = useNavigate();
+  const { authState } = useContext(AuthContext);
 
   const validateFormData = (formData) => {
     const errors = {};
@@ -27,7 +29,13 @@ function SubmissionPage() {
   };
 
   const onSubmit = async (formData) => {
-    const response = await api.post("/crush/submit", formData);
+    const submissionData = {
+      crush_name: formData.get("crush_name"),
+      crush_email: formData.get("crush_email"),
+      message: formData.get("message"),
+      hint: formData.get("hint") === "on",
+    };
+    const response = await api.post("/crush/submit", submissionData);
     setSuccessMsg(response.data.message);
     setTimeout(() => {
       navigate("/dashboard");
@@ -72,6 +80,19 @@ function SubmissionPage() {
             name="confirm"
             label="I confirm that this message does not consist of offensive information"
             required
+          />
+
+          <CheckboxField
+            name="hint"
+            label={
+              <p>
+                <b>Give Hint </b> in the email ✨ <br />
+                <span className="text-sm text-gray-400 line-clamp-1">
+                  (<b>{authState.username.replace(/[a-zA-Z]/g, "x")}</b> has a
+                  crush on you...)
+                </span>
+              </p>
+            }
           />
 
           <LoadingButton type="submit" loading={loading}>

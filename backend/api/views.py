@@ -209,13 +209,13 @@ class SubmitCrushView(APIView):
                 crush_name = User.objects.get(email=crush_email).username
 
                 self.send_notification_email(
-                    crush_name, crush_email, crush_count, "Someone has a crush on you!", "crush_email.html"
+                    crush_name, crush_email, crush_count, "Someone has a crush on you!", "crush_email.html", user.username
                 )
                 # Check if there is a match
                 self.check_if_match(user, crush_email)
             else:
                 self.send_notification_email(
-                    "", crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html"
+                    "", crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html", user.username
                 )
 
             return Response({"message": "Crush submitted successfully"}, status=status.HTTP_201_CREATED)
@@ -229,6 +229,7 @@ class SubmitCrushView(APIView):
         privacy_policy_url = f"{settings.FRONTEND_BASE_URL}/privacy-statement"
         resubmit_url = f"{settings.FRONTEND_BASE_URL}/submit"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
+        hidden_name = re.sub('[a-zA-Z]', 'x', user_name) if self.request.data.get("hint") else "Someone"
 
         context = {
             "crush_count": crush_count,
@@ -239,6 +240,7 @@ class SubmitCrushView(APIView):
             "privacy_policy_url":privacy_policy_url,
             "resubmit_url": resubmit_url,
             "user_name": user_name,
+            "hidden_name": hidden_name,
             "crush_name": crush_name,
             "support_email": f"mailto:{settings.EMAIL_HOST_USER}"
         }
