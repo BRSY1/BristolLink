@@ -35,7 +35,7 @@ export default function FAQsPage() {
 
   return (
     <>
-      <div className="font-poppins w-full min-h-screen mt-24 flex flex-col pt-10 max-w-4xl mx-auto">
+      <div className="font-poppins w-full min-h-screen my-24 flex flex-col pt-10 max-w-4xl mx-auto">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center motion-opacity-in-0 motion-duration-[2s]">
           FAQs
         </h1>

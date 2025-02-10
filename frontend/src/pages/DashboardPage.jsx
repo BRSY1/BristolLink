@@ -25,7 +25,7 @@ function DashboardPage() {
   };
 
   return (
-    <div className="font-poppins min-h-screen mt-36 px-4 sm:px-6 lg:px-8 mb-20">
+    <div className="font-poppins min-h-screen mt-36 px-4 sm:px-6 lg:px-8 mb-24">
       <div className="max-w-5xl mx-auto">
         {/* title */}
         <h1 className="text-3xl font-semibold mb-6 text-center">
