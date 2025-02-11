@@ -27,11 +27,26 @@ function DashboardPage() {
   return (
     <div className="font-poppins min-h-screen mt-36 px-4 sm:px-6 lg:px-8 mb-24">
       <div className="max-w-5xl mx-auto">
-        {/* title */}
+        {/* title
+         */}
+
         <h1 className="text-3xl font-semibold mb-6 text-center">
-          Hi{" "}
-          <span className="font-bold text-pink-700">{authState.username}</span>,
-          welcome to BristolLink
+          {match ? (
+            <>
+              Congratulations{" "}
+              <span className="font-bold text-pink-700">
+                {authState.username} 🎊
+              </span>
+            </>
+          ) : (
+            <>
+              Hi{" "}
+              <span className="font-bold text-pink-700">
+                {authState.username}
+              </span>
+              , welcome to BristolLink
+            </>
+          )}
         </h1>
 
         {/* icons */}

@@ -36,6 +36,7 @@ export default function WhatIsLinkPage() {
       role: "Project Lead",
       email: "fw24131@bristol.ac.uk",
       github: "https://github.com/rsh-e",
+      linkedin: "https://www.linkedin.com/in/rsh-e",
       image: "/rishi_profile.jpg",
     },
     {
@@ -43,26 +44,39 @@ export default function WhatIsLinkPage() {
       role: "Lead Developer",
       email: "ye24597@bristol.ac.uk",
       github: "https://github.com/T0mLam",
+      linkedin: "https://www.linkedin.com/in/tom-kh-lam",
       image: "/tom_profile.png",
     },
   ];
 
   const additionalTeamMembers = [
-    { name: "Harish Rajkumar", role: "Marketing Coordinator" },
+    {
+      name: "Harish Rajkumar",
+      role: "Marketing Coordinator",
+      github: "https://github.com/hrsh9486",
+    },
     {
       name: "Joseph Hallett",
       role: "Data Security Adviser",
       website:
         "https://www.bristol.ac.uk/people/person/Joseph-Hallett-35db48d2-7197-42eb-a402-814e11cc524e/",
     },
-    { name: "Josh Jenkins", role: "Logo Designer" },
+    {
+      name: "Josh Jenkins",
+      role: "Logo Designer",
+      github: "https://github.com/joshjkns",
+    },
     {
       name: "Matthew Edwards",
       role: "Data Security Adviser",
       website:
         "https://www.bristol.ac.uk/people/person/Matthew-Edwards-3f509a5b-bc70-486c-b09b-e0f00da4dcc4/",
     },
-    { name: "Shubham Kulkarni", role: "Marketing Coordinator" },
+    {
+      name: "Shubham Kulkarni",
+      role: "Marketing Coordinator",
+      github: "https://github.com/kshubham-108",
+    },
   ];
 
   return (

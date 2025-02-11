@@ -78,7 +78,7 @@ function SubmissionPage() {
 
           <CheckboxField
             name="confirm"
-            label="I confirm that this message does not consist of offensive information"
+            label="I confirm that this message does not consist of any offensive information"
             required
           />
 

@@ -31,9 +31,8 @@ function PrivacyStatementPage() {
             </p>
             <ul className="list-inside list-disc text-sm text-center mx-auto max-w-prose space-y-2">
               <li>Basic profile information (name, university email)</li>
-              <li>Course and year of study</li>
-              <li>Anonymous crush selections</li>
-              <li>Message history (only after matching)</li>
+              <li>Name and email of your crush </li>
+              <li>Message to your crush</li>
             </ul>
           </section>
 
