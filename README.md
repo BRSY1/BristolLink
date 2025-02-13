@@ -1,4 +1,6 @@
 <p align="center"><a href="https://bristollink.uk"><img src="frontend/public/link_banner.png" width="50%"></img></a></p>
+<img src="frontend/public/pages.png" />
+
 
 # BristolLink
 A match-making platform for University of Bristol student during Valentine's Day 2025. <br>
