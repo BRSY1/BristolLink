@@ -30,7 +30,7 @@ const MatchSection = ({ match, onClickViewDetails }) => {
 
         {match ? (
           <div className="group space-y-4 relative z-10">
-            <div className="p-6 bg-white/10 backdrop-blur-sm rounded-xl group-hover:bg-white/30 duration-1000">
+            <div className="p-6 overflow-x-auto bg-white/10 backdrop-blur-sm rounded-xl group-hover:bg-white/30 duration-1000">
               <div className="space-y-3">
                 <a
                   href={`mailto:${match.submitter}`}

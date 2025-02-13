@@ -11,7 +11,7 @@ const SubmissionSection = ({ submission }) => {
 
       {submission ? (
         <div className="space-y-4">
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-pink-100">
+          <div className="p-4 overflow-x-auto bg-white rounded-2xl shadow-sm border border-pink-100">
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-gray-500">Crush's Email</p>
