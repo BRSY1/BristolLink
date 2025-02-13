@@ -45,15 +45,20 @@ const Header = () => {
               />
             </Link>
 
-            <div className="md:hidden flex items-end gap-4">
+            <div className="md:hidden flex items-end gap-8">
               {authState.isLoggedIn && (
-                <NotificationIcon />
+                <>
+                  <Link to="/dashboard">
+                    <TbHome className="h-6 w-6 hover:text-pink-600 " />
+                  </Link>
+                  <NotificationIcon />
+                </>
               )}
 
               {/* Menu icon for mobile */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="ml-4 text-gray-700 hover:text-pink-600 focus:outline-none"
+                className=" text-gray-700 hover:text-pink-600 focus:outline-none"
               >
                 {isOpen ? (
                   <MdClose className="h-6 w-6" />
@@ -67,10 +72,16 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
             {authState.isLoggedIn && (
-              <DesktopNavItem
-                title={<NotificationIcon />}
-                path="/notifications"
-              />
+              <>
+                <DesktopNavItem
+                  title={<TbHome className="h-6 w-6"/>}
+                  path="/dashboard"
+                />
+                <DesktopNavItem
+                  title={<NotificationIcon />}
+                  path="/notifications"
+                />
+              </>
             )}
             {filteredPages.map((page, index) => (
               <DesktopNavItem key={index} title={page.title} path={page.path} />

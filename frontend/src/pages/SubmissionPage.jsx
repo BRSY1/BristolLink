@@ -47,10 +47,13 @@ function SubmissionPage() {
 
   return (
     <>
-      <div className="font-poppins w-full h-screen p-8 flex flex-col justify-center max-w-md mx-auto mb-24">
-        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
+      <div className="font-poppins w-full min-h-screen p-8 mt-28 flex flex-col max-w-md mx-auto mb-24">
+        <h1 className="text-4xl font-semibold text-pink-800 mb-2 text-center">
           Submit your crush
         </h1>
+        <p className="text-gray-600 text-sm mb-10 text-center">
+          You can find your crush's email in Outlook directory
+        </p>
 
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <InputField
