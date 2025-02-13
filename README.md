@@ -1,5 +1,5 @@
 <p align="center"><a href="https://bristollink.uk"><img src="frontend/public/link_banner.png" width="50%"></img></a></p>
-<img src="frontend/public/pages.png" />
+<img src="frontend/public/website.png" />
 
 
 # BristolLink
