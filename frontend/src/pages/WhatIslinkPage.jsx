@@ -75,7 +75,8 @@ export default function WhatIsLinkPage() {
     {
       name: "Saleh Alsyefi",
       role: "Data Security Adviser",
-      website: "https://www.bristol.ac.uk/people/person/Saleh-Alsyefi-86769b5d-297d-4b56-8a2a-7ff80cf008ac/",
+      website:
+        "https://www.bristol.ac.uk/people/person/Saleh-Alsyefi-86769b5d-297d-4b56-8a2a-7ff80cf008ac/",
     },
     {
       name: "Shubham Kulkarni",
@@ -164,15 +165,23 @@ export default function WhatIsLinkPage() {
                 >
                   Link
                 </a>
+                , a student initiative developed by{" "}
+                <a
+                  href="https://www.linkedin.com/in/gandhixyz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-pink-400 font-bold"
+                >
+                  Ishan Gandhi
+                </a>
                 , we built <b>BristolLink</b>, a matchmaking platform launching
                 on Valentine's Day 2025. It's a safe, anonymous, and fun way for
                 students to connect with potential matches.
               </p>
               <p className="leading-relaxed">
-                BristolLink isn't just another dating app—it's designed with
-                students in mind, making it easier to form real connections
-                while keeping things respectful and private. We had a blast
-                building it, and we hope you all love the app!
+                We hope that you have fun using the site, and hopefully find a
+                connection! We'd love to hear any feedback you might have for
+                us.
               </p>
             </div>
           </div>
