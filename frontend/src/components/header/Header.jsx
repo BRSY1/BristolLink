@@ -15,7 +15,6 @@ const pages = [
   { title: "What is Link?", path: "/what-is-link" },
   { title: "Privacy Statement", path: "/privacy-statement" },
   { title: "FAQs", path: "/faq" },
-  { title: "About Us", path: "/about-us" },
   { title: "Contact Us", path: "/contact-us" },
 ];
 
