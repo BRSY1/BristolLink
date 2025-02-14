@@ -58,7 +58,8 @@ function RegisterPage() {
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           Register
         </h1>
-
+        {successMsg && <SuccessMessage message={successMsg} />}
+        {errors.submit && <ErrorMessage message={errors.submit} />}
         <form className="flex flex-col gap-5 lg:gap-3" onSubmit={handleSubmit}>
           <InputField
             type="text"
@@ -127,8 +128,8 @@ function RegisterPage() {
           </Link>
         </div>
 
-        {successMsg && <SuccessMessage message={successMsg} />}
-        {errors.submit && <ErrorMessage message={errors.submit} />}
+        {/* {successMsg && <SuccessMessage message={successMsg} />}
+        {errors.submit && <ErrorMessage message={errors.submit} />} */}
       </div>
     </>
   );

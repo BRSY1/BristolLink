@@ -46,7 +46,8 @@ function LoginPage() {
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 lg:mb-5 text-center">
           Login
         </h1>
-
+        {successMsg && <SuccessMessage message={successMsg} />}
+        {errors.submit && <ErrorMessage message={errors.submit} />}
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           <InputField
             type="email"
@@ -82,8 +83,8 @@ function LoginPage() {
           </Link>
         </div>
 
-        {successMsg && <SuccessMessage message={successMsg} />}
-        {errors.submit && <ErrorMessage message={errors.submit} />}
+        {/* {successMsg && <SuccessMessage message={successMsg} />}
+        {errors.submit && <ErrorMessage message={errors.submit} />} */}
       </div>
     </>
   );

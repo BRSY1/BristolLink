@@ -49,11 +49,11 @@ function SubmissionPage() {
     <>
       {/* h-screen used to be below */}
       <div className="font-poppins w-full mt-5 p-8 flex flex-col justify-center max-w-md mx-auto">
-        <h1 className="text-4xl mt-16 font-semibold text-pink-800 mb-10 text-center">
+        <h1 className="text-4xl mt-16 font-semibold text-pink-800 mb-2 text-center">
           Submit your crush
         </h1>
 
-        <p className="py-2 text-center justify-center">To get your crush's uni email, go to outlook and search their full name</p>
+        <p className="py-2 justify-center m-4 p-3 bg-pink-300 text-pink-700 text-center rounded">To get your crush's uni email, go to outlook and search their full name</p>
 
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <InputField
@@ -89,7 +89,7 @@ function SubmissionPage() {
             name="hint"
             label={
               <p>
-                <b>Give Hint </b> in the email ✨ <br />
+                Mask name with Xs in the email. For example:
                 <span className="text-sm text-gray-400 line-clamp-1">
                   (<b>{authState.username.replace(/[a-zA-Z]/g, "x")}</b> has a
                   crush on you...)
