@@ -9,7 +9,6 @@ const TeamMember = ({
   name,
   role,
   email,
-  image,
   github,
   linkedin,
   twitter,
@@ -39,7 +38,6 @@ const TeamMember = ({
       <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-pink-400 to-pink-600 
         transform scale-x-0 group-hover:scale-x-100 origin-left 
         transition-transform duration-300" />
-      
       
       <h3 className="text-2xl font-semibold text-neutral-900 mb-2 relative z-10 
         group-hover:text-pink-700 transition-colors">

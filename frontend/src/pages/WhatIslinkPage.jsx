@@ -37,7 +37,6 @@ export default function WhatIsLinkPage() {
       email: "fw24131@bristol.ac.uk",
       github: "https://github.com/rsh-e",
       linkedin: "https://www.linkedin.com/in/rsh-e",
-      image: "/rishi_profile.jpg",
     },
     {
       name: "Tom Lam",
@@ -45,7 +44,6 @@ export default function WhatIsLinkPage() {
       email: "ye24597@bristol.ac.uk",
       github: "https://github.com/T0mLam",
       linkedin: "https://www.linkedin.com/in/tom-kh-lam",
-      image: "/tom_profile.png",
     },
   ];
 
@@ -99,7 +97,7 @@ export default function WhatIsLinkPage() {
           <b>
             BristolL<span className="text-pink-500">i</span>nk
           </b>{" "}
-          Tom was hereis a fun and easy way for University of Bristol students to connect
+          is a fun and easy way for University of Bristol students to connect
           with their crushes, all while staying anonymous. Developed by UOB
           students for UOB students, it allows you to shoot your shot in less
           than 5 minutes. Simply sign up with your university email, drop the
