@@ -93,7 +93,7 @@ export default function WhatIsLinkPage() {
         <img src="/logo.webp" alt="" className="w-80 -mt-20" />
         <div className="border border-neutral-500 ml-7 -mt-20 mr-10 md:mr-72" />
         <p className=" text-lg lg:text-base ml-7 mr-10 mt-5 lg:mr-16">
-          Bristol Link is a website which links mutual crushes within the University of bristol. Made by first year CS students at Bristol, the website allows you to shoot your shot anonymously.
+          Bristol Link is a website which links mutual crushes within the University of Bristol. Made by first year CS students at Bristol, the site allows you to shoot your shot anonymously.
         </p>
 
         {/* How it Works Section */}
