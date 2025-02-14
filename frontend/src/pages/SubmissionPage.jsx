@@ -52,6 +52,8 @@ function SubmissionPage() {
           Submit your crush
         </h1>
 
+        <p>To get your crush's uni email, go to outlook and search their full name</p>
+
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <InputField
             type="text"
