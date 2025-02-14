@@ -99,7 +99,7 @@ export default function WhatIsLinkPage() {
           <b>
             BristolL<span className="text-pink-500">i</span>nk
           </b>{" "}
-          is a fun and easy way for University of Bristol students to connect
+          Tom was hereis a fun and easy way for University of Bristol students to connect
           with their crushes, all while staying anonymous. Developed by UOB
           students for UOB students, it allows you to shoot your shot in less
           than 5 minutes. Simply sign up with your university email, drop the
