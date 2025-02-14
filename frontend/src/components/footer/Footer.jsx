@@ -35,7 +35,7 @@ function Footer() {
               href="https://github.com/BRSY1"
               className="hover:text-pink-400 transition-colors intersect:motion-opacity-in-0 intersect:motion-translate-y-in-100 intersect:motion-rotate-in-180 intersect-once"
             >
-              <FiGithub size={24} />
+              {/* <FiGithub size={24} /> */}
             </a>
           </div>
         </div>

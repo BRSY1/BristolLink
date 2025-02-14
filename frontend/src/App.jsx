@@ -23,6 +23,7 @@ import ObserverProvider from "./context/ObserverProvider";
 import DashBoardPage from "./pages/DashboardPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Layout from "./components/background/Layout";
+import AboutUsPage from "./pages/AboutUsPage";
 
 function App() {
   return (
@@ -40,14 +41,15 @@ function App() {
                 path="/privacy-statement"
                 element={<PrivacyStatementPage />}
               />
+              <Route path="/about-us" element={<AboutUsPage />} />
               <Route path="/contact-us" element={<ContactUsPage />} />
               <Route path="/faq" element={<FAQsPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/verify/:code" element={<EmailVerificationPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route element={<ProtectedRoute />}>
-                <Route path="/dashboard" element={<DashBoardPage />} />
-                <Route path="/submit" element={<SubmissionPage />} />
+                {/* <Route path="/dashboard" element={<DashBoardPage />} /> */}
+                {/* <Route path="/submit" element={<SubmissionPage />} /> */}
                 <Route path="/notifications" element={<NotificationPage />} />
               </Route>
             </Routes>
