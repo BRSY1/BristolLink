@@ -1,35 +1,7 @@
-import Button from "../components/common/Button";
-import { IoMdHeartEmpty } from "react-icons/io";
-import { IoLockClosedOutline, IoMailOutline } from "react-icons/io5";
-import useDocumentTitle from "../hooks/useDocumentTitle";
 import TeamMember from "../components/about/TeamMember";
 import OtherMember from "../components/about/OtherMember";
-import Step from "../components/about/Step";
 
-export default function WhatIsLinkPage() {
-  useDocumentTitle("What is Link");
-
-  const steps = [
-    {
-      icon: <IoMailOutline className="w-8 h-8" />,
-      title: "Enter Their Email",
-      description:
-        "Find your crush's UoB email through Outlook and submit it through Bristol Link. They'll receive an email saying someone has a crush on them. We won't say who it's from.",
-    },
-    {
-      icon: <IoLockClosedOutline className="w-8 h-8" />,
-      title: "Wait for Their Response",
-      description:
-        "Your crush will make an account and enter the email address of their crush.",
-    },
-    {
-      icon: <IoMdHeartEmpty className="w-8 h-8" />,
-      title: "Check for a Match",
-      description:
-        "If they put down your email, then both of you get an email saying its a match! Otherwise we notify you saying they're not interested and you get another chance.",
-    },
-  ];
-
+export default function AboutUsPage() {
   const coreDevelopers = [
     {
       name: "Hrushikesh Emkay",
@@ -48,75 +20,48 @@ export default function WhatIsLinkPage() {
   ];
 
   const additionalTeamMembers = [
-    {
-      name: "Harish Rajkumar",
-      role: "Marketing Coordinator",
-      github: "https://github.com/hrsh9486",
-    },
+    { name: "Harish Rajkumar", role: "Marketing Coordinator" },
     {
       name: "Joseph Hallett",
       role: "Data Security Adviser",
       website:
         "https://www.bristol.ac.uk/people/person/Joseph-Hallett-35db48d2-7197-42eb-a402-814e11cc524e/",
     },
-    {
-      name: "Josh Jenkins",
-      role: "Logo Designer",
-      github: "https://github.com/joshjkns",
-    },
+    { name: "Josh Jenkins", role: "Logo Designer" },
     {
       name: "Matthew Edwards",
       role: "Data Security Adviser",
       website:
         "https://www.bristol.ac.uk/people/person/Matthew-Edwards-3f509a5b-bc70-486c-b09b-e0f00da4dcc4/",
     },
-    {
-      name: "Saleh Alsyefi",
-      role: "Data Security Adviser",
-      website: "https://www.bristol.ac.uk/people/person/Saleh-Alsyefi-86769b5d-297d-4b56-8a2a-7ff80cf008ac/",
-    },
-    {
-      name: "Shubham Kulkarni",
-      role: "Marketing Coordinator",
-      github: "https://github.com/kshubham-108",
-    },
+    { name: "Shubham Kulkarni", role: "Marketing Coordinator" },
   ];
 
   return (
-    <>
-      <div className="font-poppins mx-3 motion-opacity-in-0 motion-duration-[2s]">
-        <h1 className="text-3xl mt-32 lg:text-4xl ml-12 text-left text-black font-semibold font-poppins">
-          What Is
-          {/* <div className="border border-black mx-auto" /> */}
-        </h1>
-        {/* <div className="border border-black ml-10 mr-" /> */}
-        <img src="/logo.webp" alt="" className="w-80 -mt-20" />
-        <div className="border border-neutral-500 ml-7 -mt-20 mr-10 md:mr-72" />
-        <p className=" text-lg lg:text-base ml-7 mr-10 mt-5 lg:mr-16">
-          Bristol Link is a website which links mutual crushes within the University of bristol. Made by first year CS students at Bristol, the website allows you to shoot your shot anonymously.
+    <div className="mt-16 text-center font-poppins p-8 mb-20">
+      <h1 className="text-3xl mt-10 font-semibold text-pink-500 mb-5 text-center">
+        About Us
+      </h1>
+
+      {/* Self-intro */}
+      <div className="justify-center items-center gap-12 mb-20">
+        <p className="leading-relaxed lg:mx-24">
+          We're a group of first year students studying Computer Science at Bristol.
+          We were inspired to make Bristol Link after discovering <a className="underline" href="https://www.linkedin.com/in/gandhixyz/">Ishan Gandhi's</a> project
+          of the same name. We hope that you have fun using the site, and hopefully find a connection!
+          We'd love to hear any feedback you might have for us.
         </p>
+        {/* <div className="w-full md:w-3/4 space-y-6">
+          <p className="leading-relaxed">
+            We're a group of first year students studying Computer Science at Bristol.
+            We were inspired to make Bristol Link after finding about <a className="underline" href="https://www.linkedin.com/in/gandhixyz/">Ishan Gandhi's</a> project
+            of the same name. We hope that you have fun using the site, and hopefully find a connection!
+            We'd love to hear any feedback you might have for us.
+          </p>
 
-        {/* How it Works Section */}
-        <div className="mt-1 p-8 mb-20">
-          <h2 className="text-3xl text-black mb-8 pb-4 border-b border-pink-200">
-            How does it work?
-          </h2>
-
-          <div className="space-y-5 flex-col ">
-            {steps.map((step, index) => (
-              <Step key={index} {...step} />
-            ))}
-          </div>
-          <div className="flex flex-row justify-center md:justify-start items-left mx-10 lg:ml-7 mt-8 text-left whitespace-nowrap">
-            <Button
-              text="Register now!"
-              backgroundColor="bg-pink-400"
-              textColor="text-white"
-              path="/register"
-            />
-          </div>
-        </div>
-
+          <p>Created By: Hrushikesh Emkay, Tom Lam</p>
+          <p>Special Thanks to: Ishan Gandhi, Harish Rajkumar, Dr. Matthew Edwards, Dr. Joseph Hallett, Saleh Alsyefi</p>
+        </div>  */}
         {/* Team Section */}
         {/* <div className="mt-16 p-8 mb-20">
           <h2 className="text-3xl text-black mb-8 pb-4 border-b border-pink-200">
@@ -168,19 +113,19 @@ export default function WhatIsLinkPage() {
         </div> */}
 
         {/* Core Developers Section */}
-        {/* <div className="mb-16">
+        <div className="mb-16 mt-10">
           <h2 className="text-3xl text-black mb-8 text-center">
-            Core Developers
+            The Team
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-center flex-wrap gap-6 ">
             {coreDevelopers.map((dev, index) => (
               <TeamMember key={index} {...dev} />
             ))}
           </div>
-        </div> */}
+        </div>
 
         {/* Additional Team Members Section */}
-        {/* <div>
+        <div>
           <h3 className="text-2xl text-black mb-6 text-center">
             Special Thanks To
           </h3>
@@ -189,8 +134,8 @@ export default function WhatIsLinkPage() {
               <OtherMember key={index} {...member} />
             ))}
           </div>
-        </div>  */}
+        </div>
       </div>
-    </>
-  );
+    </div>
+  )
 }
