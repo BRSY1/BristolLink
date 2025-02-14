@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import SuccessMessage from "../components/messages/SuccessMessage";
 import ErrorMessage from "../components/messages/ErrorMessage";
@@ -9,10 +9,13 @@ import api from "../utils/api";
 import InputField from "../components/common/InputField";
 import CheckboxField from "../components/common/CheckboxField";
 import LoadingButton from "../components/common/LoadingButton";
-import Header from "../components/header/Header";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function SubmissionPage() {
   useDocumentTitle("Submission");
+  const navigate = useNavigate();
+  const { authState } = useContext(AuthContext);
 
   const validateFormData = (formData) => {
     const errors = {};
@@ -26,8 +29,17 @@ function SubmissionPage() {
   };
 
   const onSubmit = async (formData) => {
-    const response = await api.post("/crush/submit", formData);
+    const submissionData = {
+      crush_name: formData.get("crush_name"),
+      crush_email: formData.get("crush_email"),
+      message: formData.get("message"),
+      hint: formData.get("hint") === "on",
+    };
+    const response = await api.post("/crush/submit", submissionData);
     setSuccessMsg(response.data.message);
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 1000);
   };
 
   const { loading, errors, successMsg, setSuccessMsg, handleSubmit } =
@@ -35,10 +47,13 @@ function SubmissionPage() {
 
   return (
     <>
-      <div className="w-full h-screen p-8 bg-white flex flex-col justify-center max-w-md mx-auto">
-        <h1 className="text-4xl font-semibold text-pink-800 mb-10 text-center">
+      <div className="font-poppins w-full min-h-screen p-8 mt-28 flex flex-col max-w-md mx-auto mb-24">
+        <h1 className="text-4xl font-semibold text-pink-800 mb-2 text-center">
           Submit your crush
         </h1>
+        <p className="text-gray-600 text-sm mb-10 text-center">
+          You can find your crush's email in Outlook directory
+        </p>
 
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <InputField
@@ -66,8 +81,21 @@ function SubmissionPage() {
 
           <CheckboxField
             name="confirm"
-            label="I confirm that this message does not consist of offensive information"
+            label="I confirm that this message does not consist of any offensive information"
             required
+          />
+
+          <CheckboxField
+            name="hint"
+            label={
+              <p>
+                <b>Give Hint </b> in the email ✨ <br />
+                <span className="text-sm text-gray-400 line-clamp-1">
+                  (<b>{authState.username.replace(/[a-zA-Z]/g, "x")}</b> has a
+                  crush on you...)
+                </span>
+              </p>
+            }
           />
 
           <LoadingButton type="submit" loading={loading}>

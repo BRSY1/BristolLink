@@ -1,11 +1,13 @@
 import React from "react";
 import { PiConfetti, PiBell } from "react-icons/pi";
 import { LuSendHorizontal } from "react-icons/lu";
+import { FaRegSadTear } from "react-icons/fa";
 
 const getNotificationIcon = (type) => {
   const icons = {
     match: PiConfetti,
     submission: LuSendHorizontal,
+    rejection: FaRegSadTear,
     default: PiBell,
   };
   const IconComponent = icons[type] || icons.default;
@@ -51,7 +53,7 @@ const NotificationItem = ({ notification, index }) => {
     <div
       className={`
         group w-full p-4 mb-4 rounded-lg shadow-sm
-        ${notification.is_read ? "bg-white" : "bg-pink-50"}
+        ${notification.is_read ? "bg-white/60" : "bg-pink-50/60"}
         border-l-4 border-l-pink-500
         hover: shadow-md transition-all duration-300
         motion-preset-blur-up-md motion-duration-[1s] 
@@ -78,9 +80,9 @@ const NotificationItem = ({ notification, index }) => {
           {notification.link && (
             <a
               href={notification.link}
-              className="inline-block mt-2 text-pink-600 hover:text-pink-700 transition-colors"
+              className="font-semibold inline-block mt-2 text-pink-600 hover:text-pink-700 transition-colors"
             >
-              View Details →
+              {notification.notification_type === "match" ? "View Details →" : "Try Again →"}
             </a>
           )}
         </div>

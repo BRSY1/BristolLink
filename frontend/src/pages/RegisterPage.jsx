@@ -45,7 +45,7 @@ function RegisterPage() {
     };
     await api.post("/register", requestData);
     setSuccessMsg(
-      "A validation email has sent to your email address " + requestData.email
+      "A verification email has sent to your email address " + requestData.email
     );
   };
 
@@ -54,7 +54,7 @@ function RegisterPage() {
 
   return (
     <>
-      <div className="w-full min-h-screen font-poppins p-5 lg:pt-20 bg-white flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
+      <div className="font-poppins w-full min-h-screen p-5 lg:pt-20 flex flex-col justify-center max-w-md mx-auto lg:overflow-hidden">
         <h1 className="text-3xl font-semibold text-pink-500 mb-5 text-center">
           Register
         </h1>
@@ -100,18 +100,18 @@ function RegisterPage() {
               required
             />
 
-              <CheckboxField
-                name="agreeToPrivacy"
-                label={
-                  <>
-                    I agree to the{" "}
-                    <Link to="/privacy-statement" className="font-semibold text-pink-500">
-                      privacy statement
-                    </Link>
-                  </>
-                }
-                required
-              />
+            <CheckboxField
+              name="agreeToPrivacy"
+              label={
+                <>
+                  I agree to the{" "}
+                  <Link to="/privacy-statement" className="font-semibold text-pink-500">
+                    privacy statement
+                  </Link>
+                </>
+              }
+              required
+            />
           </div>
 
           <LoadingButton type="submit" loading={loading}>

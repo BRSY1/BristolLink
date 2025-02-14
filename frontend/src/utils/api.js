@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create an axios instance with a default config for api requests
 const api = axios.create({
-  baseURL: "https://bristollink-e1a5719dffba.herokuapp.com/api/",
+  baseURL: import.meta.env.VITE_REACT_APP_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -18,14 +18,5 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
-
-/* 
-e.g.
-const response = api.get('/register/', {
-    username,
-    email,
-    password,
-});
-*/
 
 export default api;

@@ -1,50 +1,29 @@
-# BristolLink
+<p align="center"><a href="https://bristollink.uk"><img src="frontend/public/link_banner.png" width="50%"></img></a></p>
 
-## Start frontend server
+<h1 align="center">BristolLink</h1>
+<p align="center">A match-making platform for University of Bristol student during Valentine's Day 2025.</p> 
 
-### Install Node.js
+<img src="frontend/public/website.png" />
 
-[geeksforgeeks](https://www.geeksforgeeks.org/nodejs/)
+<p align="center"><a href="https://bristollink.uk/register"><img src="frontend/public/sign_up.png" width="20%"></img></a></p>
 
-### Install React
+<br/>
 
-[geeksforgeeks](https://www.geeksforgeeks.org/react/)
+<p align="center"><img src="frontend/public/whatislink.png" width="55%"/></p>
+<p align="center"><b>BristolLink</b> is a fun and easy way for University of Bristol students to connect with their crushes, all while staying anonymous.</p>
+<p align="center">Developed by <b>UOB students for UOB students</b>, it allows you to shoot your shot in less than <b>5 minutes</b>.</p>
+<p align="center">Simply sign up with your university email, drop the name of your crush, and see if there's a match — <b>no awkwardness, just a chance to connect!</b></p>
 
-### Launch frontend
+<br>
 
-```bash
-cd frontend
-npm run dev
-```
+<p align="center"><img src="frontend/public/howdoesitwork.png" align="center" width="55%"/></p>
 
-If you get any errors related to Vite not being found, then delete the ```package-lock.json``` and the ```node_modules``` directory and run:
+<h2 align="center">Enter their Email</h2>
+<p align="center">Find their UoB email through Outlook and submit it through Bristol Link. They'll receive an anonymous notification that someone is interested.</p>
+<h2 align="center">Wait for their Response</h2>
+<p align="center">If they're interested, they'll log into Bristol Link and enter an email address of their own choice.</p>
+<h2 align="center">Check for a Match</h2>
+<p align="center">If the emails match, you both receive confirmation and can start your story. If not, you'll be notified and can try with someone new.</p>
 
-```bash
-npm install
-```
+<br>
 
-You should now be able to ```npm run dev``` without any errors.
-
-
-## Start backend server
-
-### Install Django
-
-[w3schools](https://www.w3schools.com/django/django_install_django.php)
-
-### Install django-browser-reload
-
-for automatically reloading changes made in the template files in `api/templates`
-
-```bash
-pip install django-browser-reload
-```
-
-### Run Django server
-
-```bash
-cd backend
-python manage.py makemigrations # generates a file that describes the config of the models/database
-python manage.py migrate # apply the changes 
-python manage.py runserver
-```

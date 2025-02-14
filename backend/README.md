@@ -156,7 +156,8 @@ Authorization: Token <user_token>
 {
   "crush_name": "Jane Smith",
   "crush_email": "jane.smith@bristol.ac.uk",
-  "message": "I think you're amazing!"
+  "message": "I think you're amazing!",
+  "hint": true
 }
 ```
 

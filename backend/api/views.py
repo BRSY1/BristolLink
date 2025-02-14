@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
 from django.conf import settings
-from django.db.models import Q
+from django.db.models import Q, F
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.templatetags.static import static
@@ -22,7 +22,8 @@ from .models import (
     User, 
     Crush,
     Match,
-    Notification
+    Notification,
+    Blacklist
 )
 from .serializers import (
     UserSerializer,
@@ -38,11 +39,16 @@ class RegisterView(APIView):
         password = request.data.get("password")
 
         # Check if email is a valid Bristol email
-        if not email or not email.endswith("@bristol.ac.uk"):
+        if (not email or 
+            not email.endswith("@bristol.ac.uk") or
+            Blacklist.objects.filter(email=email).exists()):
             return Response({"message": "Invalid email address"}, status=status.HTTP_400_BAD_REQUEST)
         
-        if User.objects.filter(email=email).exists():
-            return Response({"message": "You have already registered an account."}, status=status.HTTP_400_BAD_REQUEST)
+        user = User.objects.filter(email=email).first()
+        if user:
+            if user.is_verified:
+                return Response({"message": "You have already registered an account."}, status=status.HTTP_400_BAD_REQUEST)
+            user.delete()
         
         if not self.validate_password(password):
             return Response({"message": "Invalid password."}, status=status.HTTP_400_BAD_REQUEST)
@@ -79,7 +85,8 @@ class RegisterView(APIView):
         context = {
             "recipient_name": new_user.username,
             "activation_link": verification_url,
-            "logo_url": logo_url
+            "logo_url": logo_url,
+            "support_email": f"mailto:{settings.EMAIL_HOST_USER}"
         }
 
         html_message = render_to_string("verification_email.html", context)
@@ -99,10 +106,14 @@ class EmailVerificationView(APIView):
         try:
             # Verify user and create token
             user = User.objects.get(verification_code=code)
-            user.is_verified = True
-            user.save()
             
-            token, created = Token.objects.get_or_create(user=user)
+            if user.is_verified:
+                token = Token.objects.get(user__email=user.email)
+            else:
+                user.is_verified = True
+                user.save()
+                token = Token.objects.create(user=user)
+
             user_serializer = UserSerializer(user)
 
             return Response({"token": token.key, "message": "Email verified successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
@@ -125,7 +136,7 @@ class LoginView(APIView):
             if not check_password(password, user.password):
                 return Response({"message": "Invalid password"}, status=status.HTTP_400_BAD_REQUEST)
             
-            token, created = Token.objects.get_or_create(user=user)
+            token = Token.objects.get(user__email=user.email)
             user_serializer = UserSerializer(user)
 
             return Response({"token": token.key, "message": "Logged in successfully", "user": user_serializer.data}, status=status.HTTP_200_OK)
@@ -158,15 +169,31 @@ class SubmitCrushView(APIView):
         # Check if email is a valid Bristol email
         if (not crush_email or 
             not crush_email.endswith("@bristol.ac.uk") or
-            crush_email == user.email):
+            crush_email == user.email or 
+            Blacklist.objects.filter(email=crush_email).exists()):
             return Response({"message": "Invalid email"}, status=status.HTTP_400_BAD_REQUEST)
         
         # Create new crush object if the user has not already submitted a crush
-        if Crush.objects.filter(submitter=user).exists():
+        if Crush.objects.filter(submitter__email=user.email).exists():
             return Response({"message": "You have already submitted a crush"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Send rejection email to user immediately if their crush already has a match
+        if Match.objects.filter(Q(user1__email=crush_email) | Q(user2__email=crush_email)).exists():
+            Notification.objects.create(
+                receiver_email=user.email,
+                notification_type='rejection',
+            )
+            self.send_notification_email(
+                mail_title="You just received an update on your submission", 
+                mail_template="rejection_email.html", 
+                crush_email=user.email,
+                crush_name=user.username,
+                user_name=request.data.get("crush_name")
+            )
+            return Response({"message": "Crush submitted"}, status=status.HTTP_200_OK)
         
         serializer = CrushSerializer(data={
-            "submitter": user,
+            "submitter": user.email,
             "crush_name": request.data.get("crush_name"),
             "crush_email": crush_email,
             "message": request.data.get("message")
@@ -179,40 +206,50 @@ class SubmitCrushView(APIView):
 
             # Send invitation email to crush if they are not registered
             if User.objects.filter(email=crush_email).exists():
-                self.send_notification_email(crush_email, crush_count)
+                crush_name = User.objects.get(email=crush_email).username
+
+                self.send_notification_email(
+                    crush_name, crush_email, crush_count, "Someone has a crush on you!", "crush_email.html", user.username
+                )
                 # Check if there is a match
                 self.check_if_match(user, crush_email)
             else:
-                self.send_invitation_email(crush_email, crush_count)
+                self.send_notification_email(
+                    "", crush_email, crush_count, "Invitation from BristolLink", "invitation_email.html", user.username
+                )
 
             return Response({"message": "Crush submitted successfully"}, status=status.HTTP_201_CREATED)
-
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def send_notification_email(self, crush_email, crush_count):
-        message = f"You just received a request. {crush_count} person has a crush on you!"
-        send_mail(
-            subject=f"Someone has a crush on you! (from BristolLink)",
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL, 
-            recipient_list=[crush_email]
-        )
-
-    def send_invitation_email(self, crush_email, crush_count):
+    def send_notification_email(self, crush_name="", crush_email="", crush_count=0, mail_title="", mail_template="", user_name=""):
         registration_url = f"{settings.FRONTEND_BASE_URL}/register"
+        home_url = f"{settings.FRONTEND_BASE_URL}/dashboard"
+        about_url = f"{settings.FRONTEND_BASE_URL}/what-is-link"
+        privacy_policy_url = f"{settings.FRONTEND_BASE_URL}/privacy-statement"
+        resubmit_url = f"{settings.FRONTEND_BASE_URL}/submit"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
+        hidden_name = re.sub('[a-zA-Z]', 'x', user_name) if self.request.data.get("hint") else "Someone"
 
         context = {
             "crush_count": crush_count,
             "registration_link": registration_url,
-            "logo_url": logo_url
+            "logo_url": logo_url,
+            "home_url": home_url,
+            "about_url": about_url,
+            "privacy_policy_url":privacy_policy_url,
+            "resubmit_url": resubmit_url,
+            "user_name": user_name,
+            "hidden_name": hidden_name,
+            "crush_name": crush_name,
+            "support_email": f"mailto:{settings.EMAIL_HOST_USER}"
         }
 
-        html_message = render_to_string("invitation_email.html", context)
+        html_message = render_to_string(mail_template, context)
         plain_message = strip_tags(html_message)
 
         send_mail(
-            subject="Invitation from BristolLink",
+            subject=mail_title,
             message=plain_message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[crush_email],
@@ -220,18 +257,38 @@ class SubmitCrushView(APIView):
         )
     
     def check_if_match(self, user, crush_email):
-        if Crush.objects.filter(submitter=crush_email, crush_email=user.email).exists():
+        if Crush.objects.filter(submitter__email=crush_email, crush_email=user.email).exists():
             crush = User.objects.get(email=crush_email)
             Match.objects.create(user1=user, user2=crush)
 
+            # Remove all other submissions to the matched user
+            self.reject_other_submissions(user, crush)
+            self.reject_other_submissions(crush, user)
 
+    def reject_other_submissions(self, user, crush):
+        for other in Crush.objects.filter(crush_email=user.email):
+            if other.submitter.email != crush.email:
+                self.send_notification_email(
+                    mail_title="You just received an update on your submission", 
+                    mail_template="rejection_email.html", 
+                    crush_email=other.submitter.email,
+                    crush_name=other.submitter.username,
+                    user_name=user.username
+                )
+                Notification.objects.create(
+                    receiver_email=other.submitter.email,
+                    notification_type='rejection',
+                )
+                other.delete()
+
+            
 class GetCrushView(ListAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = CrushSerializer
 
     def get_queryset(self):
-        return Crush.objects.filter(submitter=self.request.user)
+        return Crush.objects.filter(submitter__email=self.request.user.email)
     
 
 class NotificationView(APIView):
@@ -243,7 +300,7 @@ class NotificationView(APIView):
 
         notifications = Notification.objects.filter(
             receiver_email=request.user.email
-        ).order_by("-created_at")
+        ).order_by('-id')
 
         # Create notification objects
         serializer = NotificationSerializer(notifications, many=True)
@@ -263,13 +320,13 @@ class GetMatchView(ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        match = Match.objects.filter(Q(user1=user) | Q(user2=user)).first()
+        match = Match.objects.filter(Q(user1__email=user.email) | Q(user2__email=user.email)).first()
         
         if not match:
             return Crush.objects.none()
         
         other_user = match.user1 if user == match.user2 else match.user2
-        crush = Crush.objects.filter(submitter=other_user, crush_email=user.email)
+        crush = Crush.objects.filter(submitter__email=other_user.email, crush_email=user.email)
 
         return crush
 

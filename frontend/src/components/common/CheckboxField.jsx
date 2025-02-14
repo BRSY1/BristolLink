@@ -9,7 +9,7 @@ const CheckboxField = ({ name, label, required }) => {
         className="w-5 h-5 accent-pink-500 rounded focus:ring-pink-500"
         required={required}
       />
-      <span className="text-base">{label}</span>
+      <span className="text-base flex-1">{label}</span>
     </label>
   );
 };

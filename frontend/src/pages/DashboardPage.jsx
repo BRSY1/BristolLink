@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import { AuthContext } from "../context/AuthContext";
 import SubmissionSection from "../components/dashboard/SubmissionSection";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import useCrushSubmission from "../hooks/useCrushSubmission";
 import useMatchData from "../hooks/useMatchData";
 import useNotifications from "../hooks/useNotifications";
+import MatchPopup from "../components/dashboard/MatchPopup";
 
 function DashboardPage() {
   useDocumentTitle("Profile");
@@ -16,9 +17,7 @@ function DashboardPage() {
   const { submissionloading, submission, submissionErrorMsg } =
     useCrushSubmission();
   const { matchloading, match, matchErrorMsg } = useMatchData();
-  const { loading, notifications, errorMsg } = useNotifications();
-
-  const unreadCount = notifications.filter((n) => !n.is_read).length;
+  const [showMatchPopup, setShowMatchPopup] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -26,29 +25,32 @@ function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen mt-36 px-4 sm:px-6 lg:px-8">
+    <div className="font-poppins min-h-screen mt-36 px-4 sm:px-6 lg:px-8 mb-24">
       <div className="max-w-5xl mx-auto">
-        {/* title */}
+        {/* title
+         */}
+
         <h1 className="text-3xl font-semibold mb-6 text-center">
-          Hi{" "}
-          <span className="font-bold text-pink-700">{authState.username}</span>,
-          welcome to BristolLink
+          {match ? (
+            <>
+              Congratulations{" "}
+              <span className="font-bold text-pink-700">
+                {authState.username} 🎊
+              </span>
+            </>
+          ) : (
+            <>
+              Hi{" "}
+              <span className="font-bold text-pink-700">
+                {authState.username}
+              </span>
+              , welcome to BristolLink
+            </>
+          )}
         </h1>
 
         {/* icons */}
         <div className="flex justify-center item-center gap-6 mb-8">
-          {/* notification icon */}
-          <div className="relative">
-            <MdNotificationsNone
-              className="text-pink-700 text-2xl cursor-pointer hover:text-pink-600 transition-colors"
-              onClick={() => navigate("/notifications")}
-            />
-            {/* Red dot for unread notifications */}
-            {unreadCount > 0 && (
-              <span className="absolute top-0 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-            )}
-          </div>
-
           {/* logout icon */}
           <MdLogout
             className="text-pink-700 text-2xl cursor-pointer hover:text-pink-600 transition-colors"
@@ -58,12 +60,23 @@ function DashboardPage() {
 
         <div className="flex flex-col md:flex-row w-full gap-6">
           <div className="flex-1">
-            <MatchSection match={match} />
+            <MatchSection
+              match={match}
+              onClickViewDetails={() => setShowMatchPopup(true)}
+            />
           </div>
           <div className="flex-1">
             <SubmissionSection submission={submission} />
           </div>
         </div>
+
+        {showMatchPopup && (
+          <MatchPopup
+            receivedMsg={match}
+            sentMsg={submission}
+            onClose={() => setShowMatchPopup(false)}
+          />
+        )}
       </div>
     </div>
   );

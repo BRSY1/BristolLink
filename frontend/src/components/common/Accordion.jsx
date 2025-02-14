@@ -5,7 +5,7 @@ const Accordion = ({ index, title, answer }) => {
 
   return (
     <div
-      className={`border-b border-gray-300 motion-preset-blur-down-md motion-duration-[1s] ${accordionOpen && "bg-pink-100/20"
+      className={`border-b  border-gray-400 motion-preset-blur-down-md motion-duration-[1s] ${accordionOpen && "bg-gradient-to-br from-white/30 to-pink-100"
         }`}
       style={{ animationDelay: `${index * 200}ms` }}
     >
@@ -13,7 +13,7 @@ const Accordion = ({ index, title, answer }) => {
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex justify-between w-full py-2"
       >
-        <p className="px-6 font-poppins mt-2 flex justify-start text-left">
+        <p className="px-6 mt-2 flex justify-start text-left">
           {title}
         </p>
 

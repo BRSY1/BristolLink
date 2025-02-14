@@ -12,7 +12,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from dotenv import load_dotenv
+import django_heroku
+import dj_database_url
 from pathlib import Path
+
+
+load_dotenv() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-%im^bb!@dq7(9-+dld5*^@5gxc^f2z9r1t(@nb00a7dqav9!_#"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
+                
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -43,7 +49,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "django_browser_reload",
-    'corsheaders'
+    "corsheaders",
+    "pgcrypto",
 ]
 
 MIDDLEWARE = [
@@ -56,11 +63,11 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://bristol-link.netlify.app",
-    "https://develop--bristol-link.netlify.app/"
+    os.getenv("FRONTEND_BASE_URL")
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -92,10 +99,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
 }
 
 
@@ -135,6 +139,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -146,17 +154,20 @@ AUTH_USER_MODEL = "api.User"
 
 
 # Email settings
-load_dotenv() 
-
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "bristollink2024@gmail.com"
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-ALLOWED_HOSTS = []
-DEFAULT_FROM_EMAIL = "BristolLink <bristollink2024@gmail.com>"
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
 
 
 # Frontend base URL (e.g., http://localhost:3000 or https://yourapp.com)
-FRONTEND_BASE_URL = "http://localhost:5173"
+FRONTEND_BASE_URL = os.getenv("FRONTEND_BASE_URL")
+
+
+django_heroku.settings(locals(), logging=not DEBUG, databases=not DEBUG)
+
+
+ADMIN_PAGE = os.getenv("ADMIN_PAGE")

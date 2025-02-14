@@ -4,14 +4,14 @@ import { getDateString } from "../../utils/getDateString";
 
 const SubmissionSection = ({ submission }) => {
   return (
-    <div className="bg-gradient-to-br from-white to-pink-50 p-8 rounded-2xl shadow-2xl">
+    <div className="bg-gradient-to-br from-white/70 to-pink-50/70 p-8 rounded-2xl shadow-lg shadow-red-200">
       <h2 className="text-2xl font-bold text-pink-600 mb-6 flex items-center gap-2">
         <span>💌</span> Your Crush Submission
       </h2>
 
       {submission ? (
         <div className="space-y-4">
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-pink-100">
+          <div className="p-4 overflow-x-auto bg-white rounded-2xl shadow-sm border border-pink-100">
             <div className="space-y-3">
               <div>
                 <p className="text-sm text-gray-500">Crush's Email</p>
