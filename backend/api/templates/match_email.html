@@ -1,168 +1,185 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>It's a Match!</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fff5f8;
-        color: #333;
-      }
-      a {
-        color: #ff69b4;
-        text-decoration: none;
-        font-weight: bold;
-      }
-      h2 {
-        color: #2d3748;
-        line-height: 1.4;
-        font-weight: 700;
-        background: linear-gradient(120deg, #e83e8c, #fd7e14);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .container {
-        max-width: 600px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
-        border: 2px solid #ffe6f0;
-      }
-      .header {
-        text-align: center;
-        padding: 20px 0;
-        border-radius: 12px 12px 0 0;
-      }
-      .logo {
-        margin: 0;
-      }
-      .header h1 {
-        margin: 0;
-        color: #000;
-        font-size: 24px;
-        line-height: 1.4;
-      }
-      .content {
-        padding: 20px;
-        line-height: 1.6;
-      }
-      .footer {
-        text-align: center;
-        font-size: 12px;
-        color: #666;
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid #ffe6f0;
-      }
-      .button {
-        display: inline-block;
-        background-color: #ff69b4;
-        color: #fff !important;
-        text-decoration: none;
-        padding: 12px 30px;
-        border-radius: 25px;
-        margin: 25px 0;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-      }
-      .button:hover {
-        background-color: #ff1493;
-      }
-      .heart-icon {
-        color: #ff69b4;
-        font-size: 16px;
-        display: inline-block;
-        margin: 0 2px;
-      }
-      .match-celebration {
-        text-align: center;
-        margin: 30px 0;
-      }
-      .match-celebration img {
-        max-width: 150px;
-        margin: 20px 0;
-      }
-      .profile-section {
-        background-color: #fff;
-        border-radius: 10px;
-        border: 1px solid #ffe6f0;
-        padding: 20px;
-        margin-top: 25px;
-        text-align: center;
-      }
-      .profile-section img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin: 10px;
-      }
-      .message-box {
-        background-color: #ffffff;
-        border-left: 4px solid #e83e8c;
-        padding: 20px;
-        margin: 30px 0;
-        border-radius: 0 12px 12px 0;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <div class="logo">
-          <img
-            src="{{ logo_url }}"
-            alt="BristolLink Logo"
-            style="max-height: 100px"
-          />
-        </div>
-        <h1>
-          Congratulations on Your Match! <span class="heart-icon">♥</span>
-        </h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <title>It's a Match!</title>
+  <style>
+    body {
+      font-family: "Poppins", "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff5f8;
+      color: #333;
+    }
+
+    a {
+      color: #ff69b4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    h2 {
+      color: #2d3748;
+      line-height: 1.4;
+      font-weight: 700;
+      background: linear-gradient(120deg, #e83e8c, #fd7e14);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .logo {
+      margin: 0;
+    }
+
+    .header h1 {
+      margin: 0;
+      color: #000;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    .content {
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ffe6f0;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #ff69b4;
+      color: #fff !important;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      margin: 25px 0;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ff1493;
+    }
+
+    .heart-icon {
+      color: #ff69b4;
+      font-size: 16px;
+      display: inline-block;
+      margin: 0 2px;
+    }
+
+    .match-celebration {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .match-celebration img {
+      max-width: 150px;
+      margin: 20px 0;
+    }
+
+    .profile-section {
+      background-color: #fff;
+      border-radius: 10px;
+      border: 1px solid #ffe6f0;
+      padding: 20px;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .profile-section img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+
+    .message-box {
+      background-color: #ffffff;
+      border-left: 4px solid #e83e8c;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="{{ logo_url }}" alt="BristolLink Logo" style="max-height: 100px" />
       </div>
-      <div class="content">
-        <div class="match-celebration">
-          <div class="emoji">✨ 🎉 💫</div>
-          <div class="big-emoji">💖</div>
-          <div class="emoji">🎊 ⭐ 🌟</div>
-          <h2>It's a Match!</h2>
-          <b>You and {{ matched_user }} have matched on BristolLink!</b>
-        </div>
+      <h1>
+        It's a Match!
+      </h1>
+    </div>
+    <div class="content">
+      <div class="match-celebration">
+        <b>You and {{ matched_user }} have matched on BristolLink!</b>
+      </div>
 
-        <div class="message-box">
-          <p>Dear <b>{{ user_name }}</b>,</p>
-          <p>
-            Great news! You and {{ matched_user }} have both expressed interest
-            in connecting. This is the start of something special!
-          </p>
-        </div>
-
-        <center>
-          <a href="{{ home_url }}" class="button">View details</a>
-        </center>
-
+      <div class="message-box">
+        <p>Hey <b>{{ user_name }}</b>,</p>
         <p>
-          Remember to be respectful and kind in your interactions. If you have
-          any concerns, please don't hesitate to
-          <a href="{{ support_email }}">contact our support team</a>.
+          Great news! {{ matched_user }} put your name down as their crush. Both of you have got this email. Thanks for
+          using Bristol Link. We wish both of you a happy future!
         </p>
-
         <div class="signature">
           <p>
             Best wishes,<br />
-            The BristolLink Team <span class="heart-icon">♥</span>
+            The Bristol Link Team <span class="heart-icon"></span>
           </p>
         </div>
       </div>
-      <div class="footer">&copy; 2025 BristolLink. All rights reserved.</div>
+
+      <center>
+        <a href="{{ home_url }}" class="button">View details</a>
+      </center>
+
+      <p>
+        Remember to be respectful and kind in your interactions. If you have
+        any concerns, please don't hesitate to
+        <a href="{{ support_email }}">contact our support team</a>.
+      </p>
+
+      <!-- <div class="signature">
+        <p>
+          Best wishes,<br />
+          The Bristol Link Team <span class="heart-icon"></span>
+        </p>
+      </div> -->
     </div>
-  </body>
+    <div class="footer">&copy; 2025 BristolLink. All rights reserved.</div>
+  </div>
+</body>
+
 </html>

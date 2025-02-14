@@ -1,167 +1,164 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Update on Your Connection</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fff5f8;
-        color: #333;
-      }
-      a {
-        color: #ff69b4;
-        text-decoration: none;
-        font-weight: bold;
-      }
-      .container {
-        max-width: 600px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
-        border: 2px solid #ffe6f0;
-      }
-      .header {
-        text-align: center;
-        padding: 20px 0;
-        border-radius: 12px 12px 0 0;
-      }
-      .logo {
-        margin: 0;
-      }
-      .header h1 {
-        margin: 0;
-        color: #000;
-        font-size: 24px;
-        line-height: 1.4;
-      }
-      .content {
-        padding: 20px;
-        line-height: 1.6;
-      }
-      .footer {
-        text-align: center;
-        font-size: 12px;
-        color: #666;
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid #ffe6f0;
-      }
-      .button {
-        display: inline-block;
-        background-color: #ff69b4;
-        color: #fff !important;
-        text-decoration: none;
-        padding: 12px 30px;
-        border-radius: 25px;
-        margin: 10px 0;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-      }
-      .button:hover {
-        background-color: #ff1493;
-      }
-      .heart-icon {
-        color: #ff69b4;
-        font-size: 16px;
-        display: inline-block;
-        margin: 0 2px;
-      }
-      .message-box {
-        background-color: #ffffff;
-        border-left: 4px solid #e83e8c;
-        padding: 20px;
-        margin: 30px 0;
-        border-radius: 0 12px 12px 0;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      }
-      .resubmit-section {
-        background-color: #fff5f8;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 25px 0;
-        text-align: center;
-        border: 2px dashed #ff69b4;
-      }
-      .big-emoji {
-        font-size: 32px;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        line-height: 1.2;
-      }
-      h2 {
-        text-align: center;
-        color: #2d3748;
-        line-height: 1.2;
-        font-weight: 700;
-        background: linear-gradient(120deg, #e83e8c, #fd7e14);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-top: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <div class="logo">
-          <img
-            src="{{ logo_url }}"
-            alt="BristolLink Logo"
-            style="max-height: 100px"
-          />
-        </div>
-        <h1>Connection Update</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>It wasn't meant to be</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff5f8;
+      color: #333;
+    }
+
+    a {
+      color: #ff69b4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
+      border: 2px solid #ffe6f0;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .logo {
+      margin: 0;
+    }
+
+    .header h1 {
+      margin: 0;
+      color: #000;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    .content {
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ffe6f0;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #ff69b4;
+      color: #fff !important;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      margin: 10px 0;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #ff1493;
+    }
+
+    .heart-icon {
+      color: #ff69b4;
+      font-size: 16px;
+      display: inline-block;
+      margin: 0 2px;
+    }
+
+    .message-box {
+      background-color: #ffffff;
+      border-left: 4px solid #e83e8c;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .resubmit-section {
+      background-color: #fff5f8;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: center;
+      border: 2px dashed #ff69b4;
+    }
+
+    .big-emoji {
+      font-size: 32px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2d3748;
+      line-height: 1.2;
+      font-weight: 700;
+      background: linear-gradient(120deg, #e83e8c, #fd7e14);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="{{ logo_url }}" alt="BristolLink Logo" style="max-height: 100px" />
       </div>
-      <div class="content">
-        <div class="big-emoji">😔</div>
-        <h2>No Match This Time</h2>
-
-        <div class="message-box">
-          <p>Dear <b>{{ crush_name }}</b>,</p>
-          <p>
-            Thank you for your interest in connecting on BristolLink. Unfortunately, {{ user_name }} 
-            has a match with someone else. 🥲
-          </p>
-          <p>
-            Please remember that finding the right connection often takes time,
-            and this outcome doesn't reflect on you personally. 
-          </p>
-        </div>
-
-        <div class="resubmit-section">
-          <h2>Second Chance Available!</h2>
-          <p>
-            Good news - you have the opportunity to submit your interest again.
-            Sometimes timing is everything, and a second attempt might lead to a
-            different outcome!
-          </p>
-          <center>
-            <a href="{{ resubmit_url }}" class="button">Resubmit 💘</a>
-          </center>
-        </div>
-
+      <h1>It wasn't meant to be :(</h1>
+    </div>
+    <div class="content">
+      <div class="message-box">
+        <p>Hey <b>{{ crush_name }}</b>,</p>
         <p>
-          If you need any support or have questions, our team is here to help.
-          Feel free to <a href="{{ support_email }}">reach out to us</a>.
+          We hate to be the deliverer of bad news but, {{ user_name }}
+          has a crush on someone else at the moment. Rejection is hard, but don't fret, there are many fish in the sea
+          and we have given you another chance to find your special someone. Submit another crush now!
         </p>
-
+        <center>
+          <a href="{{ resubmit_url }}" class="button">Submit Again</a>
+        </center>
         <div class="signature">
           <p>
             Best wishes,<br />
-            The BristolLink Team <span class="heart-icon">♥</span>
+            The Bristol Link Team
           </p>
         </div>
       </div>
-      <div class="footer">&copy; 2025 BristolLink. All rights reserved.</div>
+
+      <p>
+        If you need any support or have questions, our team is here to help.
+        Feel free to <a href="{{ support_email }}">reach out to us</a>.
+      </p>
     </div>
-  </body>
+    <div class="footer">&copy; 2025 BristolLink. All rights reserved.</div>
+  </div>
+</body>
+
 </html>
