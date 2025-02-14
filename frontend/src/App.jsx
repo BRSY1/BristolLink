@@ -48,8 +48,8 @@ function App() {
               <Route path="/verify/:code" element={<EmailVerificationPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route element={<ProtectedRoute />}>
-                {/* <Route path="/dashboard" element={<DashBoardPage />} /> */}
-                {/* <Route path="/submit" element={<SubmissionPage />} /> */}
+                <Route path="/dashboard" element={<DashBoardPage />} />
+                <Route path="/submit" element={<SubmissionPage />} />
                 <Route path="/notifications" element={<NotificationPage />} />
               </Route>
             </Routes>
