@@ -35,6 +35,9 @@ export default function AboutUsPage() {
         "https://www.bristol.ac.uk/people/person/Matthew-Edwards-3f509a5b-bc70-486c-b09b-e0f00da4dcc4/",
     },
     { name: "Shubham Kulkarni", role: "Marketing Coordinator" },
+    {
+      name: "Saleh Alsyefi", role: "Security Advisor"
+    }
   ];
 
   return (
