@@ -40,17 +40,6 @@ const TeamMember = ({
         transform scale-x-0 group-hover:scale-x-100 origin-left 
         transition-transform duration-300" />
       
-      <div
-        className="w-36 h-36 mb-4 rounded-full overflow-hidden border-4 
-        border-pink-200 group-hover:border-pink-300 
-        transition-all relative z-10 shadow-md"
-      >
-        <img
-          src={image || "/favicon.png"}
-          alt={name}
-          className="w-full h-full object-cover filter group-hover:brightness-95 transition-all"
-        />
-      </div>
       
       <h3 className="text-2xl font-semibold text-neutral-900 mb-2 relative z-10 
         group-hover:text-pink-700 transition-colors">

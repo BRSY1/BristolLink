@@ -73,7 +73,8 @@ export default function WhatIsLinkPage() {
     {
       name: "Saleh Alsyefi",
       role: "Data Security Adviser",
-      website: "https://www.bristol.ac.uk/people/person/Saleh-Alsyefi-86769b5d-297d-4b56-8a2a-7ff80cf008ac/",
+      website:
+        "https://www.bristol.ac.uk/people/person/Saleh-Alsyefi-86769b5d-297d-4b56-8a2a-7ff80cf008ac/",
     },
     {
       name: "Shubham Kulkarni",

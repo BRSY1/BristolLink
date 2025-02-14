@@ -53,7 +53,7 @@ function SubmissionPage() {
           Submit your crush
         </h1>
 
-        <p className="py-2 justify-center m-4 p-3 bg-pink-100 text-pink-700 text-center rounded">To get your crush's uni email, go to outlook and search their full name</p>
+        <p className="text-sm py-2 justify-center mt-2 mb-8 p-3 bg-pink-100 text-pink-700 text-center rounded">To get your crush's uni email, go to outlook and search their full name</p>
 
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <InputField
