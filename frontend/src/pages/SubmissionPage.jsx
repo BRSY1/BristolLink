@@ -48,8 +48,8 @@ function SubmissionPage() {
   return (
     <>
       {/* h-screen used to be below */}
-      <div className="font-poppins w-full mt-5 p-8 flex flex-col justify-center max-w-md mx-auto">
-        <h1 className="text-4xl mt-16 font-semibold text-pink-800 mb-2 text-center">
+      <div className="font-poppins w-full min-h-screen p-8 mt-28 flex flex-col max-w-md mx-auto mb-24">
+        <h1 className="text-4xl font-semibold text-pink-800 mb-2 text-center">
           Submit your crush
         </h1>
 
