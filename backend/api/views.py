@@ -229,7 +229,7 @@ class SubmitCrushView(APIView):
         privacy_policy_url = f"{settings.FRONTEND_BASE_URL}/privacy-statement"
         resubmit_url = f"{settings.FRONTEND_BASE_URL}/submit"
         logo_url = self.request.build_absolute_uri(static("images/logo.png"))
-        hidden_name = re.sub('[a-zA-Z]', 'x', user_name) if self.request.data.get("hint") else "Someone"
+        hidden_name = user_name[0] + re.sub(r"[a-zA-Z]", "x", user_name[1:]) if self.request.data.get("hint") else "Someone"
 
         context = {
             "crush_count": crush_count,

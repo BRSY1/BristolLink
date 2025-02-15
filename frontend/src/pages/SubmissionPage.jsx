@@ -91,7 +91,7 @@ function SubmissionPage() {
               <p>
                 Mask name with Xs in the email. For example:
                 <span className="text-sm text-gray-400 line-clamp-1">
-                  (<b>{authState.username.replace(/[a-zA-Z]/g, "x")}</b> has a
+                  (<b>{authState.username[0] + authState.username.slice(1).replace(/[a-zA-Z]/g, "x")}</b> has a
                   crush on you...)
                 </span>
               </p>
