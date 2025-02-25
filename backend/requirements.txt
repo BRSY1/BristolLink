@@ -8,3 +8,4 @@ django-pgcrypto
 django_heroku
 gunicorn
 dj_database_url
+django_ratelimit
