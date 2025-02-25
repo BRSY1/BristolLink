@@ -7,8 +7,6 @@ from django.template.loader import render_to_string
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.html import strip_tags
-from django.utils.decorators import method_decorator
-from django_ratelimit.decorators import ratelimit
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
@@ -37,7 +35,6 @@ from .serializers import (
 
 # Create your views here.
 class RegisterView(APIView):
-    @method_decorator(ratelimit(key='ip', rate='1/d', method='POST', block=True))
     def post(self, request):    
         email = request.data.get("email")
         password = request.data.get("password")
