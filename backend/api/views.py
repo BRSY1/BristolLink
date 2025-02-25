@@ -14,7 +14,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework.throttling import AnonRateThrottle
 
 
 import re
@@ -35,6 +35,8 @@ from .serializers import (
 
 # Create your views here.
 class RegisterView(APIView):
+    throttle_classes = [AnonRateThrottle]
+    
     def post(self, request):    
         email = request.data.get("email")
         password = request.data.get("password")
