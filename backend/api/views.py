@@ -33,9 +33,13 @@ from .serializers import (
 )
 
 
+class RegisterThrottle(AnonRateThrottle):
+    rate = '3/day'  # Limit to 3 requests per day per IP
+
+
 # Create your views here.
 class RegisterView(APIView):
-    throttle_classes = [AnonRateThrottle]
+    throttle_classes = [RegisterThrottle]
     
     def post(self, request):    
         email = request.data.get("email")
