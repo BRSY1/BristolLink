@@ -102,7 +102,7 @@ function PrivacyStatementPage() {
             <p className="mt-6">
               By using Bristol Link, you agree to follow these rules and our
               data privacy practices. For any privacy-related queries or to
-              exercise your data rights, please us at admin@bristollink.uk.
+              exercise your data rights, please us at bristollink2024@gmail.com.
             </p>
           </section>
         </div>

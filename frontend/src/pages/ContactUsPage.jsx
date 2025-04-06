@@ -20,7 +20,7 @@ export default function ContactUsPage() {
               <FaInstagram size={24} />
             </a>
             <a
-              href="mailto:admin@bristollink.uk"
+              href="mailto:bristollink2024@gmail.com"
               className="text-gray-600 hover:text-pink-500 transition-colors"
             >
               <MdOutlineEmail size={24} />
@@ -38,10 +38,10 @@ export default function ContactUsPage() {
             <div className="flex items-center justify-center gap-2 text-lg">
               <MdOutlineEmail className="text-pink-500" size={20} />
               <a
-                href="mailto:admin@bristollink.uk"
+                href="mailto:bristollink2024@gmail.com"
                 className="text-pink-500 hover:underline hover:cursor-pointer font-medium"
               >
-                admin@bristollink.uk
+                bristollink2024@gmail.com
               </a>
             </div>
 

@@ -20,7 +20,7 @@ function Footer() {
           {/* Social links */}
           <div className="flex space-x-6">
             <a
-              href="mailto:admin@bristollink.uk"
+              href="mailto:bristollink2024@gmail.com"
               className="hover:text-pink-400 transition-colors intersect:motion-opacity-in-0 intersect:motion-translate-y-in-100 intersect:motion-rotate-in-180 intersect-once"
             >
               <MdOutlineEmail size={24} />
